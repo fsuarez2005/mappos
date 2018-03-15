@@ -21,7 +21,13 @@ namespace mappos
         {
             Console.WriteLine("loading");
 
-            Journal a = new Journal();
+
+            UPCA a = new UPCA("012345678910");
+
+            //Console.WriteLine(a.isLengthValid());
+
+
+
 
 
         }
