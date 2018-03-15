@@ -15,6 +15,9 @@ namespace mappos
         // try to save as much space as possible
         private byte[] upca;
 
+
+
+
         public void setValue(String upcaString)
         {
 
@@ -35,48 +38,33 @@ namespace mappos
 
 
         }
-
+        
 
         public UPCA() {
             this.upca = new byte[upcaLength];
+
         }
 
 
         public void displayByteView()
         {
+
+
+
             foreach (byte n in this.upca)
             {
                 Console.Write(n);
-
-
-
             }
-
-
-
-        }
-
-        public Boolean isLengthValid()
-        {
-            //return (this.upca.Length == 12);
-            
-            return false;
         }
 
 
-        // STUB validate UPC
+
         public Boolean isValid()
         {
-
-
-
             return (this.calculateChecksum() == this.upca[11]);
-
-
         }
 
-        // STUB calculateChecksum
-        public int calculateChecksum()
+         public int calculateChecksum()
         {
             // https://en.wikipedia.org/wiki/Check_digit#UPC
 
@@ -109,16 +97,20 @@ namespace mappos
                 checksum = 10 - checksum;
 
             }
-
-
-
-
             return checksum;
         }
         
-
         // STUB converts to shorter UPC-E
         public void convertToUPCE() { }
+
+        public override String ToString()
+        {
+
+
+
+            return "(String)";
+        }
+
 
     }
 }

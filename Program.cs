@@ -20,7 +20,7 @@ namespace mappos
             //Application.Run(new Main());
             UPCA a = new UPCA();
             a.setValue("052000041453");
-            Console.WriteLine(a.isValid());
+            Console.WriteLine(a);
             a.displayByteView();
 
             Console.ReadKey();
