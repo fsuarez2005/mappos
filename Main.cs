@@ -16,5 +16,14 @@ namespace mappos
         {
             InitializeComponent();
         }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+            Console.WriteLine("loading");
+
+            Journal a = new Journal();
+
+
+        }
     }
 }

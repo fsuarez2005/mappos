@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{FD013ED2-19DB-41A4-A3A2-0C2FFD7B25AC}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>mappos</RootNamespace>
     <AssemblyName>mappos</AssemblyName>
@@ -105,7 +105,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="doc\classes.txt" />
+    <None Include="doc\classes.md" />
     <None Include="doc\goals.md" />
   </ItemGroup>
   <ItemGroup>
