@@ -22,9 +22,7 @@ namespace mappos
             Console.WriteLine("loading");
 
 
-            UPCA a = new UPCA("012345678910");
-
-            //Console.WriteLine(a.isLengthValid());
+            
 
 
 
