@@ -98,12 +98,21 @@
     </Compile>
     <Compile Include="POSClasses\Planogram.cs" />
     <Compile Include="POSClasses\Product.cs" />
+    <Compile Include="POSMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="POSMain.Designer.cs">
+      <DependentUpon>POSMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="POSClasses\Transaction.cs" />
     <Compile Include="POSClasses\UPCA.cs" />
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="POSMain.resx">
+      <DependentUpon>POSMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

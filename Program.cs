@@ -15,15 +15,10 @@ namespace mappos
         [STAThread]
         static void Main()
         {
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Main());
-            UPCA a = new UPCA();
-            a.setValue("052000041453");
-            Console.WriteLine(a);
-            a.displayByteView();
-
-            Console.ReadKey();
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new POSMain());
+ 
 
         }
     }
