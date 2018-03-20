@@ -17,5 +17,14 @@ namespace mappos
             InitializeComponent();
         }
 
+        private void textEntry_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //TextBox t = (TextBox)sender;
+            listRegisterLog.Items.Add(e.KeyChar);
+            
+            //t.Text = e.KeyChar.ToString();
+
+            
+        }
     }
 }

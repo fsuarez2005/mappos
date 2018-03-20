@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listRegisterLog = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.labelEntryName = new System.Windows.Forms.Label();
+            this.textEntry = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // listBox1
+            // listRegisterLog
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(12, 45);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(392, 511);
-            this.listBox1.TabIndex = 0;
+            this.listRegisterLog.FormattingEnabled = true;
+            this.listRegisterLog.Location = new System.Drawing.Point(12, 45);
+            this.listRegisterLog.Name = "listRegisterLog";
+            this.listRegisterLog.Size = new System.Drawing.Size(392, 511);
+            this.listRegisterLog.TabIndex = 0;
             // 
             // label1
             // 
@@ -54,21 +54,22 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Transaction";
             // 
-            // label2
+            // labelEntryName
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "label2";
+            this.labelEntryName.AutoSize = true;
+            this.labelEntryName.Location = new System.Drawing.Point(9, 9);
+            this.labelEntryName.Name = "labelEntryName";
+            this.labelEntryName.Size = new System.Drawing.Size(29, 13);
+            this.labelEntryName.TabIndex = 2;
+            this.labelEntryName.Text = "UPC";
             // 
-            // textBox1
+            // textEntry
             // 
-            this.textBox1.Location = new System.Drawing.Point(50, 6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(212, 20);
-            this.textBox1.TabIndex = 3;
+            this.textEntry.Location = new System.Drawing.Point(50, 6);
+            this.textEntry.Name = "textEntry";
+            this.textEntry.Size = new System.Drawing.Size(212, 20);
+            this.textEntry.TabIndex = 3;
+            this.textEntry.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEntry_KeyPress);
             // 
             // tableLayoutPanel1
             // 
@@ -100,10 +101,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(719, 569);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.textEntry);
+            this.Controls.Add(this.labelEntryName);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.listRegisterLog);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "POSMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -117,10 +118,10 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listRegisterLog;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label labelEntryName;
+        private System.Windows.Forms.TextBox textEntry;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button button1;
     }
