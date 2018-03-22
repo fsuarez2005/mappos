@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SQLite;
 
 
-namespace mappos
+namespace mappos.POSClasses
 {
     public class UPCA
     {

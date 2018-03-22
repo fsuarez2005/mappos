@@ -4,11 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-
 namespace mappos.POSClasses
 {
-    class Journal
+
+    /**
+        <summary>df</summary>
+    */
+    class Fixture
     {
+        public void addPlanogram(Planogram p) { }
+
     }
 }
