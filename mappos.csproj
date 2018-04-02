@@ -88,8 +88,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseTest.cs" />
+    <Compile Include="POSClasses\Customer.cs" />
+    <Compile Include="POSClasses\Employee.cs" />
     <Compile Include="POSClasses\Fixture.cs" />
-    <Compile Include="POSClasses\ItemServer.cs" />
+    <Compile Include="POSClasses\Floorplan.cs" />
+    <Compile Include="POSClasses\iSQLObject.cs" />
+    <Compile Include="POSClasses\ItemDatabaseClient.cs" />
     <Compile Include="POSClasses\Journal.cs" />
     <Compile Include="POSClasses\Ledger.cs" />
     <Compile Include="Main.cs">
@@ -99,8 +103,11 @@
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="POSClasses\Location.cs" />
+    <Compile Include="POSClasses\Person.cs" />
     <Compile Include="POSClasses\Planogram.cs" />
     <Compile Include="POSClasses\Item.cs" />
+    <Compile Include="POSClasses\Store.cs" />
+    <Compile Include="POSClasses\Warehouse.cs" />
     <Compile Include="POSMain.cs">
       <SubType>Form</SubType>
     </Compile>

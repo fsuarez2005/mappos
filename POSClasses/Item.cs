@@ -15,6 +15,14 @@ namespace mappos.POSClasses
     */
     class Item
     {
+        // returns string to create an item table 
+        // stub
+        public static string getSQLModelCreationString()
+        {
+            return "";
+
+        }
+
         private UPCA upc;
 
         /**
@@ -27,6 +35,7 @@ namespace mappos.POSClasses
         private double cost;
         private double price;
         private string locationCache;
+        private List<string> keywords;
 
 
         public void setName(string name)
@@ -40,6 +49,11 @@ namespace mappos.POSClasses
         }
 
 
+        public string convertToSQLString()
+        {
 
+            return "";
+
+        }
     }
 }

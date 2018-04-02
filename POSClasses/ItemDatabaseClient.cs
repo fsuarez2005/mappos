@@ -2,13 +2,12 @@
 using System.Data.SQLite;
 using Microsoft.Win32.SafeHandles;
 using System.Runtime.InteropServices;
-
-
+using System.Collections.Generic;
 
 namespace mappos.POSClasses
 {
     
-    class ItemServer : IDisposable
+    class ItemDatabaseClient : IDisposable
     {
 
         private string filename;
@@ -52,7 +51,7 @@ namespace mappos.POSClasses
         // =================================================================
 
 
-        public ItemServer() {}
+        public ItemDatabaseClient() {}
         
         public void setupFile()
         {
@@ -86,6 +85,23 @@ namespace mappos.POSClasses
 
 
         public void get() { }
+
+        // stub
+        public Item getItemByUPCA(string upca)
+        {
+
+
+            return null;
+        }
+
+        /**
+         * <summary>Search for items looking for phrase in item description.</summary>
+         * <returns>List of stocking item numbers used to get item object.</returns>
+         */
+        public List<int> searchByDescription(string phrase)
+        {
+            return null;
+        }
 
     }
 }
