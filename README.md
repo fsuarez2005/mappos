@@ -14,9 +14,9 @@ After being in retail for 10+ years, several features of point-of-sale systems b
 * Stable. POS systems should work like calculators with added rules. Crashing should be impossible.
 * Helpful. Let employees do what they do best.
 * Modular hardware and software.
- * Can be expanded.
- * Technicians can add or remove pieces freely.
- * Can still run at base level.
+  - Can be expanded.
+  - Technicians can add or remove pieces freely.
+  - Can still run at base level.
 
 ## Wanted Features
 
