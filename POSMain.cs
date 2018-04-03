@@ -12,6 +12,10 @@ namespace mappos
 {
     public partial class POSMain : Form
     {
+        private POSClasses.ItemDatabaseClient connection;
+
+
+
         public POSMain()
         {
             InitializeComponent();
@@ -25,6 +29,15 @@ namespace mappos
             //t.Text = e.KeyChar.ToString();
 
             
+        }
+
+        private void POSMain_Load(object sender, EventArgs e)
+        {
+            this.connection = new POSClasses.ItemDatabaseClient();
+            this.connection.Open();
+
+
+
         }
     }
 }

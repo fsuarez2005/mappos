@@ -7,87 +7,59 @@ using System.Collections.Generic;
 namespace mappos.POSClasses
 {
     
-    class ItemDatabaseClient : IDisposable
+    class ItemDatabaseClient
     {
 
         private string filename;
         private SQLiteConnection connection;
 
-        // Flag: Has Dispose already been called?
-        bool disposed = false;
-        // Instantiate a SafeHandle instance.
-        SafeHandle handle = new SafeFileHandle(IntPtr.Zero, true);
-
-        // =================================================================
-        // iDispose code
-
-        // Public implementation of Dispose pattern callable by consumers.
-        public void Dispose()
+        private string generateConnectionString()
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+
+            return "";
         }
 
-        // Protected implementation of Dispose pattern.
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposed)
-                return;
-
-            if (disposing)
-            {
-                handle.Dispose();
-                // Free any other managed objects here.
-                //
-
-                connection.Close();
-            }
-
-            // Free any unmanaged objects here.
-            //
-            disposed = true;
-        }
-
-        // =================================================================
-
-
+        
         public ItemDatabaseClient() {}
         
-        public void setupFile()
+        public void SetupFile()
         {
             // setup SQLite file
 
             SQLiteConnection.CreateFile(this.filename);
         }
 
-        public void sendCommand()
+        public void SendCommand()
         {
 
 
 
         }
 
-        public void openConnection()
+        public void Open()
         {
             this.connection = new SQLiteConnection("Data Source: " + this.filename + ";Version:3;");
+        }
 
-
+        public void Close()
+        {
+            this.connection.Close();
 
         }
 
 
-        public void add() { }
+        public void Add() { }
 
 
-        public void remove() { }
+        public void Remove() { }
 
-        public void modify() { }
+        public void Modify() { }
 
 
-        public void get() { }
+        public void Get() { }
 
         // stub
-        public Item getItemByUPCA(string upca)
+        public Item GetItemByUPCA(string upca)
         {
 
 
@@ -98,7 +70,7 @@ namespace mappos.POSClasses
          * <summary>Search for items looking for phrase in item description.</summary>
          * <returns>List of stocking item numbers used to get item object.</returns>
          */
-        public List<int> searchByDescription(string phrase)
+        public List<int> SearchByDescription(string phrase)
         {
             return null;
         }
