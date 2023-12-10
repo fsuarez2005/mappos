@@ -8,17 +8,12 @@ package person.franksuarez.MapPOS.model;
  *
  * @author franksuarez
  */
-public class Product {
-    private String description;
-    private UPC upc;
-    private double cost;
-    private double price;
+public class Fixture {
+    // type
     
     
     
-    public Product() {
-        
-        
-    }
+    
+    
     
 }

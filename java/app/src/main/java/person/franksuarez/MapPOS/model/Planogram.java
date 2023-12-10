@@ -9,5 +9,10 @@ package person.franksuarez.MapPOS.model;
  * @author franksuarez
  */
 public class Planogram {
+    // planogram id
+    // list of products
+    // size
+    // 
+    
     
 }
