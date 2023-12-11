@@ -10,8 +10,26 @@ package person.franksuarez.MapPOS.model;
  */
 public class Planogram {
     // planogram id
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
+    
+    
+    
+    
     // list of products
+    private Product[] products;
+
     // size
+    
+    
     // 
     
     

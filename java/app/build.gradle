@@ -34,7 +34,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'person.franksuarez.MapPOS.PointOfSale'
+    mainClass = 'person.franksuarez.MapPOS.gui.UPCUtility'
 }
 
 tasks.named('test') {

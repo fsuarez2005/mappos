@@ -10,15 +10,50 @@ package person.franksuarez.MapPOS.model;
  */
 public class Product {
     private String description;
-    private UPC upc;
-    private double cost;
-    private double price;
-    
-    
-    
-    public Product() {
-        
-        
+    public void setDescription(String description) {
+        this.description = description;
     }
+    public String getDescription() {
+        return this.description;
+    }
+    
+    // ==============================
+    
+    private UPC upc;
+    public UPC getUpc() {
+        return upc;
+    }
+    public void setUpc(UPC upc) {
+        this.upc = upc;
+    }
+    
+    // ==============================
+    private double cost;
+
+    public double getCost() {
+        return cost;
+    }
+
+    public void setCost(double cost) {
+        this.cost = cost;
+    }
+
+    
+    // ==============================
+    
+    private double price;
+    public double getPrice() {
+        return price;
+    }
+    public void setPrice(double price) {
+        this.price = price;
+    }
+    
+    
+    
+    public Product() {}
+    
+    
+
     
 }

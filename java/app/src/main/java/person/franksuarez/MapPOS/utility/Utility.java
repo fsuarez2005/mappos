@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package utility;
+package person.franksuarez.MapPOS.utility;
 
 /**
  *
@@ -10,6 +10,10 @@ package utility;
  */
 public class Utility {
 
+    // functional programming
+    
+    
+    
     /** 
      * Converts String of digits to byte[]
      * 

@@ -11,13 +11,15 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-
 /**
  *
  * @author franksuarez
  */
 public class UPCTest {
- 
+    String[] goodUPCs = new String[] {
+        "190808004765"
+    };
+    
     
     
     public UPCTest() {
@@ -33,66 +35,10 @@ public class UPCTest {
     
     @BeforeEach
     public void setUp() {
-
     }
     
     @AfterEach
     public void tearDown() {
-    }
-
-
-
-    /**
-     * Test of setData method, of class UPC.
-     */
-    @Test
-    public void testSetData() {
-        System.out.println("setData");
-        String upcStr = "0123456789";
-        UPC instance = new UPC();
-        instance.setData(upcStr);
-        
-    }
-
-    /**
-     * Test of initializeValues method, of class UPC.
-     */
-    @Test
-    public void testInitializeValues() {
-        //System.out.println("initializeValues");
-        //UPC instance = new UPC();
-        //instance.initializeValues();
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of convertStringToByteArray method, of class UPC.
-     */
-    @Test
-    public void testConvertStringToByteArray() {
-        System.out.println("convertStringToByteArray");
-        String numStr = "123456789";
-        UPC instance = new UPC();
-        byte[] expResult = new byte[] {1,2,3,4,5,6,7,8,9};
-        byte[] result = instance.convertStringToByteArray(numStr);
-        assertArrayEquals(expResult, result);
-    }
-
-    /**
-     * Test of toString method, of class UPC.
-     */
-    @Test
-    public void testToString() {
-        System.out.println("toString");
-        UPC instance = new UPC();
-        instance.setData("01234567890");
-        
-        String expResult = "01234567890";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
 
     /**
@@ -102,23 +48,103 @@ public class UPCTest {
     public void testCalculateCheckDigit() {
         System.out.println("calculateCheckDigit");
         UPC instance = new UPC();
-        instance.calculateCheckDigit();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.setData("190808004765");
+        int expResult = 5;
+        int result = instance.calculateCheckDigit();
+        assertEquals(expResult, result);
     }
 
+    /**
+     * Test of setData method, of class UPC.
+     */
+    @Test
+    public void testSetData() {
+        System.out.println("setData");
+        String upcStr = "190808004765";
+        UPC instance = new UPC();
+        instance.setData(upcStr);
+        
+        int[] data = instance.getData();
+        
+        assertArrayEquals(data, new int[] {1,9,0,8,0,8,0,0,4,7,6,5});
+    }
 
+    /**
+     * Test of getData method, of class UPC.
+     */
+    @Test
+    public void testGetData() {
+        System.out.println("getData");
+        UPC instance = new UPC();
+        
+        instance.setData("190808004765");
+        
+        int[] expResult = new int[] {1,9,0,8,0,8,0,0,4,7,6,5};
+        int[] result = instance.getData();
+        assertArrayEquals(expResult, result);
+    }
 
-    
-    
+    /**
+     * Test of hasValidCheckDigit method, of class UPC.
+     */
+    @Test
+    public void testHasValidCheckDigit() {
+        System.out.println("hasValidCheckDigit");
+        UPC instance = new UPC();
+        instance.setData("190808004765");
+        
+        
+        boolean expResult = true;
+        boolean result = instance.hasValidCheckDigit();
+        assertEquals(expResult, result);
+    }
 
+    /**
+     * Test of isFormattedCorrectly method, of class UPC.
+     */
+    @Test
+    public void testIsFormattedCorrectly() {
+        System.out.println("isFormattedCorrectly");
+        boolean expResult = true;
+        boolean result = UPC.isFormattedCorrectly("190808004765");
+        assertEquals(result, expResult);
+    } 
 
-    
-    
+    /**
+     * Test of generateBarcode method, of class UPC.
+     */
+    @Test
+    public void testGenerateBarcode() {
+        System.out.println("generateBarcode");
+        UPC instance = new UPC();
+        
+        instance.generateBarcode();
+        
+    }
 
+    /**
+     * Test of tempGenerateCode method, of class UPC.
+     */
+    @Test
+    public void testTempGenerateCode() {
+        System.out.println("tempGenerateCode");
+        UPC instance = new UPC();
+        instance.tempGenerateCode();
+    }
 
-
-    
-
-    
+    /**
+     * Test of toString method, of class UPC.
+     */
+    @Test
+    public void testToString() {
+        System.out.println("toString");
+        UPC instance = new UPC("190808004765");
+        //instance.setData("190808004765");
+        
+        String expResult = "190808004765";
+        String result = instance.toString();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
 }
