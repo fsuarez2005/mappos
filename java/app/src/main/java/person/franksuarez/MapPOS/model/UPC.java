@@ -4,9 +4,6 @@
  */
 package person.franksuarez.MapPOS.model;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  *
  * @author franksuarez
@@ -14,24 +11,19 @@ import java.util.Set;
 public class UPC {
     private boolean[][][] barcodePatterns; 
     
-    
     private int[] data;
     
     public UPC() {}
-    public UPC(String dataStr) {
-        this();
-        setData(dataStr);
-        
-    }
+
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        
+         
         for(int d: data) {
             sb.append(d);
         }
-        System.out.printf("%s\n", sb.toString());
+        System.out.printf("%s", sb.toString());
         return sb.toString();
     }
     
@@ -82,13 +74,14 @@ public class UPC {
         
         for(int n = 0; n < upcStr.length();n++) {
             char c = upcStr.charAt(n);
-            
             this.data[n] = Character.digit(c,10);
         }
     }
+
     
-    public int[] getData() {
+    public int[] toIntArray() {
         return this.data;
+        
     }
     
     public boolean hasValidCheckDigit() {
@@ -116,7 +109,17 @@ public class UPC {
     
     
     public void generateBarcode() {
+        
+        // bar patterns for beginning, middle and end
+        boolean[] startPattern = new boolean[] {true, false, true};
+        boolean[] middlePattern = new boolean[] {true, false, true, false, true};
+        boolean[] endPattern = new boolean[] {true, false, true};
+        
+        // bar patterns for each digit
+        // top array is 0 for left and 1 for right
         boolean[][][] patterns = new boolean[2][10][7];
+        
+        // TODO: combine patterns into an initializer
         patterns[0][0] = new boolean[] {false,false,false,true,true,false,true};
         patterns[0][1] = new boolean[] {false,false,true,true,false,false,true};
         patterns[0][2] = new boolean[] {false,false,true,false,false,true,true};
@@ -138,6 +141,56 @@ public class UPC {
         patterns[1][7] = new boolean[] {true,false,false,false,true,false,false};
         patterns[1][8] = new boolean[] {true,false,false,true,false,false,false};
         patterns[1][9] = new boolean[] {true,true,true,false,true,false,false};
+        
+        
+        // array indicies for each digit
+        // 0 to 11
+        int[] barcodeIndex = {
+            // start
+            0,
+            // left
+            3, 10, 17, 24, 31, 38,
+            // middle
+            45,
+            //right
+            50,57,64,71,78,85,
+            //end
+            92
+        };
+        
+        // barcode 
+        boolean[] barcode = new boolean[95];
+        
+        // start
+        for(int n = 0; n < 3; n++) {
+            
+            
+        }
+        // middle
+        
+        
+        
+        // end
+        
+        // 3 + 7*6 + 5 + 7*6 + 3
+        // 2*3 + 12*7 + 5
+        
+        
+        
+        // beginning 101
+        
+        
+        
+        
+        
+        // left 
+        
+        // middle 10101
+        
+        // right
+        
+        // ending 101
+        
         
         /*
         Start "101"
@@ -171,7 +224,8 @@ public class UPC {
 
         */
         
-    
+        
+        
     }
 
     public void tempGenerateCode() {

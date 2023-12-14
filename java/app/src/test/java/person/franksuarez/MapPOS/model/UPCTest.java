@@ -9,12 +9,16 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
+
+
 
 /**
  *
  * @author franksuarez
  */
+
 public class UPCTest {
     String[] goodUPCs = new String[] {
         "190808004765"
@@ -64,7 +68,7 @@ public class UPCTest {
         UPC instance = new UPC();
         instance.setData(upcStr);
         
-        int[] data = instance.getData();
+        int[] data = instance.toIntArray();
         
         assertArrayEquals(data, new int[] {1,9,0,8,0,8,0,0,4,7,6,5});
     }
@@ -80,7 +84,7 @@ public class UPCTest {
         instance.setData("190808004765");
         
         int[] expResult = new int[] {1,9,0,8,0,8,0,0,4,7,6,5};
-        int[] result = instance.getData();
+        int[] result = instance.toIntArray();
         assertArrayEquals(expResult, result);
     }
 
@@ -138,13 +142,12 @@ public class UPCTest {
     @Test
     public void testToString() {
         System.out.println("toString");
-        UPC instance = new UPC("190808004765");
-        //instance.setData("190808004765");
+        UPC instance = new UPC();
+        instance.setData("190808004765");
         
         String expResult = "190808004765";
         String result = instance.toString();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+
     }
 }

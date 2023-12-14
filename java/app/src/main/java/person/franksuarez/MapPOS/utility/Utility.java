@@ -9,7 +9,16 @@ package person.franksuarez.MapPOS.utility;
  * @author franksuarez
  */
 public class Utility {
-
+    public static String testString;
+    
+    
+    static {
+        testString = "hi";
+        
+        System.out.println("Utility is initialized.");
+        
+        
+    }
     // functional programming
     
     
@@ -27,7 +36,12 @@ public class Utility {
             int digit = Character.digit(digitChar, 10);
             numBytes[n] = (byte) digit;            
         }
-
+        
         return numBytes;
     }
+    
+    
+    
+    
+    
 }

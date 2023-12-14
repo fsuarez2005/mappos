@@ -8,6 +8,6 @@ package person.franksuarez.MapPOS.model;
  *
  * @author franksuarez
  */
-public class Employee extends Person {
+public class Manager {
     
 }
