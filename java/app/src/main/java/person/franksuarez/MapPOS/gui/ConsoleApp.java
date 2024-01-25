@@ -6,7 +6,10 @@ package person.franksuarez.MapPOS.gui;
 
 import java.io.Console;
 import java.util.function.BiConsumer;
-import person.franksuarez.MapPOS.model.UPC;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import person.franksuarez.MapPOS.exception.InvalidFormat;
+import person.franksuarez.MapPOS.model.UPCA;
 
 class ConsoleShell {
     private Console cons;
@@ -23,9 +26,8 @@ class ConsoleShell {
         }
     }
     
-    public void write(String msg) {
-        cons.printf("WRITE: %s\n", msg);
-        
+    public void printf(String fmt, Object... args) {
+        cons.printf(fmt, args);
     }
     
     public void quitLoop() {
@@ -34,10 +36,7 @@ class ConsoleShell {
     
     public void setParseLineCallback(BiConsumer<ConsoleShell,String> callback) {
         parseLineCallback = callback;
-        
-        
     }
-    
     
     private void parseLine(String line) {
         cons.printf("LINE: %s\n", line);
@@ -46,11 +45,8 @@ class ConsoleShell {
             parseLineCallback.accept(this, line);
         } else {
             cons.printf("ERROR: parseLineCallback not defined.\n");
-        }
-
-        
+        }   
     }
-    
     
     public void loop() {
         while (runLoop) {
@@ -60,26 +56,15 @@ class ConsoleShell {
                 runLoop = false;
                 break;
             }
-            
             parseLine(line);
         }
-        
-        
     }
-    
-    
-    
     
     public void start() {
         loop();
         
     }
-    
-    
 }
-
-
-
 
 /**
  *
@@ -88,19 +73,21 @@ class ConsoleShell {
 public class ConsoleApp {
     
     public static void upcCheckCallback(ConsoleShell cs, String line) {
-        UPC u = new UPC();
-        u.setData(line);
+        UPCA u = new UPCA();
         
-        boolean validCheckdigit = u.hasValidCheckDigit();
-        
-        cs.write("has valid checkdigit = "+String.valueOf(validCheckdigit));
-        
-        
+        try {
+            u.setData(line);
+            boolean validCheckdigit = u.hasValidCheckDigit();
+            cs.printf("has valid checkdigit = "+String.valueOf(validCheckdigit));
+        } catch (InvalidFormat ex) {
+            cs.printf("Invalid UPC format");
+            //Logger.getLogger(ConsoleApp.class.getName()).log(Level.SEVERE, "Invalid Format", ex);
+        }
     }
     
     
     public static void parseLine(ConsoleShell cs, String line) {
-        cs.write(line);
+        cs.printf(line);
         
         
         
@@ -119,7 +106,7 @@ public class ConsoleApp {
     public static void main(String[] args) throws Exception {
         ConsoleShell cs = new ConsoleShell();
         //cs.setParseLineCallback(ConsoleApp::parseLine);
-        cs.setParseLineCallback(ConsoleApp::upcCheckCallback);
+        cs.setParseLineCallback(ConsoleApp::parseLine);
         
         cs.start();
     }

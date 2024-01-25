@@ -9,6 +9,8 @@ package person.franksuarez.MapPOS.model;
  * @author franksuarez
  */
 public class Product {
+    
+    
     private String description;
     public void setDescription(String description) {
         this.description = description;
@@ -19,11 +21,11 @@ public class Product {
     
     // ==============================
     
-    private UPC upc;
-    public UPC getUpc() {
+    private UPCA upc;
+    public UPCA getUpc() {
         return upc;
     }
-    public void setUpc(UPC upc) {
+    public void setUpc(UPCA upc) {
         this.upc = upc;
     }
     

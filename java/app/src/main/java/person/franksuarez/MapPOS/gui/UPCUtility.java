@@ -4,7 +4,10 @@
  */
 package person.franksuarez.MapPOS.gui;
 
-import person.franksuarez.MapPOS.model.UPC;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import person.franksuarez.MapPOS.exception.InvalidFormat;
+import person.franksuarez.MapPOS.model.UPCA;
 import person.franksuarez.MapPOS.utility.Utility;
 
 /**
@@ -73,28 +76,18 @@ public class UPCUtility extends javax.swing.JFrame {
 
     private void btnCheckUPCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckUPCActionPerformed
         // todo
-        String outputText;
+        String outputText = "";
         
-        UPC upc = new UPC();
-        upc.setData(txtUPC.getText());
+        UPCA upc = new UPCA();
         
-        boolean isFormattedCorrectly = UPC.isFormattedCorrectly(txtUPC.getText());
-        if (! isFormattedCorrectly) {
-            return;
-        }
-        
-        boolean hasValidCheckDigit = upc.hasValidCheckDigit();
-        
-        if (isFormattedCorrectly && hasValidCheckDigit) {
-            outputText = "good";
+        try {
+            upc.setData(txtUPC.getText());
+        } catch (InvalidFormat ex) {
+            Logger.getLogger(UPCUtility.class.getName()).log(Level.SEVERE, null, ex);
+            outputText = "Invalid UPC Format";
             
-        } else {
-            outputText = "bad";
         }
-        
-        
-        txtOutput.setText(Utility.testString);
-        //txtOutput.setText("UPC is "+outputText);
+        txtOutput.setText(outputText);
     }//GEN-LAST:event_btnCheckUPCActionPerformed
 
     /**
