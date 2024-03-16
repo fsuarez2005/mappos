@@ -2,6 +2,7 @@ package com.franksuarez.mappos.ui
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -94,40 +95,53 @@ fun MapPOSApp(
 
 
         ) { paddingValues ->
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(paddingValues)
+            ScaffoldContent(paddingValues = paddingValues, navController = navController)
+        }
+    }
 
-            ) {
-                NavHost(
-                    navController = navController,
-                    startDestination = MapPOSPage.Start.name,
-                    modifier = Modifier
-
-                ) {
-
-                    composable(route = MapPOSPage.Start.name) {
-                        Text(
-                            stringResource(id = R.string.start_page_title)
-                        )
-                    }
+}
 
 
-                    composable(route = MapPOSPage.UpcValidator.name) {
-                        UPCChecker()
-                    }
 
-                    composable(route = MapPOSPage.Credits.name) {
-                        Text("credits")
-                    }
-                }
+@Composable
+fun ScaffoldContent(
+    paddingValues: PaddingValues,
+    navController: NavHostController,
+
+) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(paddingValues)
+
+    ) {
+        NavHost(
+            navController = navController,
+            startDestination = MapPOSPage.Start.name,
+            modifier = Modifier
+
+        ) {
+
+            composable(route = MapPOSPage.Start.name) {
+                Text(
+                    stringResource(id = R.string.start_page_title)
+                )
+            }
+
+
+            composable(route = MapPOSPage.UpcValidator.name) {
+                UPCChecker()
+            }
+
+            composable(route = MapPOSPage.Credits.name) {
+                Text("credits")
             }
         }
     }
 
 }
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
