@@ -1,8 +1,10 @@
 package com.franksuarez.mappos.ui
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -26,7 +28,9 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -43,7 +47,6 @@ enum class MapPOSPage(@StringRes val title: Int) {
     Credits(title = R.string.credits_page_title)
 }
 
-
 @Composable
 fun MapPOSApp(
     viewModel: MapPOSViewModel = viewModel(),
@@ -56,21 +59,45 @@ fun MapPOSApp(
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
-            ModalDrawerSheet {
-                Text("Menu")
-                Divider()
-                NavigationDrawerItem(
-                    label = { Text("UPC Validator") },
-                    selected = false,
-                    onClick = {
-                        navController.navigate(route = MapPOSPage.UpcValidator.name)
-                        scope.launch {
-                            drawerState.apply {
-                                close()
+            ModalDrawerSheet(
+
+            ) {
+                Column(
+                    modifier = Modifier
+                        .padding(start = 28.dp, end = 28.dp)
+                ) {
+                    Text(
+                        text = "Menu",
+                        modifier = Modifier
+                            .padding(16.dp)
+                    )
+
+                    Divider()
+                    NavigationDrawerItem(
+                        label = { Text("Home") },
+                        selected = true,
+                        onClick = {
+                            navController.navigate(route = MapPOSPage.Start.name)
+                            scope.launch {
+                                drawerState.apply {
+                                    close()
+                                }
                             }
                         }
-                    }
-                )
+                    )
+                    NavigationDrawerItem(
+                        label = { Text("UPC Validator") },
+                        selected = false,
+                        onClick = {
+                            navController.navigate(route = MapPOSPage.UpcValidator.name)
+                            scope.launch {
+                                drawerState.apply {
+                                    close()
+                                }
+                            }
+                        }
+                    )
+                }
             }
 
 
@@ -102,13 +129,12 @@ fun MapPOSApp(
 }
 
 
-
 @Composable
 fun ScaffoldContent(
     paddingValues: PaddingValues,
     navController: NavHostController,
 
-) {
+    ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
@@ -124,9 +150,19 @@ fun ScaffoldContent(
         ) {
 
             composable(route = MapPOSPage.Start.name) {
-                Text(
-                    stringResource(id = R.string.start_page_title)
-                )
+
+                Column(
+                    verticalArrangement = Arrangement.Center,
+                    modifier = Modifier
+                        .fillMaxSize()
+                ) {
+                    Text(
+                        stringResource(id = R.string.start_page_body),
+                        textAlign = TextAlign.Justify,
+                        modifier = Modifier
+                            .padding(16.dp)
+                    )
+                }
             }
 
 
@@ -149,9 +185,7 @@ fun MapPOSTopBar(
     currentScreen: MapPOSPage,
     modifier: Modifier = Modifier,
     menuOnClick: () -> Unit = {},
-
-
-    ) {
+) {
     CenterAlignedTopAppBar(
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer,
@@ -170,16 +204,9 @@ fun MapPOSTopBar(
                     contentDescription = "Menu"
                 )
             }
-
         }
-
-
     )
 }
-
-
-
-
 
 @Preview
 @Composable
@@ -187,5 +214,4 @@ fun MapPOSAppPreview() {
     MapPOSTheme {
         MapPOSApp()
     }
-
 }

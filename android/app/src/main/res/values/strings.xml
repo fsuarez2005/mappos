@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">MapPOS</string>
     <string name="start_page_title">Retail Utility</string>
+    <string name="start_page_body">Welcome to the MapPOS Retail Utility. The purpose this app
+    is to provide auxiliary tools to the MapPOS system. The MapPOS system will allow a business to be
+    operated from a map-based system.</string>
     <string name="upc_validator_page_title">UPC Validator</string>
     <string name="credits_page_title">Credits</string>
     <string name="validate">Validate</string>

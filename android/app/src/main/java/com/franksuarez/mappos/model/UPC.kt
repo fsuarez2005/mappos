@@ -1,6 +1,6 @@
-package com.franksuarez.simpleupcchecker.model
+package com.franksuarez.mappos.model
 
-import com.franksuarez.simpleupcchecker.exception.InvalidUPCData
+import com.franksuarez.mappos.exception.InvalidUPCData
 
 open class UPC: GTIN {
     var data: MutableList<Int>? = null
@@ -36,7 +36,7 @@ open class UPC: GTIN {
 
         @Throws(InvalidUPCData::class)
         fun fromString(dataString: String): MutableList<Int> {
-            if (! Companion.isValidString(dataString)) throw InvalidUPCData()
+            if (! isValidString(dataString)) throw InvalidUPCData()
 
             val data = mutableListOf<Int>()
             dataString.forEach { data.add(it.digitToInt()) }
@@ -59,12 +59,11 @@ open class UPC: GTIN {
         return (checkDigit == lastDigit)
     }
 
-
     /**
      * TODO: generalize calculating checkdigit and put it in class GTIN
      */
     fun calculateCheckDigit() {
-        this.checkDigit = Companion.calculateCheckDigit(this.data!!)
+        this.checkDigit = calculateCheckDigit(this.data!!)
     }
 
     override fun toString(): String {
