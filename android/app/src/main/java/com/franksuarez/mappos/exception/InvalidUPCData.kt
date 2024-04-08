@@ -1,4 +1,4 @@
-package com.franksuarez.simpleupcchecker.exception
+package com.franksuarez.mappos.exception
 
 
 /** Thrown for invalid UPC data from a String
