@@ -1,4 +1,4 @@
-package com.franksuarez.simpleupcchecker.model
+package com.franksuarez.mappos.model
 
 open class PriceUPC : UPC {
     val factor2MinusTable: List<Int> = listOf(
