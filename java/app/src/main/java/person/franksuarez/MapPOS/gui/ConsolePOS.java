@@ -23,6 +23,7 @@ import java.util.HashMap;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.function.Consumer;
 
 
 
@@ -81,16 +82,47 @@ class ProductDatabase {
  * @author franksuarez
  */
 public class ConsolePOS {
-    enum POSState {
+    private enum POSState {
         IDLE, TRANSACTION, UPC
     }
     
     
     class Command {
+        private String name;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+        // -----------------------------------
+        private Consumer<String> commandCode;
+
+        public Command(String name, Consumer<String> commandCode) {
+            this.name = name;
+            this.commandCode = commandCode;
+        }
+
+
+        // -----------------------------------
+        public void apply(String arg) {
+            this.commandCode.accept(arg);
+        }
         
     }
     
-    private String prompt = "> ";
+    private String prompt = "";
+
+    public String getPrompt() {
+        this.prompt = this.state.name()+"> ";
+        return prompt;
+    }
+
+    public void setPrompt(String prompt) {
+        this.prompt = prompt;
+    }
     
     private HashMap<String,Command> commands;
     
@@ -103,6 +135,8 @@ public class ConsolePOS {
     // ----------------------------------------------------------------------
     
     public ConsolePOS() {}
+    
+
     
     public void initialize() {
         this.state = POSState.IDLE;
@@ -122,6 +156,14 @@ public class ConsolePOS {
     // TODO: STUB
     private void evaluate(String userInput) {
         System.out.println("[evaluate]");
+        if (this.commands.containsKey(userInput)) {
+            System.out.println("Found command");
+            this.commands.get(userInput).apply(userInput);
+            return;
+        }
+        
+        
+        
         switch (userInput) {
             case "commands" -> {
                 for (String k: this.commands.keySet()) {
@@ -135,6 +177,14 @@ public class ConsolePOS {
                 
             }
 
+            case "normal" -> {
+                this.state = POSState.IDLE;
+            }
+            
+            case "transaction" -> {
+                this.state = POSState.TRANSACTION;
+            }
+            
             case "quit" -> {
                 this.run = false;
             }
@@ -150,12 +200,25 @@ public class ConsolePOS {
         
     }
 
+    private void testaddCommands() {
+
+        
+        this.commands.put("hello", new Command("hello", (s) -> {
+            this.printf("hello");
+        }));
+        
+        
+        
+    }
+    
+    
+    
     // TODO: STUB
     private void loop() {
         System.out.println("[loop]");
         while (this.run) {
             // print prompt
-            this.printf("%s> ","test");
+            this.printf("%s",this.getPrompt());
 
             // read input
             String userInput = this.readLine();
@@ -177,7 +240,11 @@ public class ConsolePOS {
     
     public static void main(String[] args) throws Exception {
         ConsolePOS app = new ConsolePOS();
+        
         app.initialize();
+        
+        app.testaddCommands();
+        
         app.start();        
     }
 }
