@@ -1,5 +1,21 @@
 # Features
+## Technical
+* Modular
+  * Plugin
+  * Simple
+* Open source
+* Linux based
+* User friendly
+* Responsive
+* Onsite/Easy Repairable
+## Business
 
+## Financial
+* 
+## Management
+* Employee management
+* Scheduling
+## Retail
 * UPC checker
 * UPC check digit calculator
 * UPC barcode creator
@@ -8,7 +24,6 @@
 * Floorplan viewer
 * Floorplan editor
 * Retail data file format standard
- * XML
 * Price-based UPC check digit calculator
 * Product locator
 * Floorplan path generator

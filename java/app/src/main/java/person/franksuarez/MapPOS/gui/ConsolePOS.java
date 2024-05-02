@@ -1,28 +1,35 @@
+/**
+ * Console Point of Sale
+ * 
+ * DESCRIPTION:
+ * 
+ * 
+ * TODO:
+ * - []
+ * - []
+ * - []
+ * 
+ * 
+ * 
+ */
+
+
+
+
 package person.franksuarez.MapPOS.gui;
 
+import java.io.Console;
 import java.util.HashMap;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-/** Console App Shell.
- * 
- * Purpose: To parse and interpret commands.
- * 
- * @author franksuarez
- */
-
-class ShellCommand {
 
 
+class ShellCommand {}
 
 
-
-
-}
-
-
-public class Shell {
-
+class Shell {
+    protected String prompt = "> ";
     
     protected HashMap<String,ShellCommand> commands;
     
@@ -82,32 +89,17 @@ public class Shell {
     // ------------------------------------------------------------
     
     public void evaluate(String line) {
+        System.out.printf("input length = %s\n",line.length());
         switch (line.toLowerCase()) {
-            case "commands":
+            case "commands" -> {
                 printFunction.accept("Command List: \n");
                 this.listCommands();
-                
-                break;
-            default:
-                break;
+            }
+            case "quit" -> this.runLoop = false;
+            default -> {
+            }
             
         }
-        
-    }
-    
-    private void parseLine(String line) {
-        switch (line.toLowerCase()) {
-            case "upc":
-                printFunction.accept("Verify UPC: \n");
-                
-                break;
-            case "quit":
-                this.quitLoop();
-                break;
-            default:
-                break;
-        }
-        
         
     }
     
@@ -117,7 +109,7 @@ public class Shell {
         String line;
 
         while (runLoop) {
-            //printFunction.accept(String.format("%s ", this.prompt));
+            printFunction.accept(String.format("%s ", this.prompt));
             line = getInputFunction.get();
             this.evaluate(line);
         }
@@ -141,4 +133,52 @@ public class Shell {
         
     }
 
+}
+
+
+/** ConsoleApp interacts with user via terminal.
+ *
+ * @author franksuarez
+ */
+public class ConsolePOS {
+    public Console cons;
+
+    public ConsolePOS() {
+        this.cons = System.console();
+    }
+    
+    public String getInput() {
+        String line = cons.readLine();
+        return line;
+    }
+    
+    public void print(String s) {
+        cons.printf(s);
+    }
+
+    public static void main(String[] args) throws Exception {
+        ConsolePOS app = new ConsolePOS();
+        
+        Shell cs = new Shell();
+        
+        // TODO: change this back to a Supplier<String> argument
+        cs.setGetInputFunction(
+                () -> {
+                    String line = app.getInput();
+                    return line;
+                }
+        );
+        
+        
+
+        // TODO: change this back to a Consumer<String> argument
+        cs.setPrintFunction(
+                (s) -> {
+                    app.print(s);
+                }
+        );
+        
+        
+        cs.start();
+    }
 }

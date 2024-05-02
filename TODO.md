@@ -1,7 +1,7 @@
 # TODO
 
 
-Classes
+## Classes
 - [x] UPC
 - [ ] Transaction
 - [x] Planogram
@@ -9,3 +9,7 @@ Classes
 - [x] Business
 - [x] Product
 - [ ] 
+
+## Java
+### Features
+- [] Text-Based Point of Sale
