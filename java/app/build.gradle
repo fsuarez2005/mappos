@@ -10,19 +10,28 @@ plugins {
     id 'application'
 }
 
+
+
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
 }
 
 dependencies {
-    // Use JUnit Jupiter for testing.
-    //testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.1'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    // see libs.version.toml for versions
 
-    // This dependency is used by the application.
-    implementation 'com.google.guava:guava:31.1-jre'
+    testImplementation libs.junitJupiter
+
+    //testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    implementation libs.googleGuava
+
+    // https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc
+    implementation libs.sqliteJdbc
+
+    implementation libs.slf4j
+
+
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
@@ -34,12 +43,24 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'person.franksuarez.MapPOS.gui.ConsoleApp'
+    mainClass = 'person.franksuarez.MapPOS.gui.ConsolePOS'
 }
+
+
+/*
+ * Note about Jar Class-Path:
+ * 
+ * Need to update the external Jars if we are not making an uber-Jar.
+ * Should convert to automatically update version numbers.
+ */
 
 jar {
     manifest {
-        attributes 'Main-Class': 'person.franksuarez.MapPOS.gui.ConsolePOS'
+        attributes(
+            'Main-Class': 'person.franksuarez.MapPOS.gui.ConsolePOS',
+            'Class-Path': 'lib/slf4j-api-2.0.13.jar lib/sqlite-jdbc-3.45.3.0.jar'
+        )
+
     }
 }
 

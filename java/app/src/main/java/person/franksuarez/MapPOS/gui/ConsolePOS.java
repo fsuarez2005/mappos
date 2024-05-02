@@ -1,12 +1,12 @@
 /**
- * Console Point of Sale
+ * Console Point of Sale.
  * 
  * DESCRIPTION:
  * 
  * 
  * TODO:
- * - []
- * - []
+ * - [] Use ConsolePOS as the command processor and not a terminal emulator
+ * - [] Test ConsolePOS with an SQLite3 database
  * - []
  * 
  * 
@@ -20,120 +20,60 @@ package person.franksuarez.MapPOS.gui;
 
 import java.io.Console;
 import java.util.HashMap;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 
 
-class ShellCommand {}
-
-
-class Shell {
-    protected String prompt = "> ";
+class ProductDatabase {
+    private String dbFile = "products.db";
+    private Connection conn = null;
     
-    protected HashMap<String,ShellCommand> commands;
-    
-    
-    protected boolean runLoop = true;
-    
-    protected Consumer<String> printFunction;
-    protected Supplier<String> getInputFunction;
-
-    // ------------------------------------------------------------
-    
-    public Shell() {
-        this.commands = new HashMap<>();
+    public ProductDatabase() {
+        
+        
     }
     
-    // ------------------------------------------------------------
-    
-    public Supplier<String> getGetInputFunction() {
-        return getInputFunction;
-    }
-
-    public void setGetInputFunction(Supplier<String> getInputFunction) {
-        this.getInputFunction = getInputFunction;
-    }
-
-    public Consumer<String> getPrintFunction() {
-        return printFunction;
-    }
-
-    public void setPrintFunction(Consumer<String> printFunction) {
-        this.printFunction = printFunction;
+    public String buildConnectionString(String driver, String location) {
+        
+        
+        return "";
     }
     
-    // ------------------------------------------------------------
-    
-    public void addCommand(String commandName, ShellCommand obj) {
-        this.commands.put(commandName, obj);
-    }
-    
-    public void listCommands() {
-        printFunction.accept(this.commands.toString());
-    }
-    
-    public void deleteCommand() {}
-    
-    // ------------------------------------------------------------
-    
-    public void setState() {}
-    public void getState() {}
-    
-    // ------------------------------------------------------------
-    
-    public void quitLoop() {
-        runLoop = false;
-    }
-
-    // ------------------------------------------------------------
-    
-    public void evaluate(String line) {
-        System.out.printf("input length = %s\n",line.length());
-        switch (line.toLowerCase()) {
-            case "commands" -> {
-                printFunction.accept("Command List: \n");
-                this.listCommands();
+    public void connect() {
+        
+        //Connection conn = null;
+        //String connectionString = "jdbc:sqlite:/Users/franksuarez/Desktop/db.sqlite3";
+        String connectionString = "jdbc:sqlite:test.db";
+        
+        
+        try {
+            conn = DriverManager.getConnection(connectionString);
+            System.out.println("Connection has been established.");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
             }
-            case "quit" -> this.runLoop = false;
-            default -> {
-            }
-            
         }
-        
+    
     }
     
-    // ------------------------------------------------------------
-    
-    public void loop() {
-        String line;
-
-        while (runLoop) {
-            printFunction.accept(String.format("%s ", this.prompt));
-            line = getInputFunction.get();
-            this.evaluate(line);
-        }
-    }
-    
-    // ------------------------------------------------------------
-    
-    public void start() {
-        this.addTestCommands();
-        
-        loop(); 
-    }
-    
-    
-    
-    
-    
-    public void addTestCommands() {
-        this.addCommand("test", new ShellCommand());
+    public void disconnect() {
         
         
     }
-
+    
+    
+    
 }
+
 
 
 /** ConsoleApp interacts with user via terminal.
@@ -141,44 +81,95 @@ class Shell {
  * @author franksuarez
  */
 public class ConsolePOS {
-    public Console cons;
-
-    public ConsolePOS() {
-        this.cons = System.console();
+    enum POSState {
+        IDLE, TRANSACTION, UPC
     }
     
-    public String getInput() {
+    
+    class Command {
+        
+    }
+    
+    private String prompt = "> ";
+    
+    private HashMap<String,Command> commands;
+    
+    private boolean run = true; 
+    
+    private POSState state;
+    
+    public Console cons;
+
+    // ----------------------------------------------------------------------
+    
+    public ConsolePOS() {}
+    
+    public void initialize() {
+        this.state = POSState.IDLE;
+        this.cons = System.console();
+        this.commands = new HashMap<>();
+    }
+    
+    public String readLine() {
         String line = cons.readLine();
         return line;
     }
     
-    public void print(String s) {
-        cons.printf(s);
+    public void printf(String s, Object... args) {
+        cons.printf(s,args);
     }
 
+    // TODO: STUB
+    private void evaluate(String userInput) {
+        System.out.println("[evaluate]");
+        switch (userInput) {
+            case "commands" -> {
+                for (String k: this.commands.keySet()) {
+                    this.printf("key: %s", k);
+                }
+            }
+            case "products" -> {
+                ProductDatabase db = new ProductDatabase();
+                db.connect();
+                
+                
+            }
+
+            case "quit" -> {
+                this.run = false;
+            }
+        }
+        
+    }
+
+    // TODO: STUB
+    private void loop() {
+        System.out.println("[loop]");
+        while (this.run) {
+            // print prompt
+            this.printf("%s> ","test");
+
+            // read input
+            String userInput = this.readLine();
+            if (userInput == null) {
+                // user disconnected or closed input stream
+                break;
+            }
+            
+            // evaluate
+            this.evaluate(userInput);
+
+            // print
+        }
+    }
+    
+    public void start() {
+        this.loop();
+    }
+    
     public static void main(String[] args) throws Exception {
         ConsolePOS app = new ConsolePOS();
-        
-        Shell cs = new Shell();
-        
-        // TODO: change this back to a Supplier<String> argument
-        cs.setGetInputFunction(
-                () -> {
-                    String line = app.getInput();
-                    return line;
-                }
-        );
-        
-        
-
-        // TODO: change this back to a Consumer<String> argument
-        cs.setPrintFunction(
-                (s) -> {
-                    app.print(s);
-                }
-        );
-        
-        
-        cs.start();
+        app.initialize();
+        app.start();        
     }
 }
