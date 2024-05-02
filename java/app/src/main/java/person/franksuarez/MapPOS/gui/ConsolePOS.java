@@ -5,8 +5,8 @@
  * 
  * 
  * TODO:
- * - [] Use ConsolePOS as the command processor and not a terminal emulator
- * - [] Test ConsolePOS with an SQLite3 database
+ * - [x] Use ConsolePOS as the command processor and not a terminal emulator
+ * - [x] Test ConsolePOS with an SQLite3 database
  * - []
  * 
  * 
@@ -137,6 +137,14 @@ public class ConsolePOS {
 
             case "quit" -> {
                 this.run = false;
+            }
+            
+            case "" -> {}
+            
+            default -> {
+                // print error
+                this.printf("ERROR: Command not found\n");
+
             }
         }
         
