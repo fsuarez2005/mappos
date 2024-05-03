@@ -4,10 +4,14 @@
  */
 package person.franksuarez.MapPOS.model;
 
+import java.util.List;
+
 /**
  *
  * @author franksuarez
  */
 public class Journal {
+
+    private List<Transaction> transactions;
     
 }

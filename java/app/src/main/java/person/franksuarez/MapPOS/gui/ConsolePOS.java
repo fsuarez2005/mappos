@@ -7,8 +7,8 @@
  * TODO:
  * - [x] Use ConsolePOS as the command processor and not a terminal emulator
  * - [x] Test ConsolePOS with an SQLite3 database
- * - []
- * 
+ * - [] Implement Input/Output properly
+ * - [] 
  * 
  * 
  */
@@ -18,67 +18,29 @@
 
 package person.franksuarez.MapPOS.gui;
 
-import java.io.Console;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.util.List;
+import java.util.Scanner;
 import java.util.function.Consumer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import person.franksuarez.MapPOS.model.Command;
+import person.franksuarez.MapPOS.model.Product;
+import person.franksuarez.MapPOS.model.Transaction;
+import person.franksuarez.MapPOS.model.UPCA;
 
 
-
-class ProductDatabase {
-    private String dbFile = "products.db";
-    private Connection conn = null;
-    
-    public ProductDatabase() {
-        
-        
-    }
-    
-    public String buildConnectionString(String driver, String location) {
-        
-        
-        return "";
-    }
-    
-    public void connect() {
-        
-        //Connection conn = null;
-        //String connectionString = "jdbc:sqlite:/Users/franksuarez/Desktop/db.sqlite3";
-        String connectionString = "jdbc:sqlite:test.db";
-        
-        
-        try {
-            conn = DriverManager.getConnection(connectionString);
-            System.out.println("Connection has been established.");
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        } finally {
-            try {
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
-        }
-    
-    }
-    
-    public void disconnect() {
-        
-        
-    }
-    
-    
-    
-}
-
-
-
-/** ConsoleApp interacts with user via terminal.
- *
+/** ConsolePOS interacts with user via terminal.
+ *  
+ * Purpose:
+ * * Read text input from user, interactive or not.
+ * * Parse commands.
+ * * Interact with retail resources, e.g. transaction database.
+ * 
  * @author franksuarez
  */
 public class ConsolePOS {
@@ -86,43 +48,16 @@ public class ConsolePOS {
         IDLE, TRANSACTION, UPC
     }
     
-    
-    class Command {
-        private String name;
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-        // -----------------------------------
-        private Consumer<String> commandCode;
-
-        public Command(String name, Consumer<String> commandCode) {
-            this.name = name;
-            this.commandCode = commandCode;
-        }
-
-
-        // -----------------------------------
-        public void apply(String arg) {
-            this.commandCode.accept(arg);
-        }
-        
-    }
-    
+    // ----------------------------------------
     private String prompt = "";
-
     public String getPrompt() {
         this.prompt = this.state.name()+"> ";
         return prompt;
     }
-
     public void setPrompt(String prompt) {
         this.prompt = prompt;
     }
+    // ----------------------------------------
     
     private HashMap<String,Command> commands;
     
@@ -130,8 +65,7 @@ public class ConsolePOS {
     
     private POSState state;
     
-    public Console cons;
-
+    private BufferedReader reader;
     // ----------------------------------------------------------------------
     
     public ConsolePOS() {}
@@ -140,41 +74,81 @@ public class ConsolePOS {
     
     public void initialize() {
         this.state = POSState.IDLE;
-        this.cons = System.console();
         this.commands = new HashMap<>();
+        
+        
+        this.reader = new BufferedReader(new InputStreamReader( System.in ));
     }
     
     public String readLine() {
-        String line = cons.readLine();
+        String line = "";
+        try {
+            line = this.reader.readLine();
+        } catch (IOException ex) {
+            Logger.getLogger(ConsolePOS.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return line;
     }
     
     public void printf(String s, Object... args) {
-        cons.printf(s,args);
+        System.out.printf(s, args);
     }
+    
+    
+    private void processTransaction() {
+        Transaction transaction = new Transaction();
+        
+        this.printf("Transaction> ");
+        // * Enter UPC of product
+        String userInput = this.readLine();
+        
+        // is userInput a UPC?
+        UPCA.isFormattedCorrectly(userInput);
+        
+        
+        
+        // * Append product to current transaction (only one transaction active)
+        Product p = new Product();
+       
+        transaction.appendProduct(p);
+        
 
-    // TODO: STUB
-    private void evaluate(String userInput) {
-        System.out.println("[evaluate]");
-        if (this.commands.containsKey(userInput)) {
-            System.out.println("Found command");
-            this.commands.get(userInput).apply(userInput);
-            return;
+        
+        // * Repeat for additional products (allow for duplicate products in transaction)
+        // * Sum prices of Products in transaction
+
+        // * Close transaction
+        // * Append transaction to journal
+        // * Adjust inventory
+        
+        
+    }
+    
+    public void processToken(String t) {
+        // check token type
+        
+        // process token
+    }
+    
+    
+    public List<String> tokenize(String source) {
+        var output = new ArrayList<String>();
+        var scanner = new Scanner(source);
+        while (scanner.hasNext()) {
+            output.add(scanner.next());
         }
         
-        
+        return output;
+    }
+    
+    // TODO: STUB
+    private void evaluate(String userInput) {
         
         switch (userInput) {
             case "commands" -> {
                 for (String k: this.commands.keySet()) {
                     this.printf("key: %s", k);
                 }
-            }
-            case "products" -> {
-                ProductDatabase db = new ProductDatabase();
-                db.connect();
-                
-                
             }
 
             case "normal" -> {
@@ -183,6 +157,7 @@ public class ConsolePOS {
             
             case "transaction" -> {
                 this.state = POSState.TRANSACTION;
+                processTransaction();
             }
             
             case "quit" -> {
@@ -200,17 +175,6 @@ public class ConsolePOS {
         
     }
 
-    private void testaddCommands() {
-
-        
-        this.commands.put("hello", new Command("hello", (s) -> {
-            this.printf("hello");
-        }));
-        
-        
-        
-    }
-    
     
     
     // TODO: STUB
@@ -235,16 +199,17 @@ public class ConsolePOS {
     }
     
     public void start() {
+        this.initialize();
         this.loop();
     }
     
     public static void main(String[] args) throws Exception {
         ConsolePOS app = new ConsolePOS();
         
-        app.initialize();
+        //app.processTransaction();
+        List<String> s = app.tokenize("frank suarez");
         
-        app.testaddCommands();
-        
-        app.start();        
+        System.out.printf("%s\n",s.toString());
+        //app.start();        
     }
 }
