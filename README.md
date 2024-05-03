@@ -1,6 +1,6 @@
 ﻿# Map-based Point of Sale
 
-**mappos** is a map-oriented point-of-sale system. It's purpose is to reflect what is going on in store and present a more intuitive interface. Everything in store is visualized as a virtual object
+**MapPOS** is a map-oriented point-of-sale system. It's purpose is to reflect what is going on in store and present a more intuitive interface. Everything in store is visualized as a virtual object
 on-screen.
 
 ## Introduction 
@@ -24,6 +24,11 @@ There are certain features that I would love in a retail system.
 * Searchable list of products.
 * Product knowledgebase, including employee submitted information.
 
-## License
+## Problems with current technology
 
-Unsure.
+* Stability is second.
+* Missing features. 
+* UI forces user to adapt, instead of the UI adapting.
+* Confuses customers due to lack of standards.
+* Focus on style, instead of functionality.
+
