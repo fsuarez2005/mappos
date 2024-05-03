@@ -13,9 +13,6 @@
  * 
  */
 
-
-
-
 package person.franksuarez.MapPOS.gui;
 
 import java.io.BufferedReader;
@@ -25,7 +22,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
-import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import person.franksuarez.MapPOS.model.Command;
@@ -97,22 +93,18 @@ public class ConsolePOS {
     
     private void processTransaction() {
         Transaction transaction = new Transaction();
-        
         this.printf("Transaction> ");
+
         // * Enter UPC of product
         String userInput = this.readLine();
         
         // is userInput a UPC?
         UPCA.isFormattedCorrectly(userInput);
         
-        
-        
         // * Append product to current transaction (only one transaction active)
         Product p = new Product();
-       
-        transaction.appendProduct(p);
         
-
+        transaction.appendProduct(p);
         
         // * Repeat for additional products (allow for duplicate products in transaction)
         // * Sum prices of Products in transaction
@@ -120,14 +112,24 @@ public class ConsolePOS {
         // * Close transaction
         // * Append transaction to journal
         // * Adjust inventory
-        
-        
     }
     
-    public void processToken(String t) {
+    public void processToken(String token) {
         // check token type
         
         // process token
+        switch (token) {
+            case "hello" -> {
+                this.printf("Hello");
+                
+            }
+            case "quit" -> {
+                this.run = false;
+            }
+            
+            
+            default -> {}
+        }
     }
     
     
@@ -206,10 +208,6 @@ public class ConsolePOS {
     public static void main(String[] args) throws Exception {
         ConsolePOS app = new ConsolePOS();
         
-        //app.processTransaction();
-        List<String> s = app.tokenize("frank suarez");
-        
-        System.out.printf("%s\n",s.toString());
-        //app.start();        
+        app.processToken("hello");
     }
 }
