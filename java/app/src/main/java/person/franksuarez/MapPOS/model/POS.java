@@ -4,11 +4,40 @@
  */
 package person.franksuarez.MapPOS.model;
 
-/**
- *
+import java.util.List;
+
+/** 
+ * Point of Sale class.
+ * 
+ * 
  * @author franksuarez
  */
 public class POS {
+    // 
+    private Transaction current;
+    
+    
+    // list of transaction on this local unit
+    // could have multiple active, but must select which Transaction
+    private List<Transaction> transactions;
+    
+    
+    public POS() {}
+    
+    public void initialize() {
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    public void appendProductToTransaction(Product p) {
+        
+        
+    }
     
     
     

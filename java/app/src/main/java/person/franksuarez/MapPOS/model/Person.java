@@ -9,5 +9,7 @@ package person.franksuarez.MapPOS.model;
  * @author franksuarez
  */
 public class Person {
-    
+    private String firstName;
+    private String lastName;
+    private String dateOfBirth;
 }
