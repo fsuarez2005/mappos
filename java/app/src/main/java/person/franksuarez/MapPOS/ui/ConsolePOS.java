@@ -13,7 +13,7 @@
  * 
  */
 
-package person.franksuarez.MapPOS.gui;
+package person.franksuarez.MapPOS.ui;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -104,7 +104,7 @@ public class ConsolePOS {
         // * Append product to current transaction (only one transaction active)
         Product p = new Product();
         
-        transaction.appendProduct(p);
+        transaction.addEntry(p);
         
         // * Repeat for additional products (allow for duplicate products in transaction)
         // * Sum prices of Products in transaction

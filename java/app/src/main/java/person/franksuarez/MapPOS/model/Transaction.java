@@ -1,6 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/**
+ * 
  */
 package person.franksuarez.MapPOS.model;
 
@@ -12,30 +11,43 @@ import java.util.List;
  * @author franksuarez
  */
 public class Transaction {
-    private List<Product> products;
-    
-   
+    private double taxPercentage = 0.0;
+    private List<Product> entries;
     
     public Transaction() {
-        this.products = new ArrayList<>();
+        this.entries = new ArrayList<>();
     }
-   
     
-    public void appendProduct(Product p) {
-        this.products.add(p);
-        
+    public void addEntry(Product p) {
+        this.entries.add(p);
+    }
+    
+    public void removeEntry(int index) {
+        this.entries.remove(index);
+    }
+    
+    public Product getEntry(int index) {
+        return this.entries.get(index);
     }
     
     public double getTotal() {
         double total = 0;
         
-        for (Product p: products) {
+        for (Product p: entries) {
             total += p.getPrice();
         }
         return total;
     }
     
-    
-    
-    
+    public void printEntryList() {
+        System.out.println("Transaction:");
+        for (Product p: this.entries) {
+            System.out.printf("Entry: %s%n",p.toString());
+        }
+        
+        double total = getTotal();
+        System.out.printf("Subtotal       =       %.2f%n",total);
+        System.out.printf("Tax = %.2f%n", total*0.06);
+        System.out.printf("Total = %.2f%n",total*1.06);
+    }
 }

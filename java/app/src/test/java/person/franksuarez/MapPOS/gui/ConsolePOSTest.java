@@ -4,6 +4,7 @@
  */
 package person.franksuarez.MapPOS.gui;
 
+import person.franksuarez.MapPOS.ui.ConsolePOS;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;

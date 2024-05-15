@@ -1,13 +1,32 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/**
+ * 
+ * 
+ * 
+ * 
  */
 package person.franksuarez.MapPOS.model;
 
-/**
+import java.util.List;
+
+/** Generic Business.
  *
  * @author franksuarez
  */
 public class Business {
+    private List<Employee> employees;
+    private String name;
+    private int logo;
+    private int size;
+    
+    
+    private FloorMap rootFloorMap;
+    
+    
+    
+    //private List<Fixture> fixtures;
+    
+    
+    
+    
     
 }
