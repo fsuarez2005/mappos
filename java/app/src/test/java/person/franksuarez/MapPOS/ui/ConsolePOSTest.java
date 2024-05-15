@@ -2,10 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
-package person.franksuarez.MapPOS.gui;
+package person.franksuarez.MapPOS.ui;
 
-import person.franksuarez.MapPOS.ui.ConsolePOS;
-import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -37,6 +35,18 @@ public class ConsolePOSTest {
     
     @AfterEach
     public void tearDown() {
+    }
+
+    /**
+     * Test of main method, of class ConsolePOS.
+     */
+    @Test
+    public void testMain() throws Exception {
+        System.out.println("main");
+        String[] args = null;
+        ConsolePOS.main(args);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
 
     /**
@@ -107,36 +117,43 @@ public class ConsolePOSTest {
     }
 
     /**
-     * Test of processToken method, of class ConsolePOS.
-     */
-    @Test
-    public void testProcessToken() {
-        System.out.println("processToken");
-        String t = "";
-        ConsolePOS instance = new ConsolePOS();
-        instance.processToken(t);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of tokenize method, of class ConsolePOS.
      */
     @Test
     public void testTokenize() {
         System.out.println("tokenize");
-        String source = "frank suarez";
+        String source = "";
         ConsolePOS instance = new ConsolePOS();
-        
-        List<String> expResult = new ArrayList<String>();
-        expResult.add("frank");
-        expResult.add("suarez");
-        
+        List<String> expResult = null;
         List<String> result = instance.tokenize(source);
-        
-        
-        
         assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of evaluateToken method, of class ConsolePOS.
+     */
+    @Test
+    public void testEvaluateToken() {
+        System.out.println("evaluateToken");
+        String token = "";
+        ConsolePOS instance = new ConsolePOS();
+        instance.evaluateToken(token);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of createCommands method, of class ConsolePOS.
+     */
+    @Test
+    public void testCreateCommands() {
+        System.out.println("createCommands");
+        ConsolePOS instance = new ConsolePOS();
+        instance.createCommands();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
 
     /**
@@ -147,18 +164,6 @@ public class ConsolePOSTest {
         System.out.println("start");
         ConsolePOS instance = new ConsolePOS();
         instance.start();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of main method, of class ConsolePOS.
-     */
-    @Test
-    public void testMain() throws Exception {
-        System.out.println("main");
-        String[] args = null;
-        ConsolePOS.main(args);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

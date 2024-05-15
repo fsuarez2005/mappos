@@ -28,19 +28,14 @@ import person.franksuarez.MapPOS.model.Product;
 import person.franksuarez.MapPOS.model.Transaction;
 import person.franksuarez.MapPOS.model.UPCA;
 
-/**
- * ConsolePOS interacts with user via terminal.
- *
- * Purpose: * Read text input from user, interactive or not. * Parse commands. *
- * Interact with retail resources, e.g. transaction database.
- *
+/** Shell is a command interpreter.
+ * TODO: Separate ConsolePOS into terminal control and command interpreter.
+ * 
+ * 
  * @author franksuarez
  */
-public class ConsolePOS {
-    public static void main(String[] args) throws Exception {
-        ConsolePOS app = new ConsolePOS();
-        app.start();
-    }
+public class Shell {
+
 
     private String prompt = "";
 
@@ -52,7 +47,7 @@ public class ConsolePOS {
 
     private BufferedReader reader;
 
-    public ConsolePOS() {
+    public Shell() {
     }
 
     public String getPrompt() {
@@ -71,9 +66,6 @@ public class ConsolePOS {
         createCommands();
         
         this.reader = new BufferedReader(new InputStreamReader(System.in));
-        
-        
-        
     }
 
     /**
@@ -86,7 +78,7 @@ public class ConsolePOS {
         try {
             line = this.reader.readLine();
         } catch (IOException ex) {
-            Logger.getLogger(ConsolePOS.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Shell.class.getName()).log(Level.SEVERE, null, ex);
         }
         return line;
     }
@@ -214,7 +206,7 @@ public class ConsolePOS {
             this.printf("About ConsolePOS%n"
                     + "fsuarez2007@gmail.com%n"
                     + "");
-        }).setShortDescription("Display about information"));
+        }));
         
         this.commands.put("quit",new Command("quit", (x) -> {
             this.run = false;
@@ -223,24 +215,6 @@ public class ConsolePOS {
         this.commands.put("idle", new Command("idle", (x) -> {
             this.state = POSState.IDLE;
         }));
-        
-        this.commands.put("transaction", new Command("transaction", (t) -> {
-            this.state = POSState.TRANSACTION;
-        
-        }));
-        
-        this.commands.put("commands", new Command("commands", (t) -> {
-            this.printf("Commands:%n");
-            for (String name: this.commands.keySet()) {
-                this.printf("%s:\t\t%s%n",name,this.commands.get(name).getShortDescription());
-            }
-        }));
-
-        
-
-
-        
-        
     }
 
     public void start() {

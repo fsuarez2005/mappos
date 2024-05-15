@@ -43,7 +43,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'person.franksuarez.MapPOS.gui.ConsolePOS'
+    mainClass = 'person.franksuarez.MapPOS.ui.ConsolePOS'
 }
 
 
@@ -57,7 +57,7 @@ application {
 jar {
     manifest {
         attributes(
-            'Main-Class': 'person.franksuarez.MapPOS.gui.ConsolePOS',
+            'Main-Class': 'person.franksuarez.MapPOS.ui.ConsolePOS',
             'Class-Path': 'lib/slf4j-api-2.0.13.jar lib/sqlite-jdbc-3.45.3.0.jar'
         )
 
