@@ -15,6 +15,9 @@ import java.util.List;
 public class POS {
     // 
     private Transaction current;
+    private POSState state;
+    
+    
     
     
     // list of transaction on this local unit

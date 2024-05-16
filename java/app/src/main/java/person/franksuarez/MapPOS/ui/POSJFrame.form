@@ -24,19 +24,18 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPanelTransaction" max="32767" attributes="0"/>
                   <Component id="lblStatus" pref="547" max="32767" attributes="0"/>
+                  <Component id="jTFuserInput" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                      <Component id="btnItem" min="-2" pref="102" max="-2" attributes="0"/>
-                      <Component id="btnMisc" alignment="1" min="-2" pref="102" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="btnItem" alignment="1" min="-2" pref="102" max="-2" attributes="0"/>
                   <Component id="btnPLU" alignment="1" min="-2" pref="102" max="-2" attributes="0"/>
+                  <Component id="btnMisc" alignment="1" min="-2" pref="102" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -50,17 +49,19 @@
                   <Component id="btnItem" max="32767" attributes="0"/>
                   <Component id="lblStatus" pref="51" max="32767" attributes="0"/>
               </Group>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btnPLU" pref="51" max="32767" attributes="0"/>
+                  <Component id="jTFuserInput" max="32767" attributes="0"/>
+              </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="btnPLU" min="-2" pref="51" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnMisc" min="-2" pref="51" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace pref="399" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jScrollPanelTransaction" pref="441" max="32767" attributes="0"/>
+                  <Component id="jScrollPanelTransaction" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -123,6 +124,11 @@
           </Border>
         </Property>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTFuserInput">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFuserInputActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

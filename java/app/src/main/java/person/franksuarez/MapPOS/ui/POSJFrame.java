@@ -38,6 +38,7 @@ public class POSJFrame extends javax.swing.JFrame {
         btnPLU = new javax.swing.JButton();
         btnMisc = new javax.swing.JButton();
         lblStatus = new javax.swing.JLabel();
+        jTFuserInput = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MapPOS");
@@ -72,6 +73,12 @@ public class POSJFrame extends javax.swing.JFrame {
         lblStatus.setText("POS");
         lblStatus.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        jTFuserInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFuserInputActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -80,13 +87,13 @@ public class POSJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPanelTransaction)
-                    .addComponent(lblStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE))
+                    .addComponent(lblStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE)
+                    .addComponent(jTFuserInput))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnItem, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnMisc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnPLU, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnItem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPLU, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMisc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -96,15 +103,16 @@ public class POSJFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnItem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnPLU, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                    .addComponent(jTFuserInput))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnPLU, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnMisc, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPanelTransaction, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addContainerGap(399, Short.MAX_VALUE))
+                    .addComponent(jScrollPanelTransaction)))
         );
 
         pack();
@@ -132,6 +140,14 @@ public class POSJFrame extends javax.swing.JFrame {
         
         this.transactionListModel.addElement("Misc Menu");
     }//GEN-LAST:event_btnMiscActionPerformed
+
+    private void jTFuserInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFuserInputActionPerformed
+        // fired when enter is used
+        this.transactionListModel.addElement(jTFuserInput.getText());
+
+        this.jTFuserInput.setText("");
+        
+    }//GEN-LAST:event_jTFuserInputActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,6 +190,7 @@ public class POSJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnPLU;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPanelTransaction;
+    private javax.swing.JTextField jTFuserInput;
     private javax.swing.JLabel lblStatus;
     // End of variables declaration//GEN-END:variables
 }
