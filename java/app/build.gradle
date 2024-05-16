@@ -43,7 +43,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'person.franksuarez.MapPOS.ui.ConsolePOS'
+    mainClass = 'person.franksuarez.MapPOS.ui.POSJFrame'
 }
 
 
