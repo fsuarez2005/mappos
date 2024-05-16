@@ -12,7 +12,10 @@ import javax.swing.ListModel;
  * @author franksuarez
  */
 public class POSJFrame extends javax.swing.JFrame {
-
+    private DefaultListModel<String> transactionListModel = new DefaultListModel<>();
+    
+    
+    
     /**
      * Creates new form POSJFrame
      */
@@ -30,7 +33,7 @@ public class POSJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         btnItem = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollPanelTransaction = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         btnPLU = new javax.swing.JButton();
         btnMisc = new javax.swing.JButton();
@@ -46,12 +49,9 @@ public class POSJFrame extends javax.swing.JFrame {
             }
         });
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(jList1);
+        jList1.setModel(this.transactionListModel);
+        jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPanelTransaction.setViewportView(jList1);
 
         btnPLU.setText("PLU");
         btnPLU.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +79,7 @@ public class POSJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPanelTransaction)
                     .addComponent(lblStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,7 +103,7 @@ public class POSJFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnMisc, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE))
+                    .addComponent(jScrollPanelTransaction, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -112,16 +112,25 @@ public class POSJFrame extends javax.swing.JFrame {
 
     private void btnItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnItemActionPerformed
         this.lblStatus.setText("Item Menu");
+        this.transactionListModel.addElement("item menu");
+        
+        
         
         
     }//GEN-LAST:event_btnItemActionPerformed
 
     private void btnPLUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPLUActionPerformed
         // TODO add your handling code here:
+        
+        
+        this.transactionListModel.addElement("PLU menu");
     }//GEN-LAST:event_btnPLUActionPerformed
 
     private void btnMiscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMiscActionPerformed
         // TODO add your handling code here:
+        
+        
+        this.transactionListModel.addElement("Misc Menu");
     }//GEN-LAST:event_btnMiscActionPerformed
 
     /**
@@ -164,7 +173,7 @@ public class POSJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnMisc;
     private javax.swing.JButton btnPLU;
     private javax.swing.JList<String> jList1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPanelTransaction;
     private javax.swing.JLabel lblStatus;
     // End of variables declaration//GEN-END:variables
 }
