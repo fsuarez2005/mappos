@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1000mm"
+   height="1000mm"
+   viewBox="0 0 1000 1000"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3 (0e150ed, 2023-07-21)"
+   sodipodi:docname="mappos-architecture.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.4204826"
+     inkscape:cx="443.53797"
+     inkscape:cy="762.21941"
+     inkscape:window-width="1440"
+     inkscape:window-height="786"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g9"
+     showgrid="false" />
+  <defs
+     id="defs1">
+    <marker
+       style="overflow:visible"
+       id="ArrowWide"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Wide arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:none;stroke:context-stroke;stroke-width:1;stroke-linecap:butt"
+         d="M 3,-3 0,0 3,3"
+         transform="rotate(180,0.125,0)"
+         sodipodi:nodetypes="ccc"
+         id="path1" />
+    </marker>
+    <rect
+       x="286.57547"
+       y="546.396"
+       width="259.8205"
+       height="131.9912"
+       id="rect8" />
+    <rect
+       x="250.56664"
+       y="221.97849"
+       width="230.38676"
+       height="68.947868"
+       id="rect3" />
+    <rect
+       x="100.89932"
+       y="33.633106"
+       width="482.63507"
+       height="100.89932"
+       id="rect2" />
+  </defs>
+  <g
+     inkscape:label="Background"
+     inkscape:groupmode="layer"
+     id="layer1"
+     sodipodi:insensitive="true">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.7px;line-height:0;font-family:'Trebuchet MS';-inkscape-font-specification:'Trebuchet MS';fill:#000000;stroke-width:0.365001"
+       x="434.06604"
+       y="21.147995"
+       id="text3"
+       inkscape:label="title"><tspan
+         sodipodi:role="line"
+         id="tspan3"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.7px;font-family:'Trebuchet MS';-inkscape-font-specification:'Trebuchet MS';stroke-width:0.365"
+         x="434.06604"
+         y="21.147995">MapPOS -- Architecture</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Objects">
+    <g
+       id="g9"
+       transform="translate(0.62923729,-25.169492)"
+       inkscape:label="POSTransactionServer">
+      <g
+         id="g6"
+         transform="translate(11.915806,70.929574)"
+         inkscape:label="POS">
+        <rect
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-dasharray:none"
+           id="rect1"
+           width="73.721191"
+           height="33.231831"
+           x="49.05579"
+           y="40.409622"
+           inkscape:label="POS">
+          <title
+             id="title1">dfadsf</title>
+        </rect>
+        <text
+           xml:space="preserve"
+           style="font-size:8.46667px;line-height:0;font-family:Palatino;-inkscape-font-specification:Palatino;fill:#000000;stroke-width:1;stroke-dasharray:none"
+           x="77.819717"
+           y="59.962826"
+           id="text5"><tspan
+             sodipodi:role="line"
+             id="tspan5"
+             style="stroke-width:1"
+             x="77.819717"
+             y="59.962826">POS</tspan><tspan
+             sodipodi:role="line"
+             style="stroke-width:1"
+             x="77.819717"
+             y="59.962826"
+             id="tspan6"
+             inkscape:label="tspan6" /></text>
+      </g>
+      <g
+         id="g8"
+         inkscape:label="Transaction Server"
+         transform="translate(2.4240878,50.070672)">
+        <rect
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-dasharray:none;stroke-opacity:1"
+           id="rect7"
+           width="74.09269"
+           height="38.855404"
+           x="58.361759"
+           y="134.49947" />
+        <text
+           xml:space="preserve"
+           transform="matrix(0.26458333,0,0,0.26458333,-13.785746,10.107288)"
+           id="text7"
+           style="font-size:32px;line-height:0;font-family:Palatino;-inkscape-font-specification:Palatino;word-spacing:0px;white-space:pre;shape-inside:url(#rect8);display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:3.77953;stroke-dasharray:none;stroke-opacity:1"><tspan
+             x="286.57617"
+             y="554.32902"
+             id="tspan1">&#10;</tspan><tspan
+             x="286.57617"
+             y="554.32902"
+             id="tspan2">transaction server</tspan></text>
+      </g>
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#eaa800;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#ArrowWide)"
+         d="m 97.687733,144.57103 -0.347751,39.9991"
+         id="path8"
+         inkscape:connector-type="polyline"
+         inkscape:connector-curvature="0"
+         inkscape:connection-start="#g6"
+         inkscape:label="TransactionPOS" />
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Connections" />
+</svg>
