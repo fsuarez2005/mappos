@@ -32,3 +32,6 @@ There are certain features that I would love in a retail system.
 * Confuses customers due to lack of standards.
 * Focus on style, instead of functionality.
 
+## Screenshots
+
+<img src="doc/images/mappos-java-1.png" width="300" />
