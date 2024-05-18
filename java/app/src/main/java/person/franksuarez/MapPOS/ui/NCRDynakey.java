@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import person.franksuarez.MapPOS.exception.InvalidFormat;
 import person.franksuarez.MapPOS.model.POS;
+import person.franksuarez.MapPOS.model.UPC;
 import person.franksuarez.MapPOS.model.UPCA;
 
 /**
@@ -16,43 +17,33 @@ import person.franksuarez.MapPOS.model.UPCA;
  * @author franksuarez
  */
 public class NCRDynakey extends java.awt.Frame {
+
     private POS p = new POS();
     private DefaultListModel<String> transactionListModel = new DefaultListModel<>();
-    
+
     // called when submitting user input
     public void user_submitUserInput() {
-        String entry = "";
+
         String userInput = this.txtUserInput.getText();
-        
-        
-        
+        String entry = userInput + ": ";
         UPCA u = new UPCA();
+
         try {
-            u.setDataAndValidate(this.txtUserInput.getText());
-            
-            u.areAllCharsValid();
-            if (u.getIsValid()) {
-                entry = userInput + " is valid.";
-            }
-            
-            
+            u.fromString(userInput);
+            u.calculateCheckDigit();
+
+            entry += "Valid";
         } catch (InvalidFormat ex) {
-            entry = userInput+" is not a valid UPC.";
+            entry += "Invalid";
+
             Logger.getLogger(NCRDynakey.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         this.transactionListModel.addElement(entry);
         this.txtUserInput.setText("");
-        
-        
-        
-        
+
     }
-    
-    
-    
-    
-    
+
     /**
      * Creates new form NCRDynakey
      */
@@ -684,14 +675,13 @@ public class NCRDynakey extends java.awt.Frame {
     private void btnUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpActionPerformed
         // TODO add your handling code here:
         this.transactionListModel.addElement("Up");
-        
-        
+
+
     }//GEN-LAST:event_btnUpActionPerformed
 
     private void btnDyn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDyn1ActionPerformed
 
-        
-        
+
     }//GEN-LAST:event_btnDyn1ActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
@@ -701,39 +691,39 @@ public class NCRDynakey extends java.awt.Frame {
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
-        
+
         this.txtUserInput.setText("");
-        
+
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnNum0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNum0ActionPerformed
         // TODO add your handling code here:
-        
-        this.txtUserInput.setText(this.txtUserInput.getText()+"0");
-        
+
+        this.txtUserInput.setText(this.txtUserInput.getText() + "0");
+
     }//GEN-LAST:event_btnNum0ActionPerformed
 
     private void btnNum1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNum1ActionPerformed
         // TODO add your handling code here:
-        
-        this.txtUserInput.setText(this.txtUserInput.getText()+"1");
+
+        this.txtUserInput.setText(this.txtUserInput.getText() + "1");
     }//GEN-LAST:event_btnNum1ActionPerformed
 
     private void btnNum2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNum2ActionPerformed
         // TODO add your handling code here:
-        this.txtUserInput.setText(this.txtUserInput.getText()+"2");
+        this.txtUserInput.setText(this.txtUserInput.getText() + "2");
     }//GEN-LAST:event_btnNum2ActionPerformed
 
     private void btnNum3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNum3ActionPerformed
         // TODO add your handling code here:
-        this.txtUserInput.setText(this.txtUserInput.getText()+"3");
+        this.txtUserInput.setText(this.txtUserInput.getText() + "3");
     }//GEN-LAST:event_btnNum3ActionPerformed
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
         // TODO add your handling code here:
         this.transactionListModel.addElement(this.txtUserInput.getText());
         this.txtUserInput.setText("");
-        
+
     }//GEN-LAST:event_btnEnterActionPerformed
 
     private void txtUserInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserInputActionPerformed
@@ -742,34 +732,34 @@ public class NCRDynakey extends java.awt.Frame {
 
     private void btnNum4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNum4ActionPerformed
         // TODO add your handling code here:
-        this.txtUserInput.setText(this.txtUserInput.getText()+"4");
-        
-        
+        this.txtUserInput.setText(this.txtUserInput.getText() + "4");
+
+
     }//GEN-LAST:event_btnNum4ActionPerformed
 
     private void btnNum5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNum5ActionPerformed
         // TODO add your handling code here:
-        this.txtUserInput.setText(this.txtUserInput.getText()+"5");
+        this.txtUserInput.setText(this.txtUserInput.getText() + "5");
     }//GEN-LAST:event_btnNum5ActionPerformed
 
     private void btnNum6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNum6ActionPerformed
         // TODO add your handling code here:
-        this.txtUserInput.setText(this.txtUserInput.getText()+"6");
+        this.txtUserInput.setText(this.txtUserInput.getText() + "6");
     }//GEN-LAST:event_btnNum6ActionPerformed
 
     private void btnNum7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNum7ActionPerformed
         // TODO add your handling code here:
-        this.txtUserInput.setText(this.txtUserInput.getText()+"7");
+        this.txtUserInput.setText(this.txtUserInput.getText() + "7");
     }//GEN-LAST:event_btnNum7ActionPerformed
 
     private void btnNum8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNum8ActionPerformed
         // TODO add your handling code here:
-        this.txtUserInput.setText(this.txtUserInput.getText()+"8");
+        this.txtUserInput.setText(this.txtUserInput.getText() + "8");
     }//GEN-LAST:event_btnNum8ActionPerformed
 
     private void btnNum9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNum9ActionPerformed
         // TODO add your handling code here:
-        this.txtUserInput.setText(this.txtUserInput.getText()+"9");
+        this.txtUserInput.setText(this.txtUserInput.getText() + "9");
     }//GEN-LAST:event_btnNum9ActionPerformed
 
     /**
@@ -778,11 +768,11 @@ public class NCRDynakey extends java.awt.Frame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+
                 //new NCRDynakey().setVisible(true);
                 NCRDynakey d = new NCRDynakey();
                 d.setVisible(true);
-                
+
             }
         });
     }

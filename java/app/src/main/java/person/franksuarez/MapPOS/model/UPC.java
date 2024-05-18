@@ -4,6 +4,9 @@
  */
 package person.franksuarez.MapPOS.model;
 
+import java.io.CharArrayReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Predicate;
 import person.franksuarez.MapPOS.exception.InvalidFormat;
 
@@ -12,74 +15,50 @@ import person.franksuarez.MapPOS.exception.InvalidFormat;
  * @author franksuarez
  */
 public class UPC {
-
-    public static int charToInt(char c) throws InvalidFormat {
-        int intDigit = 0;
-        switch (c) {
-            case '0' -> {
-                intDigit = 0;
-            }
-            case '1' -> {
-                intDigit = 1;
-            }
-            case '2' -> {
-                intDigit = 2;
-            }
-            case '3' -> {
-                intDigit = 3;
-            }
-            case '4' -> {
-                intDigit = 4;
-            }
-            case '5' -> {
-                intDigit = 5;
-            }
-            case '6' -> {
-                intDigit = 6;
-            }
-            case '7' -> {
-                intDigit = 7;
-            }
-            case '8' -> {
-                intDigit = 8;
-            }
-            case '9' -> {
-                intDigit = 9;
-            }
-            default -> {
-                throw new InvalidFormat();
-            }
-        }
-        return intDigit;
-    }
-
     protected char[] charData; // some UPCs have non-numeral characters
-
-    protected int[] data; // many UPCs have only numeral characters
+    protected int[] intData; // many UPCs have only numeral characters. could be null.
 
     protected int formatLength = 0;
+    protected boolean formatOnlyDigits = false;
 
-    
     protected Predicate<Character> isCharValid; // returns true if char is valid for this UPC
 
-    private boolean isValid = false;
-
+    //private boolean isValid = false;
     public UPC() {
         this.isCharValid = (Character c) -> true;
     }
-
-    public void setData(int[] data) {
-        this.data = data;
-    }
     
-    public int[] getData() {
-        return this.data;
+    
+
+    /**
+     * 
+     * 
+     * 
+     * 
+     * 
+     * @param data
+     * @return 
+     */
+    public void setIntData(int[] data) {
+        this.intData = data;
+    }
+
+    
+    
+    public int[] getIntData() {
+        return this.intData;
     }
 
     public char[] getCharData() {
         return charData;
     }
 
+    
+    /**
+     * 
+     * @param charData
+     * @return 
+     */
     public void setCharData(char[] charData) {
         this.charData = charData;
     }
@@ -92,52 +71,9 @@ public class UPC {
         this.isCharValid = isCharValid;
     }
 
-    public boolean getIsValid() {
-        return isValid;
-    }
-
-    public void setIsValid(boolean isValid) {
-        this.isValid = isValid;
-    }
-    
-    public void fromString(String dataString) {
-        this.charData = dataString.toCharArray();
-    }
-
-    public void generateDigitOnlyData() throws InvalidFormat {
-        this.data = new int[this.charData.length];
-
-        if (this.charData == null) {
-            throw new NullPointerException();
-        }
-        for (int n = 0; n < this.charData.length; n++) {
-            //int intDigit = UPC.charToInt(c);
-            int intDigit = UPC.charToInt(this.charData[n]);
-            this.data[n] = intDigit;
-        }
-    }
-
-    
-
-    /** Checks each Char of charData to see if it passes isCharValid(char).
-     *
-     *
-     * @return 
-     */
-    public boolean areAllCharsValid() {
-        boolean allValid = true;
-        
-        for (char c : charData) {
-            if (!isCharValid.test(c)) {
-                return false;
-            }
-        }
-        
-        return allValid;
-    }
-
-
     public void setFormatLength(int formatLength) {
+        // validate input
+        
         this.formatLength = formatLength;
     }
 
@@ -145,6 +81,71 @@ public class UPC {
         return this.formatLength;
     }
 
+    public void fromString(String dataString) throws InvalidFormat {
+        this.setCharData(dataString.toCharArray());
+    }
+
+    public int[] generateDigitOnlyData() throws InvalidFormat {
+        if (this.charData == null) {
+            throw new NullPointerException();
+        }
+
+        this.intData = new int[this.charData.length];
+
+        for (int n = 0; n < this.charData.length; n++) {
+            int intDigit = Character.getNumericValue(this.charData[n]);
+            
+            if (intDigit == -1) {
+                // Character.getNumericValue returns -1 on unaccepted char
+                
+                throw new InvalidFormat();
+            }
+            
+            this.intData[n] = intDigit;
+        }
+        
+        return this.intData;        
+    }
+
+    public boolean hasOnlyDigits() {
+        boolean output = true;
+        for (int n = 0; n < this.charData.length; n++) {
+            if (! Character.isDigit(this.charData[n])) {
+                output = false;
+                break;
+            }
+        }
+
+        return output;
+    }
+    
+    
+    /** Checks each Char of charData to see if it passes isCharValid(char).
+     *
+     *
+     * @return
+     */
+    public boolean areAllCharsValid() {
+        boolean allValid = true;
+
+        for (char c : charData) {
+            if (!isCharValid.test(c)) {
+                return false;
+            }
+        }
+
+        return allValid;
+    }
+
+    public boolean isValid() {
+        
+        return isCorrectFormatLength();
+    }
+    
+    public boolean isCorrectFormatLength() {
+        return (this.charData.length == this.formatLength);
+    }
+    
     /**
      *
      * @return The UPC as a list of the digits.
