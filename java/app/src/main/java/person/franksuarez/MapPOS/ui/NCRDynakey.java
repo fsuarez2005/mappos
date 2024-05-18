@@ -32,11 +32,6 @@ public class NCRDynakey extends java.awt.Frame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        pnlLeft = new javax.swing.JPanel();
-        lblTitle = new javax.swing.JLabel();
-        txtUserInput = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
         pnlMid = new javax.swing.JPanel();
         btnDyn1 = new javax.swing.JButton();
         jButton25 = new javax.swing.JButton();
@@ -46,7 +41,11 @@ public class NCRDynakey extends java.awt.Frame {
         jButton29 = new javax.swing.JButton();
         jButton30 = new javax.swing.JButton();
         jButton31 = new javax.swing.JButton();
-        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(100, 0), new java.awt.Dimension(32767, 0));
+        pnlLeft = new javax.swing.JPanel();
+        lblTitle = new javax.swing.JLabel();
+        txtUserInput = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
         pnlRight = new javax.swing.JPanel();
         pnlArrowButtons = new javax.swing.JPanel();
         btnUp = new javax.swing.JButton();
@@ -79,62 +78,6 @@ public class NCRDynakey extends java.awt.Frame {
         jButton21 = new javax.swing.JButton();
         jButton22 = new javax.swing.JButton();
         jButton23 = new javax.swing.JButton();
-
-        addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                formComponentShown(evt);
-            }
-        });
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                exitForm(evt);
-            }
-        });
-        setLayout(new java.awt.GridBagLayout());
-
-        pnlLeft.setLayout(new java.awt.GridBagLayout());
-
-        lblTitle.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Blue"));
-        lblTitle.setFont(new java.awt.Font("Helvetica Neue", 0, 36)); // NOI18N
-        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitle.setText("POS");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        pnlLeft.add(lblTitle, gridBagConstraints);
-
-        txtUserInput.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 5, 10);
-        pnlLeft.add(txtUserInput, gridBagConstraints);
-
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(600, 600));
-        jScrollPane1.setRowHeaderView(null);
-
-        jList1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jList1.setModel(this.transactionListModel);
-        jList1.setVisibleRowCount(10);
-        jScrollPane1.setViewportView(jList1);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 10, 10);
-        pnlLeft.add(jScrollPane1, gridBagConstraints);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
-        add(pnlLeft, gridBagConstraints);
 
         pnlMid.setLayout(new javax.swing.BoxLayout(pnlMid, javax.swing.BoxLayout.PAGE_AXIS));
 
@@ -183,14 +126,51 @@ public class NCRDynakey extends java.awt.Frame {
         jButton31.setPreferredSize(new java.awt.Dimension(100, 67));
         pnlMid.add(jButton31);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        add(pnlMid, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        add(filler1, gridBagConstraints);
+        setPreferredSize(new java.awt.Dimension(1024, 768));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                exitForm(evt);
+            }
+        });
+
+        lblTitle.setFont(new java.awt.Font("Helvetica Neue", 0, 36)); // NOI18N
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("POS");
+
+        txtUserInput.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(600, 600));
+        jScrollPane1.setRowHeaderView(null);
+
+        jList1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jList1.setModel(this.transactionListModel);
+        jList1.setVisibleRowCount(10);
+        jScrollPane1.setViewportView(jList1);
+
+        javax.swing.GroupLayout pnlLeftLayout = new javax.swing.GroupLayout(pnlLeft);
+        pnlLeft.setLayout(pnlLeftLayout);
+        pnlLeftLayout.setHorizontalGroup(
+            pnlLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE)
+            .addComponent(txtUserInput)
+        );
+        pnlLeftLayout.setVerticalGroup(
+            pnlLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlLeftLayout.createSequentialGroup()
+                .addComponent(lblTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtUserInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         pnlRight.setLayout(new java.awt.GridBagLayout());
 
@@ -459,12 +439,27 @@ public class NCRDynakey extends java.awt.Frame {
         gridBagConstraints.gridy = 2;
         pnlRight.add(pnlNumbers, gridBagConstraints);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
-        add(pnlRight, gridBagConstraints);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(pnlLeft, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(10, 10, 10)
+                .addComponent(pnlRight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pnlRight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(11, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(pnlLeft, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(5, 5, 5))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -524,7 +519,6 @@ public class NCRDynakey extends java.awt.Frame {
     private javax.swing.JButton btnLeft;
     private javax.swing.JButton btnRight;
     private javax.swing.JButton btnUp;
-    private javax.swing.Box.Filler filler1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
