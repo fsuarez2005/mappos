@@ -83,7 +83,7 @@ public class Product {
     
     public Product setUPC(String upcString) throws InvalidFormat {
         this.upc = new UPCA();
-        this.upc.setData(upcString);
+        this.upc.setDataAndValidate(upcString);
         return this;
     }
     

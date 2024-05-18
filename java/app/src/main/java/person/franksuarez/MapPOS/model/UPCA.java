@@ -18,7 +18,7 @@ public class UPCA extends UPC {
      * @param dataStr
      * @return True if formatting is correct.
      */
-    public static boolean isFormattedCorrectly(String dataStr) {
+    public static boolean isFormattedCorrectlyStatic(String dataStr) {
         int dataStrLen = dataStr.length();
 
         // has 12 digits
@@ -39,6 +39,16 @@ public class UPCA extends UPC {
         formatLength = 12;
     }
 
+    
+    /** Checks charData for valid data.
+     * 
+     * @return 
+     */
+    public boolean isFormattedCorrectly() {
+        return (this.charData.length == formatLength);
+    }
+    
+    
     /**
      *
      * @return Check digit for the UPC.
@@ -71,14 +81,14 @@ public class UPCA extends UPC {
 
         return checksum;
     }
-
+    
     /**
      *
      * @param upcStr The UPC as a String 12 digits.
      * @throws person.franksuarez.MapPOS.exception.InvalidFormat
      */
-    public void setData(String upcStr) throws InvalidFormat {
-        if (!isFormattedCorrectly(upcStr)) {
+    public void setDataAndValidate(String upcStr) throws InvalidFormat {
+        if (!isFormattedCorrectlyStatic(upcStr)) {
             throw new InvalidFormat();
         }
 
@@ -90,12 +100,12 @@ public class UPCA extends UPC {
         }
     }
 
-    /**
-     *
-     *
+    /** 
+     * 
+     * 
      * @return The UPC as a int[], similar to how it is stored internally.
      */
-    public int[] toIntArray() {
+    public int[] getIntArray() {
         return this.data;
     }
 

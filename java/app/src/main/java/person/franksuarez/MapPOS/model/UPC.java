@@ -92,7 +92,7 @@ public class UPC {
         this.isCharValid = isCharValid;
     }
 
-    public boolean isIsValid() {
+    public boolean getIsValid() {
         return isValid;
     }
 
@@ -117,26 +117,25 @@ public class UPC {
         }
     }
 
-    /**
-     * Checks each Char of charData to see if it passes isCharValid)char).
+    
+
+    /** Checks each Char of charData to see if it passes isCharValid(char).
      *
      *
+     * @return 
      */
-    public void validate() {
+    public boolean areAllCharsValid() {
+        boolean allValid = true;
+        
         for (char c : charData) {
             if (!isCharValid.test(c)) {
-                invalidate();
-                return;
-            } else {
-                this.isValid = true;
+                return false;
             }
         }
-
+        
+        return allValid;
     }
 
-    public void invalidate() {
-        this.isValid = false;
-    }
 
     public void setFormatLength(int formatLength) {
         this.formatLength = formatLength;

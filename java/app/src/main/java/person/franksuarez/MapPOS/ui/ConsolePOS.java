@@ -109,7 +109,7 @@ public class ConsolePOS {
         String userInput = this.readLine();
 
         // is userInput a UPC?
-        UPCA.isFormattedCorrectly(userInput);
+        UPCA.isFormattedCorrectlyStatic(userInput);
 
         // * Append product to current transaction (only one transaction active)
         Product p = new Product();
