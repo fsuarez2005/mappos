@@ -6,6 +6,7 @@ package person.franksuarez.MapPOS.ui;
 
 import java.awt.Dimension;
 import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
 
 /**
  *
@@ -37,7 +38,15 @@ public class NCRDynakey extends java.awt.Frame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         pnlMid = new javax.swing.JPanel();
-        jButton24 = new javax.swing.JButton();
+        btnDyn1 = new javax.swing.JButton();
+        jButton25 = new javax.swing.JButton();
+        jButton26 = new javax.swing.JButton();
+        jButton27 = new javax.swing.JButton();
+        jButton28 = new javax.swing.JButton();
+        jButton29 = new javax.swing.JButton();
+        jButton30 = new javax.swing.JButton();
+        jButton31 = new javax.swing.JButton();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(100, 0), new java.awt.Dimension(32767, 0));
         pnlRight = new javax.swing.JPanel();
         pnlArrowButtons = new javax.swing.JPanel();
         btnUp = new javax.swing.JButton();
@@ -71,6 +80,11 @@ public class NCRDynakey extends java.awt.Frame {
         jButton22 = new javax.swing.JButton();
         jButton23 = new javax.swing.JButton();
 
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 exitForm(evt);
@@ -124,13 +138,59 @@ public class NCRDynakey extends java.awt.Frame {
 
         pnlMid.setLayout(new javax.swing.BoxLayout(pnlMid, javax.swing.BoxLayout.PAGE_AXIS));
 
-        jButton24.setText("jButton24");
-        pnlMid.add(jButton24);
+        btnDyn1.setMaximumSize(new java.awt.Dimension(100, 67));
+        btnDyn1.setMinimumSize(new java.awt.Dimension(100, 67));
+        btnDyn1.setPreferredSize(new java.awt.Dimension(100, 67));
+        btnDyn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDyn1ActionPerformed(evt);
+            }
+        });
+        pnlMid.add(btnDyn1);
+
+        jButton25.setMaximumSize(new java.awt.Dimension(100, 67));
+        jButton25.setMinimumSize(new java.awt.Dimension(100, 67));
+        jButton25.setPreferredSize(new java.awt.Dimension(100, 67));
+        pnlMid.add(jButton25);
+
+        jButton26.setMaximumSize(new java.awt.Dimension(100, 67));
+        jButton26.setMinimumSize(new java.awt.Dimension(100, 67));
+        jButton26.setPreferredSize(new java.awt.Dimension(100, 67));
+        pnlMid.add(jButton26);
+
+        jButton27.setMaximumSize(new java.awt.Dimension(100, 67));
+        jButton27.setMinimumSize(new java.awt.Dimension(100, 67));
+        jButton27.setPreferredSize(new java.awt.Dimension(100, 67));
+        pnlMid.add(jButton27);
+
+        jButton28.setMaximumSize(new java.awt.Dimension(100, 67));
+        jButton28.setMinimumSize(new java.awt.Dimension(100, 67));
+        jButton28.setPreferredSize(new java.awt.Dimension(100, 67));
+        pnlMid.add(jButton28);
+
+        jButton29.setMaximumSize(new java.awt.Dimension(100, 67));
+        jButton29.setMinimumSize(new java.awt.Dimension(100, 67));
+        jButton29.setPreferredSize(new java.awt.Dimension(100, 67));
+        pnlMid.add(jButton29);
+
+        jButton30.setMaximumSize(new java.awt.Dimension(100, 67));
+        jButton30.setMinimumSize(new java.awt.Dimension(100, 67));
+        jButton30.setPreferredSize(new java.awt.Dimension(100, 67));
+        pnlMid.add(jButton30);
+
+        jButton31.setMaximumSize(new java.awt.Dimension(100, 67));
+        jButton31.setMinimumSize(new java.awt.Dimension(100, 67));
+        jButton31.setPreferredSize(new java.awt.Dimension(100, 67));
+        pnlMid.add(jButton31);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         add(pnlMid, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        add(filler1, gridBagConstraints);
 
         pnlRight.setLayout(new java.awt.GridBagLayout());
 
@@ -138,7 +198,7 @@ public class NCRDynakey extends java.awt.Frame {
         pnlArrowButtons.setPreferredSize(new java.awt.Dimension(200, 200));
         pnlArrowButtons.setLayout(new java.awt.GridBagLayout());
 
-        btnUp.setText("Up");
+        btnUp.setText("^");
         btnUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpActionPerformed(evt);
@@ -153,7 +213,7 @@ public class NCRDynakey extends java.awt.Frame {
         gridBagConstraints.ipady = 20;
         pnlArrowButtons.add(btnUp, gridBagConstraints);
 
-        btnLeft.setText("Left");
+        btnLeft.setText("<");
         btnLeft.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLeftActionPerformed(evt);
@@ -166,7 +226,7 @@ public class NCRDynakey extends java.awt.Frame {
         gridBagConstraints.ipady = 20;
         pnlArrowButtons.add(btnLeft, gridBagConstraints);
 
-        btnRight.setText("Right");
+        btnRight.setText(">");
         btnRight.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRightActionPerformed(evt);
@@ -179,7 +239,7 @@ public class NCRDynakey extends java.awt.Frame {
         gridBagConstraints.ipady = 20;
         pnlArrowButtons.add(btnRight, gridBagConstraints);
 
-        btnDown.setText("Down");
+        btnDown.setText("V");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -198,7 +258,6 @@ public class NCRDynakey extends java.awt.Frame {
 
         pnlMainButtons.setLayout(new java.awt.GridBagLayout());
 
-        jButton1.setText("jButton1");
         jButton1.setMaximumSize(new java.awt.Dimension(100, 67));
         jButton1.setMinimumSize(new java.awt.Dimension(100, 67));
         jButton1.setPreferredSize(new java.awt.Dimension(100, 67));
@@ -207,7 +266,6 @@ public class NCRDynakey extends java.awt.Frame {
         gridBagConstraints.gridy = 0;
         pnlMainButtons.add(jButton1, gridBagConstraints);
 
-        jButton2.setText("jButton2");
         jButton2.setMaximumSize(new java.awt.Dimension(100, 67));
         jButton2.setMinimumSize(new java.awt.Dimension(100, 67));
         jButton2.setPreferredSize(new java.awt.Dimension(100, 67));
@@ -216,7 +274,6 @@ public class NCRDynakey extends java.awt.Frame {
         gridBagConstraints.gridy = 0;
         pnlMainButtons.add(jButton2, gridBagConstraints);
 
-        jButton3.setText("jButton3");
         jButton3.setMaximumSize(new java.awt.Dimension(100, 67));
         jButton3.setMinimumSize(new java.awt.Dimension(100, 67));
         jButton3.setPreferredSize(new java.awt.Dimension(100, 67));
@@ -225,7 +282,6 @@ public class NCRDynakey extends java.awt.Frame {
         gridBagConstraints.gridy = 0;
         pnlMainButtons.add(jButton3, gridBagConstraints);
 
-        jButton4.setText("jButton4");
         jButton4.setMaximumSize(new java.awt.Dimension(100, 67));
         jButton4.setMinimumSize(new java.awt.Dimension(100, 67));
         jButton4.setPreferredSize(new java.awt.Dimension(100, 67));
@@ -234,7 +290,6 @@ public class NCRDynakey extends java.awt.Frame {
         gridBagConstraints.gridy = 1;
         pnlMainButtons.add(jButton4, gridBagConstraints);
 
-        jButton5.setText("jButton5");
         jButton5.setMaximumSize(new java.awt.Dimension(100, 67));
         jButton5.setMinimumSize(new java.awt.Dimension(100, 67));
         jButton5.setPreferredSize(new java.awt.Dimension(100, 67));
@@ -243,7 +298,6 @@ public class NCRDynakey extends java.awt.Frame {
         gridBagConstraints.gridy = 1;
         pnlMainButtons.add(jButton5, gridBagConstraints);
 
-        jButton6.setText("jButton6");
         jButton6.setMaximumSize(new java.awt.Dimension(100, 67));
         jButton6.setMinimumSize(new java.awt.Dimension(100, 67));
         jButton6.setPreferredSize(new java.awt.Dimension(100, 67));
@@ -252,7 +306,6 @@ public class NCRDynakey extends java.awt.Frame {
         gridBagConstraints.gridy = 1;
         pnlMainButtons.add(jButton6, gridBagConstraints);
 
-        jButton7.setText("jButton7");
         jButton7.setMaximumSize(new java.awt.Dimension(100, 67));
         jButton7.setMinimumSize(new java.awt.Dimension(100, 67));
         jButton7.setPreferredSize(new java.awt.Dimension(100, 67));
@@ -261,7 +314,6 @@ public class NCRDynakey extends java.awt.Frame {
         gridBagConstraints.gridy = 2;
         pnlMainButtons.add(jButton7, gridBagConstraints);
 
-        jButton8.setText("jButton8");
         jButton8.setMaximumSize(new java.awt.Dimension(100, 67));
         jButton8.setMinimumSize(new java.awt.Dimension(100, 67));
         jButton8.setPreferredSize(new java.awt.Dimension(100, 67));
@@ -270,7 +322,6 @@ public class NCRDynakey extends java.awt.Frame {
         gridBagConstraints.gridy = 2;
         pnlMainButtons.add(jButton8, gridBagConstraints);
 
-        jButton9.setText("jButton9");
         jButton9.setMaximumSize(new java.awt.Dimension(100, 67));
         jButton9.setMinimumSize(new java.awt.Dimension(100, 67));
         jButton9.setPreferredSize(new java.awt.Dimension(100, 67));
@@ -293,31 +344,30 @@ public class NCRDynakey extends java.awt.Frame {
 
         pnlNumbers.setLayout(new java.awt.GridBagLayout());
 
-        jButton10.setText("jButton10");
+        jButton10.setText("7");
         jButton10.setMaximumSize(new java.awt.Dimension(67, 67));
         jButton10.setMinimumSize(new java.awt.Dimension(67, 67));
         jButton10.setPreferredSize(new java.awt.Dimension(67, 67));
         pnlNumbers.add(jButton10, new java.awt.GridBagConstraints());
 
-        jButton12.setText("jButton10");
+        jButton12.setText("8");
         jButton12.setMaximumSize(new java.awt.Dimension(67, 67));
         jButton12.setMinimumSize(new java.awt.Dimension(67, 67));
         jButton12.setPreferredSize(new java.awt.Dimension(67, 67));
         pnlNumbers.add(jButton12, new java.awt.GridBagConstraints());
 
-        jButton13.setText("jButton10");
+        jButton13.setText("9");
         jButton13.setMaximumSize(new java.awt.Dimension(67, 67));
         jButton13.setMinimumSize(new java.awt.Dimension(67, 67));
         jButton13.setPreferredSize(new java.awt.Dimension(67, 67));
         pnlNumbers.add(jButton13, new java.awt.GridBagConstraints());
 
-        jButton14.setText("jButton1");
         jButton14.setMaximumSize(new java.awt.Dimension(100, 67));
         jButton14.setMinimumSize(new java.awt.Dimension(100, 67));
         jButton14.setPreferredSize(new java.awt.Dimension(100, 67));
         pnlNumbers.add(jButton14, new java.awt.GridBagConstraints());
 
-        jButton11.setText("jButton10");
+        jButton11.setText("4");
         jButton11.setMaximumSize(new java.awt.Dimension(67, 67));
         jButton11.setMinimumSize(new java.awt.Dimension(67, 67));
         jButton11.setPreferredSize(new java.awt.Dimension(67, 67));
@@ -325,7 +375,7 @@ public class NCRDynakey extends java.awt.Frame {
         gridBagConstraints.gridy = 1;
         pnlNumbers.add(jButton11, gridBagConstraints);
 
-        jButton15.setText("jButton10");
+        jButton15.setText("5");
         jButton15.setMaximumSize(new java.awt.Dimension(67, 67));
         jButton15.setMinimumSize(new java.awt.Dimension(67, 67));
         jButton15.setPreferredSize(new java.awt.Dimension(67, 67));
@@ -333,7 +383,7 @@ public class NCRDynakey extends java.awt.Frame {
         gridBagConstraints.gridy = 1;
         pnlNumbers.add(jButton15, gridBagConstraints);
 
-        jButton16.setText("jButton10");
+        jButton16.setText("6");
         jButton16.setMaximumSize(new java.awt.Dimension(67, 67));
         jButton16.setMinimumSize(new java.awt.Dimension(67, 67));
         jButton16.setPreferredSize(new java.awt.Dimension(67, 67));
@@ -341,7 +391,6 @@ public class NCRDynakey extends java.awt.Frame {
         gridBagConstraints.gridy = 1;
         pnlNumbers.add(jButton16, gridBagConstraints);
 
-        jButton17.setText("jButton1");
         jButton17.setMaximumSize(new java.awt.Dimension(100, 67));
         jButton17.setMinimumSize(new java.awt.Dimension(100, 67));
         jButton17.setPreferredSize(new java.awt.Dimension(100, 67));
@@ -349,7 +398,7 @@ public class NCRDynakey extends java.awt.Frame {
         gridBagConstraints.gridy = 1;
         pnlNumbers.add(jButton17, gridBagConstraints);
 
-        jButton18.setText("jButton10");
+        jButton18.setText("1");
         jButton18.setMaximumSize(new java.awt.Dimension(67, 67));
         jButton18.setMinimumSize(new java.awt.Dimension(67, 67));
         jButton18.setPreferredSize(new java.awt.Dimension(67, 67));
@@ -358,7 +407,7 @@ public class NCRDynakey extends java.awt.Frame {
         gridBagConstraints.gridy = 2;
         pnlNumbers.add(jButton18, gridBagConstraints);
 
-        jButton19.setText("jButton10");
+        jButton19.setText("2");
         jButton19.setMaximumSize(new java.awt.Dimension(67, 67));
         jButton19.setMinimumSize(new java.awt.Dimension(67, 67));
         jButton19.setPreferredSize(new java.awt.Dimension(67, 67));
@@ -367,7 +416,7 @@ public class NCRDynakey extends java.awt.Frame {
         gridBagConstraints.gridy = 2;
         pnlNumbers.add(jButton19, gridBagConstraints);
 
-        jButton20.setText("jButton10");
+        jButton20.setText("3");
         jButton20.setMaximumSize(new java.awt.Dimension(67, 67));
         jButton20.setMinimumSize(new java.awt.Dimension(67, 67));
         jButton20.setPreferredSize(new java.awt.Dimension(67, 67));
@@ -376,7 +425,7 @@ public class NCRDynakey extends java.awt.Frame {
         gridBagConstraints.gridy = 2;
         pnlNumbers.add(jButton20, gridBagConstraints);
 
-        jButton21.setText("jButton1");
+        jButton21.setText("Enter");
         jButton21.setMaximumSize(new java.awt.Dimension(100, 134));
         jButton21.setMinimumSize(new java.awt.Dimension(100, 134));
         jButton21.setPreferredSize(new java.awt.Dimension(100, 134));
@@ -386,7 +435,7 @@ public class NCRDynakey extends java.awt.Frame {
         gridBagConstraints.gridheight = 2;
         pnlNumbers.add(jButton21, gridBagConstraints);
 
-        jButton22.setText("jButton10");
+        jButton22.setText(".");
         jButton22.setMaximumSize(new java.awt.Dimension(67, 67));
         jButton22.setMinimumSize(new java.awt.Dimension(67, 67));
         jButton22.setPreferredSize(new java.awt.Dimension(67, 67));
@@ -395,7 +444,7 @@ public class NCRDynakey extends java.awt.Frame {
         gridBagConstraints.gridy = 3;
         pnlNumbers.add(jButton22, gridBagConstraints);
 
-        jButton23.setText("jButton10");
+        jButton23.setText("0");
         jButton23.setMaximumSize(new java.awt.Dimension(134, 67));
         jButton23.setMinimumSize(new java.awt.Dimension(134, 67));
         jButton23.setPreferredSize(new java.awt.Dimension(134, 67));
@@ -411,7 +460,7 @@ public class NCRDynakey extends java.awt.Frame {
         pnlRight.add(pnlNumbers, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
@@ -442,13 +491,28 @@ public class NCRDynakey extends java.awt.Frame {
         
     }//GEN-LAST:event_btnUpActionPerformed
 
+    private void btnDyn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDyn1ActionPerformed
+
+        
+        
+    }//GEN-LAST:event_btnDyn1ActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
+        this.pack();
+    }//GEN-LAST:event_formComponentShown
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NCRDynakey().setVisible(true);
+                
+                //new NCRDynakey().setVisible(true);
+                NCRDynakey d = new NCRDynakey();
+                d.setVisible(true);
+                
             }
         });
     }
@@ -456,9 +520,11 @@ public class NCRDynakey extends java.awt.Frame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDown;
+    private javax.swing.JButton btnDyn1;
     private javax.swing.JButton btnLeft;
     private javax.swing.JButton btnRight;
     private javax.swing.JButton btnUp;
+    private javax.swing.Box.Filler filler1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -475,8 +541,14 @@ public class NCRDynakey extends java.awt.Frame {
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
-    private javax.swing.JButton jButton24;
+    private javax.swing.JButton jButton25;
+    private javax.swing.JButton jButton26;
+    private javax.swing.JButton jButton27;
+    private javax.swing.JButton jButton28;
+    private javax.swing.JButton jButton29;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton30;
+    private javax.swing.JButton jButton31;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
