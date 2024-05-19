@@ -40,14 +40,33 @@ public class Transaction {
     }
     
     public void printEntryList() {
+        /*
+        
+        Coke                    0-12345-67890-1    2.99
+        Coke                    0-12345-67890-1    2.99
+        Coke                    0-12345-67890-1    2.99
+        Coke                    0-12345-67890-1    2.99
+        Subtotal  =  00.00
+        Tax       =  00.00
+        Total     =  00.00
+        
+        
+        
+        
+        */
+        
+        
+        
+        
+        
         System.out.println("Transaction:");
         for (Product p: this.entries) {
-            System.out.printf("Entry: %s%n",p.toString());
+            System.out.printf("%s%n",p.toString());
         }
         
         double total = getTotal();
-        System.out.printf("Subtotal       =       %.2f%n",total);
-        System.out.printf("Tax = %.2f%n", total*0.06);
-        System.out.printf("Total = %.2f%n",total*1.06);
+        System.out.printf("Subtotal  =  %.2f%n",total);
+        System.out.printf("Tax       =  %.2f%n", total*0.06);
+        System.out.printf("Total     =  %.2f%n", total*1.06);
     }
 }

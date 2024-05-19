@@ -4,11 +4,10 @@
  * DESCRIPTION:
  *
  *
- * TODO:
+ * TASKS:
  * - [x] Use ConsolePOS as the command processor and not a terminal emulator
  * - [x] Test ConsolePOS with an SQLite3 database
- * - [] Implement Input/Output properly
- * - []
+ * TODO: Implement Input/Output properly
  *
  *
  */

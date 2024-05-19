@@ -4,6 +4,11 @@
  */
 package person.franksuarez.MapPOS.utility;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import person.franksuarez.MapPOS.exception.InvalidFormat;
+import person.franksuarez.MapPOS.model.Product;
+
 /**
  *
  * @author franksuarez
@@ -18,5 +23,41 @@ public class TestData {
     };
     
     public final static char[] charDataUPCA = goodUPCA.toCharArray();
+    
+    
+    
+    public final static Product product1 = new Product() {
+        {
+            setName("Coke");
+            setDescription("A refreshing drink.");
+            setCost(0.01);
+            setPrice(2.99);
+            try {
+                setUPC(TestData.goodUPCA);
+            } catch (InvalidFormat ex) {
+                Logger.getLogger(TestData.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    };
+    
+    
+    public final static Product product2 = new Product() {
+        {
+            setName("Pepsi");
+            setDescription("An okay drink.");
+            setCost(0.01);
+            setPrice(1.00);
+            try {
+                setUPC("123");
+            } catch (InvalidFormat ex) {
+                Logger.getLogger(TestData.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    };
+    
+
+    
+    
+    
     
 }

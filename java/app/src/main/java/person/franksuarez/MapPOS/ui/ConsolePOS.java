@@ -4,11 +4,8 @@
  * DESCRIPTION:
  *
  *
- * TODO:
- * - [x] Use ConsolePOS as the command processor and not a terminal emulator
- * - [x] Test ConsolePOS with an SQLite3 database
- * - [] Implement Input/Output properly
- * - []
+ * TASKS:
+ * TODO: Implement Input/Output properly
  *
  *
  */
@@ -38,6 +35,7 @@ import person.franksuarez.MapPOS.model.UPCA;
  * @author franksuarez
  */
 public class ConsolePOS {
+
     public static void main(String[] args) throws Exception {
         ConsolePOS app = new ConsolePOS();
         app.start();
@@ -70,11 +68,9 @@ public class ConsolePOS {
         this.state = POSState.IDLE;
         //this.commands = new HashMap<>();
         createCommands();
-        
+
         this.reader = new BufferedReader(new InputStreamReader(System.in));
-        
-        
-        
+
     }
 
     /**
@@ -111,13 +107,10 @@ public class ConsolePOS {
 
         // is userInput a UPC?
         UPCA u = new UPCA();
-        
-        u.fromString(userInput);
-        
-        
-        
-        //UPCA.isFormattedCorrectlyStatic(userInput);
 
+        u.fromString(userInput);
+
+        //UPCA.isFormattedCorrectlyStatic(userInput);
         // * Append product to current transaction (only one transaction active)
         Product p = new Product();
 
@@ -189,7 +182,7 @@ public class ConsolePOS {
         if (this.commands.containsKey(token)) {
             this.commands.get(token).accept(token);
         } else {
-            this.printf("Command not found: %s%n",token);
+            this.printf("Command not found: %s%n", token);
         }
     }
 
@@ -209,45 +202,39 @@ public class ConsolePOS {
             // evaluate
             //this.evaluate(userInput);
             this.evaluateToken(userInput);
-            
-            
+
             // print
         }
     }
 
     public void createCommands() {
         this.commands = new HashMap<>();
-        this.commands.put("about", new Command("about",(x) -> {
+        this.commands.put("about", new Command("about", (x) -> {
             this.printf("About ConsolePOS%n"
                     + "fsuarez2007@gmail.com%n"
                     + "");
         }).setShortDescription("Display about information"));
-        
-        this.commands.put("quit",new Command("quit", (x) -> {
+
+        this.commands.put("quit", new Command("quit", (x) -> {
             this.run = false;
         }));
-        
+
         this.commands.put("idle", new Command("idle", (x) -> {
             this.state = POSState.IDLE;
         }));
-        
+
         this.commands.put("transaction", new Command("transaction", (t) -> {
             this.state = POSState.TRANSACTION;
-        
+
         }));
-        
+
         this.commands.put("commands", new Command("commands", (t) -> {
             this.printf("Commands:%n");
-            for (String name: this.commands.keySet()) {
-                this.printf("%s:\t\t%s%n",name,this.commands.get(name).getShortDescription());
+            for (String name : this.commands.keySet()) {
+                this.printf("%s:\t\t%s%n", name, this.commands.get(name).getShortDescription());
             }
         }));
 
-        
-
-
-        
-        
     }
 
     public void start() {
@@ -255,10 +242,8 @@ public class ConsolePOS {
         this.loop();
     }
 
-    
-    // TODO: stub: Token
     class Token {
-
+        // TODO: stub: Token
     }
 
     private enum POSState {

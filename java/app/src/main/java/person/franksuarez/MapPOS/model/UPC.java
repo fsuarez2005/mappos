@@ -4,9 +4,6 @@
  */
 package person.franksuarez.MapPOS.model;
 
-import java.io.CharArrayReader;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.function.Predicate;
 import person.franksuarez.MapPOS.exception.InvalidFormat;
 

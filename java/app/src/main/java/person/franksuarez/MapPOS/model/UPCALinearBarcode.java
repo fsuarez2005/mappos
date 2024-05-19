@@ -178,11 +178,15 @@ public class UPCALinearBarcode {
     
     
     
-    // TODO
-    //private void invertPattern(boolean[] pattern) {}
+    
+    private void invertPattern(boolean[] pattern) {
+        // TODO: invertPattern
+        throw new UnsupportedOperationException();
+    }
     
     private void generateBarcode() {
-        
+        // TODO: generateBarcode()
+        throw new UnsupportedOperationException();
     }
     
 }
