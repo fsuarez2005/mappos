@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<plulist>
+	<plu name="Alkmene" value="3000" />
+	<plu name="Baldwin" value="3075" />
+	<plu name="Belchard / Chantecler" value="3339" />
+	<plu name="Bertanne / Golden Russet" value="3340" />
+	<plu name="Cantared" value="3002" />
+	<plu name="Charles Ross" value="3341" />
+	<plu name="Cox Orange Pippin" value="4105" />
+	<plu name="Crab" value="4107" />
+	<plu name="Delblush / Tentation" value="3342" />
+	<plu name="Dessert" value="3343" />
+	<plu name="D'Estivale" value="3003" />
+	<plu name="Discovery" value="3004" />
+	<plu name="Fiesta" value="4120" />
+	<plu name="Golden Delicious Blush" value="3005" />
+	<plu name="Greening / Rhode Island" value="3074" />
+	<plu name="Holstein" value="3346" />
+	<plu name="Honeycrisp" value="3283" />
+	<plu name="Ingrid Marie" value="3006" />
+	<plu name="Lady" value="3072" />
+	<plu name="Laxtons Fortune" value="3347" />
+	<plu name="Liberty" value="3078" />
+	<plu name="Lochbuie" value="3007" />
+	<plu name="Lord Lambourne" value="3348" />
+	<plu name="Macoun" value="3073" />
+	<plu name="Melrose" value="3076" />
+	<plu name="Michaelmas Red" value="3349" />
+	<plu name="Northern Spy" value="3077" />
+	<plu name="Rubinette" value="3008" />
+	<plu name="Russet" value="3009" />
+	<plu name="Scired / Pacific Queen ®" value="3297" />
+	<plu name="Sommerfeld" value="3272" />
+	<plu name="Southern Snap" value="4176" />
+	<plu name="St. Edmunds Pippin" value="3353" />
+	<plu name="Sturmer Pippin" value="4182" />
+	<plu name="Sugar Apple" value="3382" />
+	<plu name="Virginia Gold" value="3271" />
+	<plu name="Worcester" value="3011" />
+	<plu name="dried apple slices" value="4860" />
+	<plu name="InterSpecific" value="3422" />
+	<plu name="dried" value="4861" />
+	<plu name="retailer assigned" value="4219" />
+	<plu name="Baby / Cocktail" value="4519" />
+	<plu name="Rouge Salambo, red" value="3391" />
+	<plu name="Sunchokes / Jerusalem Artichokes" value="4791" />
+	<plu name="retailer assigned" value="4520" />
+	<plu name="Tips" value="4524" />
+	<plu name="Cocktail / Seedless" value="4226" />
+	<plu name="Pinkerton" value="3080" />
+	<plu name="Ripe, ready‐to‐eat" value="33543" />
+	<plu name="Banana Leaves" value="4232" />
+	<plu name="Burro" value="4229" />
+	<plu name="Dominique" value="4230" />
+	<plu name="Green" value="4231" />
+	<plu name="Hawaiian Plantain" value="3287" />
+	<plu name="Manzano / Apple Banana" value="4233" />
+	<plu name="Nino" value="4234" />
+	<plu name="Plantain / Macho" value="4235" />
+	<plu name="Red" value="4236" />
+	<plu name="Bean Sprouts / Mung Bean Sprouts" value="4536" />
+	<plu name="Chinese Long / Snake" value="4527" />
+	<plu name="Fava / Broad" value="4528" />
+	<plu name="Fine" value="3049" />
+	<plu name="Green / French" value="4066" />
+	<plu name="Helda / Flat" value="3048" />
+	<plu name="Lima" value="4529" />
+	<plu name="Pole / Runner / Stick" value="4530" />
+	<plu name="Purple Hull" value="4531" />
+	<plu name="Shell" value="4532" />
+	<plu name="Wax / Yellow" value="4533" />
+	<plu name="Winged" value="4534" />
+	<plu name="retailer assigned" value="4535" />
+	<plu name="Baby Golden" value="4537" />
+	<plu name="Baby Red" value="4538" />
+	<plu name="Beet Greens" value="4542" />
+	<plu name="Bunch" value="4539" />
+	<plu name="Golden" value="3273" />
+	<plu name="Loose" value="4540" />
+	<plu name="retailer assigned" value="4541" />
+	<plu name="Black Raspberries" value="4244" />
+	<plu name="Blackberries" value="4239" />
+	<plu name="Blueberries" value="4240" />
+	<plu name="Boysenberries" value="4241" />
+	<plu name="Cranberries" value="4242" />
+	<plu name="Golden Raspberries" value="4245" />
+	<plu name="Gooseberries" value="4243" />
+	<plu name="Gooseberry / Ground Cherry / Physalis / Cape" value="3039" />
+	<plu name="Loganberries" value="3304" />
+	<plu name="Raspberries, red" value="4054" />
+	<plu name="Saskatoons" value="3081" />
+	<plu name="Baby" value="3277" />
+	<plu name="Broccoli" value="4060" />
+	<plu name="Broccoli Rabe / Italian Rapini / Chinese Broccoli / Gai Lan" value="4547" />
+	<plu name="Crowns" value="3082" />
+	<plu name="Florettes" value="4548" />
+	<plu name="Romanesco / Broccoflower / Caulibroc" value="3320" />
+	<plu name="retailer assigned" value="4549" />
+	<plu name="Brussels Sprout" value="4550" />
+	<plu name="Stalk" value="3083" />
+	<plu name="retailer assigned" value="4551" />
+	<plu name="Chinese / Napa / Wong Bok" value="4552" />
+	<plu name="Dutch White / Winter White" value="3050" />
+	<plu name="Green" value="4069" />
+	<plu name="Red" value="4554" />
+	<plu name="Spring Cabbage / Spring Greens" value="3051" />
+	<plu name="Summer, pointed type" value="3397" />
+	<plu name="Tuscan" value="3166" />
+	<plu name="Cactus Leaves / Nopales / Cactus Pads" value="4558" />
+	<plu name="Cactus Pear / Prickly Pear" value="4255" />
+	<plu name="Baby" value="4560" />
+	<plu name="Bunch" value="4094" />
+	<plu name="Carrot Sticks" value="4563" />
+	<plu name="French" value="4561" />
+	<plu name="Loose" value="4562" />
+	<plu name="Purple / Red / Beta Sweet" value="3424" />
+	<plu name="Baby" value="4573" />
+	<plu name="Florettes" value="4566" />
+	<plu name="Green" value="4567" />
+	<plu name="Purple" value="4568" />
+	<plu name="Hearts" value="4575" />
+	<plu name="Sticks" value="4576" />
+	<plu name="retailer assigned" value="4588" />
+	<plu name="Golden / Ranier / White" value="4258" />
+	<plu name="retailer assigned" value="4259" />
+	<plu name="Bok Choy / Pak Choy / Shanghai" value="3163" />
+	<plu name="Gai Lan / Chinese Broccoli" value="3160" />
+	<plu name="On Choy / Water Spinach" value="3162" />
+	<plu name="Yu Choy" value="3164" />
+	<plu name="Husked" value="4261" />
+	<plu name="In Husk / Waternut" value="4260" />
+	<plu name="retailer assigned" value="4262" />
+	<plu name="retailer assigned" value="4591" />
+	<plu name="Armenian" value="4592" />
+	<plu name="English / Hot House / Long Seedless / Telegraph / Continental" value="4593" />
+	<plu name="Green / Ridge / Short" value="4062" />
+	<plu name="Japanese / White" value="4594" />
+	<plu name="Lemon" value="4595" />
+	<plu name="Pickling / Gherkin" value="4596" />
+	<plu name="retailer assigned" value="4597" />
+	<plu name="Black" value="3305" />
+	<plu name="Red" value="3088" />
+	<plu name="Fresh / Frozen" value="3046" />
+	<plu name="Medjool" value="3047" />
+	<plu name="dried" value="4862" />
+	<plu name="Chinese" value="3089" />
+	<plu name="Japanese" value="4601" />
+	<plu name="Regular" value="4081" />
+	<plu name="Thai" value="3090" />
+	<plu name="White" value="4602" />
+	<plu name="retailer assigned" value="4603" />
+	<plu name="Endive / Chicory" value="4604" />
+	<plu name="Frisee" value="3167" />
+	<plu name="Black" value="4266" />
+	<plu name="Brown" value="4267" />
+	<plu name="White / Green" value="4268" />
+	<plu name="dried" value="3337" />
+	<plu name="retailer assigned" value="4269" />
+	<plu name="Elephant" value="4609" />
+	<plu name="One‐clove types" value="3401" />
+	<plu name="String" value="3052" />
+	<plu name="Root, regular" value="4612" />
+	<plu name="retailer assigned" value="4613" />
+	<plu name="Champagne" value="4271" />
+	<plu name="Chasselas" value="3359" />
+	<plu name="Concord" value="4272" />
+	<plu name="Crimson / Majestic" value="4499" />
+	<plu name="Fantasy / Marroo" value="4638" />
+	<plu name="Italian, seeded" value="3043" />
+	<plu name="Muscat de Hambourg" value="3360" />
+	<plu name="Red Globe" value="4636" />
+	<plu name="Sugarone / Autumn, seedless" value="4497" />
+	<plu name="Blanco / Sweetie" value="3092" />
+	<plu name="Melogold" value="3152" />
+	<plu name="without post‐harvest treatment" value="33613" />
+	<plu name="Arugula / Rocket" value="4884" />
+	<plu name="Collards" value="4614" />
+	<plu name="Dandelion" value="4615" />
+	<plu name="Mustard" value="4616" />
+	<plu name="Polk Greens" value="4617" />
+	<plu name="Texas Mustard" value="4618" />
+	<plu name="Turnip" value="4619" />
+	<plu name="Aloe Vera Leaves" value="3064" />
+	<plu name="Anise" value="3338" />
+	<plu name="Baby Dill" value="4892" />
+	<plu name="Bay Leaves" value="3062" />
+	<plu name="Borage" value="3419" />
+	<plu name="Chervil" value="3084" />
+	<plu name="Chives" value="4888" />
+	<plu name="Cilantro / Coriander / Chinese Parsley" value="4889" />
+	<plu name="Dill" value="4891" />
+	<plu name="Fennel / Florence / Sweet Fennel / Fennel Bulb" value="4515" />
+	<plu name="Fennel Leaves" value="3063" />
+	<plu name="Lemon Grass" value="4894" />
+	<plu name="Marjoram" value="4895" />
+	<plu name="Mint" value="4896" />
+	<plu name="Oregano" value="4897" />
+	<plu name="Oyster Plant / Salsify" value="4898" />
+	<plu name="Parsley Root / Hamburg Parsley" value="4671" />
+	<plu name="Pickling Dill" value="4893" />
+	<plu name="Rosemary" value="4903" />
+	<plu name="Sage" value="4904" />
+	<plu name="Savory" value="3139" />
+	<plu name="Sorrel" value="4905" />
+	<plu name="Tarragon" value="4906" />
+	<plu name="Thyme" value="4907" />
+	<plu name="Vanilla Bean" value="4908" />
+	<plu name="Watercress" value="4815" />
+	<plu name="Golden" value="3279" />
+	<plu name="retailer assigned" value="4301" />
+	<plu name="without post‐harvest treatment" value="33623" />
+	<plu name="retailer assigned" value="4304" />
+	<plu name="Bibb / Flat / Round" value="4631" />
+	<plu name="Catalogna" value="3169" />
+	<plu name="Green Leaf" value="4076" />
+	<plu name="Hydroponic" value="4633" />
+	<plu name="Lollo Bionda / Coral Green" value="3325" />
+	<plu name="Lollo Rossa / Coral Red" value="3326" />
+	<plu name="Mache" value="4639" />
+	<plu name="Mignonette, compact red‐tinged butterhead varieties" value="3327" />
+	<plu name="Mixed, small‐leaf, salad [eg, Sucrine / Mesclun / Rocket / Arugula]" value="3328" />
+	<plu name="Red Leaf" value="4075" />
+	<plu name="Regular, including Persian / Tahiti / Bearss" value="4048" />
+	<plu name="Key, including Mexican / West Indian" value="4305" />
+	<plu name="retailer assigned" value="4306" />
+	<plu name="Bowen & Kensington Pride, extra large" value="3363" />
+	<plu name="Green" value="4311" />
+	<plu name="R2E2 [ArtwoEetwo], extra large" value="3364" />
+	<plu name="Ripe, ready‐to‐eat" value="33653" />
+	<plu name="Yellow" value="4312" />
+	<plu name="Canary / Yellow Honeydew" value="4317" />
+	<plu name="Casaba" value="4320" />
+	<plu name="Cinnabar" value="4321" />
+	<plu name="Crenshaw" value="4322" />
+	<plu name="French Afternoon" value="4324" />
+	<plu name="French Breakfast" value="4325" />
+	<plu name="Galia" value="4326" />
+	<plu name="Glasshouse, netted varieties" value="33673" />
+	<plu name="Gold Honeydew" value="3100" />
+	<plu name="Horned Melon / Kiwano" value="4302" />
+	<plu name="Mayan" value="4330" />
+	<plu name="Muskmelon" value="4332" />
+	<plu name="Ogen" value="3368" />
+	<plu name="Orange Flesh / Cantaline" value="4327" />
+	<plu name="Pepino" value="4333" />
+	<plu name="Persian" value="4334" />
+	<plu name="Piel de Sapo" value="3101" />
+	<plu name="Prince" value="4335" />
+	<plu name="Santa Claus" value="4336" />
+	<plu name="Saticoy" value="4337" />
+	<plu name="Sharlin" value="4338" />
+	<plu name="Spanish / Tendral" value="4339" />
+	<plu name="Sprite" value="3289" />
+	<plu name="Black Forest" value="4646" />
+	<plu name="Cep" value="3404" />
+	<plu name="Chanterelle" value="4647" />
+	<plu name="Cremini / Brown / Swiss Brown" value="4648" />
+	<plu name="Enoki" value="3103" />
+	<plu name="Fairy Ring Champignon" value="3405" />
+	<plu name="Grey Tricholoma" value="3406" />
+	<plu name="Grisette" value="3407" />
+	<plu name="Horn of Plenty / Black Trumpet" value="3408" />
+	<plu name="Morel" value="3102" />
+	<plu name="Oyster" value="4649" />
+	<plu name="Pioppino" value="3409" />
+	<plu name="Portabella" value="4650" />
+	<plu name="Saffron Milk‐Cap" value="3410" />
+	<plu name="Sheep Polypore" value="3411" />
+	<plu name="Shiitake" value="4651" />
+	<plu name="Wood Ear" value="4652" />
+	<plu name="Nectavigne, red flesh" value="3369" />
+	<plu name="Almonds" value="4924" />
+	<plu name="Brazil nuts" value="4926" />
+	<plu name="Cashews" value="3105" />
+	<plu name="Chestnuts" value="4927" />
+	<plu name="Filberts / Cobnut / Hazelnut" value="4928" />
+	<plu name="Macadamia" value="3106" />
+	<plu name="Mixed" value="4929" />
+	<plu name="Pecans" value="4936" />
+	<plu name="Pine Nuts / Pignoli" value="4938" />
+	<plu name="Sunflower Seeds" value="4942" />
+	<plu name="Regular, green" value="4655" />
+	<plu name="Chinese" value="4656" />
+	<plu name="Red" value="4657" />
+	<plu name="Boiling" value="4658" />
+	<plu name="Bulb" value="4659" />
+	<plu name="California Sweet" value="4165" />
+	<plu name="Green / Scallions / Spring" value="4068" />
+	<plu name="Maui" value="4164" />
+	<plu name="Other Sweet" value="4166" />
+	<plu name="Pearl" value="4660" />
+	<plu name="Pickling, white" value="4661" />
+	<plu name="Shallots" value="4662" />
+	<plu name="Sweet, red, Italian, [flat]" value="3286" />
+	<plu name="Texas Sweet" value="4161" />
+	<plu name="Vidalia" value="4159" />
+	<plu name="Walla Walla" value="4163" />
+	<plu name="White" value="4663" />
+	<plu name="Blood" value="4381" />
+	<plu name="Juice" value="4382" />
+	<plu name="Lima" value="3309" />
+	<plu name="Maltaise" value="3370" />
+	<plu name="Navelate / other late Navel varieties" value="3372" />
+	<plu name="Navelina, including Newhall" value="3373" />
+	<plu name="Pera" value="3310" />
+	<plu name="Salustiana" value="3371" />
+	<plu name="Seville / Marmalade type" value="3109" />
+	<plu name="Shamouti" value="3027" />
+	<plu name="Tangelo Minneola" value="4383" />
+	<plu name="without postharvest treatment" value="33743" />
+	<plu name="Babaco" value="3303" />
+	<plu name="Cooking / Mexican" value="4395" />
+	<plu name="Meridol" value="3112" />
+	<plu name="Red‐Fleshed / Solo Sunrise" value="3111" />
+	<plu name="Baby" value="3053" />
+	<plu name="Parsnips" value="4672" />
+	<plu name="Curuba / Banana" value="3311" />
+	<plu name="Granadilla / Grenadilla Orange" value="3038" />
+	<plu name="Granadilla Yellow / Maracuya" value="3312" />
+	<plu name="Purple" value="4397" />
+	<plu name="retailer assigned" value="4398" />
+	<plu name="Donut / Flat Chinese" value="3113" />
+	<plu name="Indian" value="4399" />
+	<plu name="Pêche de Vigne / Sanguine, red flesh" value="3375" />
+	<plu name="Blackeyed" value="4673" />
+	<plu name="Chick Pea / Garbanzo" value="3398" />
+	<plu name="Chinese Snow Pea / Pea Pod / Mange Tout" value="4092" />
+	<plu name="Green" value="4674" />
+	<plu name="Sugar Snap" value="4675" />
+	<plu name="retailer assigned" value="4676" />
+	<plu name="Abate Fetel" value="3012" />
+	<plu name="Alexander Lucas" value="3376" />
+	<plu name="Bartlett Red / Red Sensation" value="4410" />
+	<plu name="Beurre Hardy" value="3013" />
+	<plu name="Bon Rouge" value="3014" />
+	<plu name="Chinese Yali" value="4890" />
+	<plu name="Clara Friis" value="3015" />
+	<plu name="Concorde" value="3016" />
+	<plu name="Conference" value="3017" />
+	<plu name="Durondeau" value="3018" />
+	<plu name="Flamingo" value="3019" />
+	<plu name="Forelle / Corella" value="4418" />
+	<plu name="French" value="4419" />
+	<plu name="General Leclerc" value="3020" />
+	<plu name="Guyot" value="3021" />
+	<plu name="Josephine" value="3022" />
+	<plu name="King Royal" value="4420" />
+	<plu name="Louise Bonne" value="3377" />
+	<plu name="Red" value="4415" />
+	<plu name="Rocha" value="3024" />
+	<plu name="Rosemarie" value="3025" />
+	<plu name="Santa Maria" value="3378" />
+	<plu name="Seckel" value="4422" />
+	<plu name="Starkrimson" value="3118" />
+	<plu name="Taylors Gold" value="4553" />
+	<plu name="Tree Ripened" value="4423" />
+	<plu name="Triumph de Vienne" value="3026" />
+	<plu name="Winter Nelis / Honey" value="4424" />
+	<plu name="Anaheim, green, red" value="4677" />
+	<plu name="Banana, yellow, long" value="4678" />
+	<plu name="Cubanelle" value="4687" />
+	<plu name="Habanero" value="3125" />
+	<plu name="Hot / Hungarian Hot" value="4690" />
+	<plu name="Hot Mixed" value="4691" />
+	<plu name="Hungarian Wax" value="4692" />
+	<plu name="Japanese, red" value="4695" />
+	<plu name="Morita Chili" value="4698" />
+	<plu name="Negro" value="4699" />
+	<plu name="New Mexico" value="4700" />
+	<plu name="Pinole" value="4704" />
+	<plu name="Poblano" value="4705" />
+	<plu name="Red Cheese" value="4706" />
+	<plu name="Red Finger" value="4707" />
+	<plu name="Red Pimiento / Red, sweet, long" value="4708" />
+	<plu name="Serrano" value="4709" />
+	<plu name="Tabasco" value="3413" />
+	<plu name="Regular / American Persimmon" value="4427" />
+	<plu name="Japanese / Sharonfruit [Kaki]" value="4428" />
+	<plu name="retailer assigned" value="4429" />
+	<plu name="Mini" value="3379" />
+	<plu name="Perola" value="3380" />
+	<plu name="Queen" value="3037" />
+	<plu name="dried" value="4864" />
+	<plu name="retailer assigned" value="4433" />
+	<plu name="InterSpecific" value="3278" />
+	<plu name="Italian Prune / Sugar" value="4436" />
+	<plu name="retailer assigned" value="4446" />
+	<plu name="Boniato / Sweet Potato" value="4546" />
+	<plu name="Long, white" value="4726" />
+	<plu name="Decorative / Painted" value="3131" />
+	<plu name="Jumbo" value="3130" />
+	<plu name="Ornamental" value="3135" />
+	<plu name="Pie Pumpkin" value="3134" />
+	<plu name="Regular" value="4735" />
+	<plu name="White" value="3132" />
+	<plu name="Castlefranco" value="3168" />
+	<plu name="Radicchio" value="4738" />
+	<plu name="Treviso" value="3165" />
+	<plu name="Black" value="4739" />
+	<plu name="Daikon / Radish" value="4598" />
+	<plu name="Italian, red" value="4741" />
+	<plu name="Red" value="4742" />
+	<plu name="White / Icicle" value="4743" />
+	<plu name="retailer assigned" value="4744" />
+	<plu name="retailer assigned" value="4746" />
+	<plu name="Sapodillo / Nispero" value="3136" />
+	<plu name="Soursop" value="3381" />
+	<plu name="Baby" value="3332" />
+	<plu name="New Zealand" value="34173" />
+	<plu name="Regular / Bunched" value="4090" />
+	<plu name="retailer assigned" value="4749" />
+	<plu name="Australian Blue" value="4753" />
+	<plu name="Banana" value="4757" />
+	<plu name="Bitter Melon / Bitter Gourd / Foo Qua" value="4783" />
+	<plu name="Buttercup" value="4758" />
+	<plu name="Butternut" value="4759" />
+	<plu name="Calabaza" value="4760" />
+	<plu name="Carnival" value="3142" />
+	<plu name="Chayote / Choko" value="4761" />
+	<plu name="Crown Prince" value="3059" />
+	<plu name="Cucuzza" value="3140" />
+	<plu name="Delicata / Sweet Potato Squash" value="4763" />
+	<plu name="Gem" value="4765" />
+	<plu name="Golden Delicious" value="4766" />
+	<plu name="Golden Nugget" value="4767" />
+	<plu name="Hubbard" value="4768" />
+	<plu name="Kabocha" value="4769" />
+	<plu name="Opo" value="3141" />
+	<plu name="Patty Pan / Summer" value="4773" />
+	<plu name="Red Kuri" value="4774" />
+	<plu name="Spaghetti / Vegetable Spaghetti" value="4776" />
+	<plu name="Summer, green, baby" value="4755" />
+	<plu name="Sunburst, yellow" value="4777" />
+	<plu name="Sweet Dumpling" value="4764" />
+	<plu name="Sweet Mama" value="4779" />
+	<plu name="Turban" value="4780" />
+	<plu name="Vegetable Marrow" value="3060" />
+	<plu name="White" value="4781" />
+	<plu name="Yellow Crookneck" value="4784" />
+	<plu name="Yellow Straightneck" value="4782" />
+	<plu name="Yellow Zucchini / Gold Bar / Yellow Courgette" value="4086" />
+	<plu name="Golden" value="4792" />
+	<plu name="Red" value="4793" />
+	<plu name="Dancy" value="4451" />
+	<plu name="Fairchild" value="4452" />
+	<plu name="Fall Glo" value="3144" />
+	<plu name="Kinnow" value="4454" />
+	<plu name="Mandarin / Royal" value="4455" />
+	<plu name="Nova [including Clemenvilla and Suntina]" value="3030" />
+	<plu name="Sunburst" value="4449" />
+	<plu name="Tangerine / Mandarin" value="4055" />
+	<plu name="Beef / Beefsteak" value="3061" />
+	<plu name="Heirloom" value="3423" />
+	<plu name="Native / Home Grown" value="4800" />
+	<plu name="Tomatillos / Husk Tomatoes" value="4801" />
+	<plu name="dried" value="4802" />
+	<plu name="Baby" value="4809" />
+	<plu name="Bunch / Banded" value="4810" />
+	<plu name="Purple Top" value="4811" />
+	<plu name="Regular" value="4747" />
+	<plu name="White" value="4812" />
+	<plu name="Yellow" value="4095" />
+</plulist>
