@@ -8,9 +8,19 @@ import person.franksuarez.MapPOS.exception.InvalidFormat;
  * @author franksuarez
  */
 public class Product {
-
-    public String name;
-    public String description;
+    
+    /** Delta used for price and cost so rounding is not used.
+     *
+     * Rounding may cause problems in the future.
+     * 
+     * 
+     */
+    public final static double delta = 0.005;
+    
+    
+    
+    private String name;
+    private String description;
     private double price;
     private double cost;
     private int vendorId;
@@ -79,15 +89,13 @@ public class Product {
         this.upc.fromString(upcString);
     }
 
+    public String toTupleString() {
+        String output = String.format("(%s,%f,%f)",this.name,this.price,this.cost);
+        return output;
+    }
+    
     @Override
     public String toString() {
-
-        return String.format(
-                "%-40s %-15s %05.2f",
-                name,
-                this.upc.toString(),
-                price
-        );
+        return super.toString();
     }
-
 }

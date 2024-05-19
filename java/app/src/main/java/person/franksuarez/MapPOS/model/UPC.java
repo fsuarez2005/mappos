@@ -50,6 +50,7 @@ public class UPC {
         return charData;
     }
 
+
     
     /**
      * 
@@ -150,6 +151,14 @@ public class UPC {
     @Override
     public String toString() {
         return String.valueOf(this.charData);
+    }
+    
+    
+    
+    public void generalCalculateCheckDigit() {
+        
+        
+        
     }
 
 }

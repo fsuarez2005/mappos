@@ -4,7 +4,10 @@
  */
 package person.franksuarez.MapPOS.ui;
 
+import java.awt.event.ActionEvent;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -20,10 +23,20 @@ import person.franksuarez.MapPOS.model.UPCA;
  * @author franksuarez
  */
 public class NCRDynakey extends java.awt.Frame {
-
     private POS p = new POS();
     private DefaultListModel<String> transactionListModel = new DefaultListModel<>();
 
+    /** Dynamic mapping for mode buttons (right size).
+     * 
+     */
+    private java.util.Map<String,Consumer<java.awt.event.ActionEvent>> modeButtonMap = new HashMap<>();
+    
+    
+    private void user_modeBtn_clear(java.awt.event.ActionEvent evt) {
+        this.txtUserInput.setText("");
+    }
+    
+    
     // called when submitting user input
     private void user_submitUserInput() {
 
@@ -49,10 +62,32 @@ public class NCRDynakey extends java.awt.Frame {
 
     }
 
+    
+    /** Sets a callback function for the mode buttons.
+     * 
+     * This should be configured somewhere else.
+     * 
+     * 
+     */
+    private void setUpModeButtons() {
+        this.modeButtonMap.put("modeBtn7", (evt) -> {user_modeBtn_clear(evt);});
+        
+        
+        
+        
+        
+    }
+    
+    
+    
     /**
      * Creates new form NCRDynakey
      */
     public NCRDynakey() {
+        setUpModeButtons();
+        
+        
+        
         initComponents();
     }
 
@@ -95,24 +130,24 @@ public class NCRDynakey extends java.awt.Frame {
         btnDown = new javax.swing.JButton();
         pnlButtons = new javax.swing.JPanel();
         pnlMainButtons = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        btnClear = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        modeBtn1 = new javax.swing.JButton();
+        modeBtn2 = new javax.swing.JButton();
+        modeBtn3 = new javax.swing.JButton();
+        modeBtn4 = new javax.swing.JButton();
+        modeBtn5 = new javax.swing.JButton();
+        modeBtn6 = new javax.swing.JButton();
+        modeBtn7 = new javax.swing.JButton();
+        modeBtn8 = new javax.swing.JButton();
+        modeBtn9 = new javax.swing.JButton();
         pnlNumbers = new javax.swing.JPanel();
         btnNum7 = new javax.swing.JButton();
         btnNum8 = new javax.swing.JButton();
         btnNum9 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
+        modeBtn10 = new javax.swing.JButton();
         btnNum4 = new javax.swing.JButton();
         btnNum5 = new javax.swing.JButton();
         btnNum6 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
+        modeBtn11 = new javax.swing.JButton();
         btnNum1 = new javax.swing.JButton();
         btnNum2 = new javax.swing.JButton();
         btnNum3 = new javax.swing.JButton();
@@ -369,92 +404,92 @@ public class NCRDynakey extends java.awt.Frame {
 
         pnlMainButtons.setLayout(new java.awt.GridBagLayout());
 
-        jButton1.setText("Item");
-        jButton1.setMaximumSize(new java.awt.Dimension(100, 67));
-        jButton1.setMinimumSize(new java.awt.Dimension(100, 67));
-        jButton1.setPreferredSize(new java.awt.Dimension(100, 67));
+        modeBtn1.setText("Item");
+        modeBtn1.setMaximumSize(new java.awt.Dimension(100, 67));
+        modeBtn1.setMinimumSize(new java.awt.Dimension(100, 67));
+        modeBtn1.setPreferredSize(new java.awt.Dimension(100, 67));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        pnlMainButtons.add(jButton1, gridBagConstraints);
+        pnlMainButtons.add(modeBtn1, gridBagConstraints);
 
-        jButton2.setText("Transaction");
-        jButton2.setMaximumSize(new java.awt.Dimension(100, 67));
-        jButton2.setMinimumSize(new java.awt.Dimension(100, 67));
-        jButton2.setPreferredSize(new java.awt.Dimension(100, 67));
+        modeBtn2.setText("Transaction");
+        modeBtn2.setMaximumSize(new java.awt.Dimension(100, 67));
+        modeBtn2.setMinimumSize(new java.awt.Dimension(100, 67));
+        modeBtn2.setPreferredSize(new java.awt.Dimension(100, 67));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
-        pnlMainButtons.add(jButton2, gridBagConstraints);
+        pnlMainButtons.add(modeBtn2, gridBagConstraints);
 
-        jButton3.setText("Misc");
-        jButton3.setMaximumSize(new java.awt.Dimension(100, 67));
-        jButton3.setMinimumSize(new java.awt.Dimension(100, 67));
-        jButton3.setPreferredSize(new java.awt.Dimension(100, 67));
+        modeBtn3.setText("Misc");
+        modeBtn3.setMaximumSize(new java.awt.Dimension(100, 67));
+        modeBtn3.setMinimumSize(new java.awt.Dimension(100, 67));
+        modeBtn3.setPreferredSize(new java.awt.Dimension(100, 67));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
-        pnlMainButtons.add(jButton3, gridBagConstraints);
+        pnlMainButtons.add(modeBtn3, gridBagConstraints);
 
-        jButton4.setText("PLU");
-        jButton4.setMaximumSize(new java.awt.Dimension(100, 67));
-        jButton4.setMinimumSize(new java.awt.Dimension(100, 67));
-        jButton4.setPreferredSize(new java.awt.Dimension(100, 67));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        modeBtn4.setText("PLU");
+        modeBtn4.setMaximumSize(new java.awt.Dimension(100, 67));
+        modeBtn4.setMinimumSize(new java.awt.Dimension(100, 67));
+        modeBtn4.setPreferredSize(new java.awt.Dimension(100, 67));
+        modeBtn4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                modeBtn4ActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        pnlMainButtons.add(jButton4, gridBagConstraints);
+        pnlMainButtons.add(modeBtn4, gridBagConstraints);
 
-        jButton5.setMaximumSize(new java.awt.Dimension(100, 67));
-        jButton5.setMinimumSize(new java.awt.Dimension(100, 67));
-        jButton5.setPreferredSize(new java.awt.Dimension(100, 67));
+        modeBtn5.setMaximumSize(new java.awt.Dimension(100, 67));
+        modeBtn5.setMinimumSize(new java.awt.Dimension(100, 67));
+        modeBtn5.setPreferredSize(new java.awt.Dimension(100, 67));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
-        pnlMainButtons.add(jButton5, gridBagConstraints);
+        pnlMainButtons.add(modeBtn5, gridBagConstraints);
 
-        jButton6.setMaximumSize(new java.awt.Dimension(100, 67));
-        jButton6.setMinimumSize(new java.awt.Dimension(100, 67));
-        jButton6.setPreferredSize(new java.awt.Dimension(100, 67));
+        modeBtn6.setMaximumSize(new java.awt.Dimension(100, 67));
+        modeBtn6.setMinimumSize(new java.awt.Dimension(100, 67));
+        modeBtn6.setPreferredSize(new java.awt.Dimension(100, 67));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
-        pnlMainButtons.add(jButton6, gridBagConstraints);
+        pnlMainButtons.add(modeBtn6, gridBagConstraints);
 
-        btnClear.setText("Clear");
-        btnClear.setMaximumSize(new java.awt.Dimension(100, 67));
-        btnClear.setMinimumSize(new java.awt.Dimension(100, 67));
-        btnClear.setPreferredSize(new java.awt.Dimension(100, 67));
-        btnClear.addActionListener(new java.awt.event.ActionListener() {
+        modeBtn7.setText("Clear");
+        modeBtn7.setMaximumSize(new java.awt.Dimension(100, 67));
+        modeBtn7.setMinimumSize(new java.awt.Dimension(100, 67));
+        modeBtn7.setPreferredSize(new java.awt.Dimension(100, 67));
+        modeBtn7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClearActionPerformed(evt);
+                modeBtn7ActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        pnlMainButtons.add(btnClear, gridBagConstraints);
+        pnlMainButtons.add(modeBtn7, gridBagConstraints);
 
-        jButton8.setMaximumSize(new java.awt.Dimension(100, 67));
-        jButton8.setMinimumSize(new java.awt.Dimension(100, 67));
-        jButton8.setPreferredSize(new java.awt.Dimension(100, 67));
+        modeBtn8.setMaximumSize(new java.awt.Dimension(100, 67));
+        modeBtn8.setMinimumSize(new java.awt.Dimension(100, 67));
+        modeBtn8.setPreferredSize(new java.awt.Dimension(100, 67));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
-        pnlMainButtons.add(jButton8, gridBagConstraints);
+        pnlMainButtons.add(modeBtn8, gridBagConstraints);
 
-        jButton9.setMaximumSize(new java.awt.Dimension(100, 67));
-        jButton9.setMinimumSize(new java.awt.Dimension(100, 67));
-        jButton9.setPreferredSize(new java.awt.Dimension(100, 67));
+        modeBtn9.setMaximumSize(new java.awt.Dimension(100, 67));
+        modeBtn9.setMinimumSize(new java.awt.Dimension(100, 67));
+        modeBtn9.setPreferredSize(new java.awt.Dimension(100, 67));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
-        pnlMainButtons.add(jButton9, gridBagConstraints);
+        pnlMainButtons.add(modeBtn9, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -503,10 +538,16 @@ public class NCRDynakey extends java.awt.Frame {
         });
         pnlNumbers.add(btnNum9, new java.awt.GridBagConstraints());
 
-        jButton14.setMaximumSize(new java.awt.Dimension(100, 67));
-        jButton14.setMinimumSize(new java.awt.Dimension(100, 67));
-        jButton14.setPreferredSize(new java.awt.Dimension(100, 67));
-        pnlNumbers.add(jButton14, new java.awt.GridBagConstraints());
+        modeBtn10.setText("Total");
+        modeBtn10.setMaximumSize(new java.awt.Dimension(100, 67));
+        modeBtn10.setMinimumSize(new java.awt.Dimension(100, 67));
+        modeBtn10.setPreferredSize(new java.awt.Dimension(100, 67));
+        modeBtn10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modeBtn10ActionPerformed(evt);
+            }
+        });
+        pnlNumbers.add(modeBtn10, new java.awt.GridBagConstraints());
 
         btnNum4.setText("4");
         btnNum4.setMaximumSize(new java.awt.Dimension(67, 67));
@@ -547,12 +588,12 @@ public class NCRDynakey extends java.awt.Frame {
         gridBagConstraints.gridy = 1;
         pnlNumbers.add(btnNum6, gridBagConstraints);
 
-        jButton17.setMaximumSize(new java.awt.Dimension(100, 67));
-        jButton17.setMinimumSize(new java.awt.Dimension(100, 67));
-        jButton17.setPreferredSize(new java.awt.Dimension(100, 67));
+        modeBtn11.setMaximumSize(new java.awt.Dimension(100, 67));
+        modeBtn11.setMinimumSize(new java.awt.Dimension(100, 67));
+        modeBtn11.setPreferredSize(new java.awt.Dimension(100, 67));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 1;
-        pnlNumbers.add(jButton17, gridBagConstraints);
+        pnlNumbers.add(modeBtn11, gridBagConstraints);
 
         btnNum1.setText("1");
         btnNum1.setMaximumSize(new java.awt.Dimension(67, 67));
@@ -709,12 +750,14 @@ public class NCRDynakey extends java.awt.Frame {
         this.pack();
     }//GEN-LAST:event_formComponentShown
 
-    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+    private void modeBtn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modeBtn7ActionPerformed
         // TODO add your handling code here:
 
-        this.txtUserInput.setText("");
+        this.modeButtonMap.get("modeBtn7").accept(evt);
+        
+        //this.txtUserInput.setText("");
 
-    }//GEN-LAST:event_btnClearActionPerformed
+    }//GEN-LAST:event_modeBtn7ActionPerformed
 
     private void btnNum0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNum0ActionPerformed
         // TODO add your handling code here:
@@ -782,7 +825,7 @@ public class NCRDynakey extends java.awt.Frame {
         this.txtUserInput.setText(this.txtUserInput.getText() + "9");
     }//GEN-LAST:event_btnNum9ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void modeBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modeBtn4ActionPerformed
         // TODO add your handling code here:
         
         PLUList plu_list = new PLUList();
@@ -809,7 +852,7 @@ public class NCRDynakey extends java.awt.Frame {
         
         
         
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_modeBtn4ActionPerformed
 
     private void btnDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDownActionPerformed
         // -1 if nothing selected
@@ -823,6 +866,10 @@ public class NCRDynakey extends java.awt.Frame {
         
         //this.txtUserInput.setText(String.valueOf(selectedIndex));
     }//GEN-LAST:event_btnDownActionPerformed
+
+    private void modeBtn10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modeBtn10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modeBtn10ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -843,7 +890,6 @@ public class NCRDynakey extends java.awt.Frame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnClear;
     private javax.swing.JButton btnDown;
     private javax.swing.JButton btnDyn1;
     private javax.swing.JButton btnDyn2;
@@ -875,20 +921,21 @@ public class NCRDynakey extends java.awt.Frame {
     private javax.swing.JLabel dynLabel6;
     private javax.swing.JLabel dynLabel7;
     private javax.swing.JLabel dynLabel8;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JButton modeBtn1;
+    private javax.swing.JButton modeBtn10;
+    private javax.swing.JButton modeBtn11;
+    private javax.swing.JButton modeBtn2;
+    private javax.swing.JButton modeBtn3;
+    private javax.swing.JButton modeBtn4;
+    private javax.swing.JButton modeBtn5;
+    private javax.swing.JButton modeBtn6;
+    private javax.swing.JButton modeBtn7;
+    private javax.swing.JButton modeBtn8;
+    private javax.swing.JButton modeBtn9;
     private javax.swing.JPanel pnlArrowButtons;
     private javax.swing.JPanel pnlButtons;
     private javax.swing.JPanel pnlLeft;
