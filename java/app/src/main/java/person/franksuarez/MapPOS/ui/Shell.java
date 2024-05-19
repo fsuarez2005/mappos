@@ -101,7 +101,7 @@ public class Shell {
         String userInput = this.readLine();
 
         // is userInput a UPC?
-        UPCA.isFormattedCorrectlyStatic(userInput);
+        //UPCA.isFormattedCorrectlyStatic(userInput);
 
         // * Append product to current transaction (only one transaction active)
         Product p = new Product();

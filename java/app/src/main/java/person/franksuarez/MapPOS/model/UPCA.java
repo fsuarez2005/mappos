@@ -13,32 +13,8 @@ import person.franksuarez.MapPOS.exception.InvalidFormat;
  * @author franksuarez
  */
 public class UPCA extends UPC {
+
     private int checkDigitIndex = 11;
-    
-    
-    /**
-     * Checks formatting of a UPC. Checks length and the contents of the data.
-     * TODO: split this method up TODO: remove
-     *
-     * @param dataStr
-     * @return True if formatting is correct.
-     */
-    public static boolean isFormattedCorrectlyStatic(String dataStr) {
-        int dataStrLen = dataStr.length();
-
-        // has 12 digits
-        boolean correctLength = 12 == dataStrLen;
-
-        // only has digits
-        boolean onlyHasDigits = true;
-        for (int n = 0; n < dataStrLen; n++) {
-            if (!Character.isDigit(dataStr.charAt(n))) {
-                onlyHasDigits = false;
-                break;
-            }
-        }
-        return (correctLength && onlyHasDigits);
-    }
 
     public UPCA() {
         formatLength = 12;
@@ -50,37 +26,24 @@ public class UPCA extends UPC {
      * @throws person.franksuarez.MapPOS.exception.InvalidFormat
      */
     public int calculateCheckDigit() throws InvalidFormat {
-        
+
         // validate format of charData
-        if (! hasOnlyDigits()) {
+        if (!hasOnlyDigits()) {
             throw new InvalidFormat();
         }
-        if (! isCorrectFormatLength()) {
+        if (!isCorrectFormatLength()) {
             throw new InvalidFormat();
         }
-        
-        
-        
-        
-        
+
         if (this.intData == null) {
             // try to generate intData
             // throws InvalidFormat if a problem
             generateDigitOnlyData();
-            
-            
+
             // if all fails, throw nullpointer
             throw new NullPointerException("Need to call generateDigitOnlyData()");
         }
-        
-        
-        
-        
-        
 
-        
-        
-        
         int checksum = 0;
 
         checksum
@@ -111,8 +74,8 @@ public class UPCA extends UPC {
 
     @Override
     public boolean isValid() {
-        boolean hasOnlyDigits = super.hasOnlyDigits();
         boolean valid = super.isValid();
+        boolean hasOnlyDigits = super.hasOnlyDigits();
         boolean hasValidCheckDigit;
         try {
             hasValidCheckDigit = this.hasValidCheckDigit();
@@ -123,7 +86,6 @@ public class UPCA extends UPC {
         return hasOnlyDigits && valid && hasValidCheckDigit;
     }
 
-
     /**
      *
      *
@@ -131,7 +93,18 @@ public class UPCA extends UPC {
      * @return True if UPC has a good check digit.
      */
     public boolean hasValidCheckDigit() throws InvalidFormat {
+        if (this.intData == null) {
+            throw new NullPointerException();
+        }
+        if (this.intData.length < formatLength) {
+            throw new InvalidFormat();
+        }
+        
+        
+        
         return (this.intData[checkDigitIndex] == calculateCheckDigit());
     }
+
+
 
 }

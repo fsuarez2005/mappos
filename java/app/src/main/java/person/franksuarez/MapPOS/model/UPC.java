@@ -81,7 +81,7 @@ public class UPC {
         return this.formatLength;
     }
 
-    public void fromString(String dataString) throws InvalidFormat {
+    public void fromString(String dataString) {
         this.setCharData(dataString.toCharArray());
     }
 
@@ -139,7 +139,7 @@ public class UPC {
 
     public boolean isValid() {
         
-        return isCorrectFormatLength();
+        return isCorrectFormatLength() && areAllCharsValid();
     }
     
     public boolean isCorrectFormatLength() {

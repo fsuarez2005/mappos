@@ -7,6 +7,7 @@ package person.franksuarez.MapPOS.ui;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
 import person.franksuarez.MapPOS.exception.InvalidFormat;
 import person.franksuarez.MapPOS.model.POS;
 import person.franksuarez.MapPOS.model.UPC;
@@ -22,21 +23,23 @@ public class NCRDynakey extends java.awt.Frame {
     private DefaultListModel<String> transactionListModel = new DefaultListModel<>();
 
     // called when submitting user input
-    public void user_submitUserInput() {
+    private void user_submitUserInput() {
 
         String userInput = this.txtUserInput.getText();
         String entry = userInput + ": ";
         UPCA u = new UPCA();
 
+        u.fromString(userInput);
         try {
-            u.fromString(userInput);
-            u.calculateCheckDigit();
-
-            entry += "Valid";
+            u.generateDigitOnlyData();
         } catch (InvalidFormat ex) {
-            entry += "Invalid";
-
             Logger.getLogger(NCRDynakey.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        if (u.isValid()) {
+            entry += "Valid";
+        } else {
+            entry += "Invalid";
         }
 
         this.transactionListModel.addElement(entry);
@@ -771,6 +774,8 @@ public class NCRDynakey extends java.awt.Frame {
 
                 //new NCRDynakey().setVisible(true);
                 NCRDynakey d = new NCRDynakey();
+                d.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                
                 d.setVisible(true);
 
             }
