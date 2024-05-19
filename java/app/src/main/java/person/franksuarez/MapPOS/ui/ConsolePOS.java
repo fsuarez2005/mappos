@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import person.franksuarez.MapPOS.exception.InvalidFormat;
 import person.franksuarez.MapPOS.model.Command;
 import person.franksuarez.MapPOS.model.Product;
 import person.franksuarez.MapPOS.model.Transaction;
@@ -109,7 +110,13 @@ public class ConsolePOS {
         String userInput = this.readLine();
 
         // is userInput a UPC?
-        UPCA.isFormattedCorrectly(userInput);
+        UPCA u = new UPCA();
+        
+        u.fromString(userInput);
+        
+        
+        
+        //UPCA.isFormattedCorrectlyStatic(userInput);
 
         // * Append product to current transaction (only one transaction active)
         Product p = new Product();

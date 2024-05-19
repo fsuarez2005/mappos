@@ -4,6 +4,8 @@
  */
 package person.franksuarez.MapPOS.model;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import person.franksuarez.MapPOS.exception.InvalidFormat;
 
 /**
@@ -12,28 +14,7 @@ import person.franksuarez.MapPOS.exception.InvalidFormat;
  */
 public class UPCA extends UPC {
 
-    /**
-     * Checks formatting of a UPC. Checks length and the contents of the data.
-     *
-     * @param dataStr
-     * @return True if formatting is correct.
-     */
-    public static boolean isFormattedCorrectly(String dataStr) {
-        int dataStrLen = dataStr.length();
-
-        // has 12 digits
-        boolean correctLength = 12 == dataStrLen;
-
-        // only has digits
-        boolean onlyHasDigits = true;
-        for (int n = 0; n < dataStrLen; n++) {
-            if (!Character.isDigit(dataStr.charAt(n))) {
-                onlyHasDigits = false;
-                break;
-            }
-        }
-        return (correctLength && onlyHasDigits);
-    }
+    private int checkDigitIndex = 11;
 
     public UPCA() {
         formatLength = 12;
@@ -42,26 +23,45 @@ public class UPCA extends UPC {
     /**
      *
      * @return Check digit for the UPC.
+     * @throws person.franksuarez.MapPOS.exception.InvalidFormat
      */
-    public int calculateCheckDigit() {
+    public int calculateCheckDigit() throws InvalidFormat {
+
+        // validate format of charData
+        if (!hasOnlyDigits()) {
+            throw new InvalidFormat();
+        }
+        if (!isCorrectFormatLength()) {
+            throw new InvalidFormat();
+        }
+
+        if (this.intData == null) {
+            // try to generate intData
+            // throws InvalidFormat if a problem
+            generateDigitOnlyData();
+
+            // if all fails, throw nullpointer
+            throw new NullPointerException("Need to call generateDigitOnlyData()");
+        }
+
         int checksum = 0;
 
         checksum
-                = this.data[0]
-                + this.data[2]
-                + this.data[4]
-                + this.data[6]
-                + this.data[8]
-                + this.data[10];
+                = this.intData[0]
+                + this.intData[2]
+                + this.intData[4]
+                + this.intData[6]
+                + this.intData[8]
+                + this.intData[10];
 
         checksum *= 3;
         checksum
                 = checksum
-                + this.data[1]
-                + this.data[3]
-                + this.data[5]
-                + this.data[7]
-                + this.data[9];
+                + this.intData[1]
+                + this.intData[3]
+                + this.intData[5]
+                + this.intData[7]
+                + this.intData[9];
 
         checksum %= 10;
 
@@ -72,40 +72,39 @@ public class UPCA extends UPC {
         return checksum;
     }
 
-    /**
-     *
-     * @param upcStr The UPC as a String 12 digits.
-     * @throws person.franksuarez.MapPOS.exception.InvalidFormat
-     */
-    public void setData(String upcStr) throws InvalidFormat {
-        if (!isFormattedCorrectly(upcStr)) {
-            throw new InvalidFormat();
+    @Override
+    public boolean isValid() {
+        boolean valid = super.isValid();
+        boolean hasOnlyDigits = super.hasOnlyDigits();
+        boolean hasValidCheckDigit;
+        try {
+            hasValidCheckDigit = this.hasValidCheckDigit();
+        } catch (InvalidFormat ex) {
+            Logger.getLogger(UPCA.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
-
-        this.data = new int[upcStr.length()];
-
-        for (int n = 0; n < upcStr.length(); n++) {
-            char c = upcStr.charAt(n);
-            this.data[n] = Character.digit(c, 10);
-        }
+        return hasOnlyDigits && valid && hasValidCheckDigit;
     }
 
     /**
      *
      *
-     * @return The UPC as a int[], similar to how it is stored internally.
-     */
-    public int[] toIntArray() {
-        return this.data;
-    }
-
-    /**
      *
      * @return True if UPC has a good check digit.
      */
-    public boolean hasValidCheckDigit() {
-        int checkDigit = calculateCheckDigit();
-        return (this.data[11] == checkDigit);
+    public boolean hasValidCheckDigit() throws InvalidFormat {
+        if (this.intData == null) {
+            throw new NullPointerException();
+        }
+        if (this.intData.length < formatLength) {
+            throw new InvalidFormat();
+        }
+        
+        
+        
+        return (this.intData[checkDigitIndex] == calculateCheckDigit());
     }
+
+
 
 }

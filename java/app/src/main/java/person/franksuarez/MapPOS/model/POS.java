@@ -4,6 +4,7 @@
  */
 package person.franksuarez.MapPOS.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /** 
@@ -13,13 +14,10 @@ import java.util.List;
  * @author franksuarez
  */
 public class POS {
-    // 
-    private Transaction current;
     private POSState state;
     
     
-    
-    
+    private Transaction current;
     // list of transaction on this local unit
     // could have multiple active, but must select which Transaction
     private List<Transaction> transactions;
@@ -27,8 +25,20 @@ public class POS {
     
     public POS() {}
     
+    
+    public void startTransaction() {
+        this.current = new Transaction();   
+    }
+    
+    public void endTransaction() {
+        this.current = null;
+    }
+    
+    
+    
+    
     public void initialize() {
-        
+        this.transactions = new ArrayList<>();
     }
     
     
@@ -38,6 +48,12 @@ public class POS {
     
     
     public void appendProductToTransaction(Product p) {
+        if (this.current == null) {
+            throw new NullPointerException();
+        }
+        
+        this.current.addEntry(p);
+        
         
         
     }
