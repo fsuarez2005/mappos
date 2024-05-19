@@ -34,4 +34,4 @@ There are certain features that I would love in a retail system.
 
 ## Screenshots
 
-<img src="doc/images/mappos-java-1.png" width="300" />
+<img src="doc/images/mappos-gui-java-2.png" width="300" />
