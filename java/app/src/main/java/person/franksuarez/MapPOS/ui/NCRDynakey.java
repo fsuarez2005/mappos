@@ -4,11 +4,13 @@
  */
 package person.franksuarez.MapPOS.ui;
 
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import person.franksuarez.MapPOS.exception.InvalidFormat;
+import person.franksuarez.MapPOS.model.PLUList;
 import person.franksuarez.MapPOS.model.POS;
 import person.franksuarez.MapPOS.model.UPC;
 import person.franksuarez.MapPOS.model.UPCA;
@@ -145,6 +147,7 @@ public class NCRDynakey extends java.awt.Frame {
         jScrollPane1.setRowHeaderView(null);
 
         jList1.setModel(this.transactionListModel);
+        jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jList1.setVisibleRowCount(10);
         jScrollPane1.setViewportView(jList1);
 
@@ -343,6 +346,11 @@ public class NCRDynakey extends java.awt.Frame {
         pnlArrowButtons.add(btnRight, gridBagConstraints);
 
         btnDown.setText("V");
+        btnDown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDownActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -392,6 +400,11 @@ public class NCRDynakey extends java.awt.Frame {
         jButton4.setMaximumSize(new java.awt.Dimension(100, 67));
         jButton4.setMinimumSize(new java.awt.Dimension(100, 67));
         jButton4.setPreferredSize(new java.awt.Dimension(100, 67));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -676,10 +689,14 @@ public class NCRDynakey extends java.awt.Frame {
     }//GEN-LAST:event_btnLeftActionPerformed
 
     private void btnUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpActionPerformed
-        // TODO add your handling code here:
-        this.transactionListModel.addElement("Up");
-
-
+        // -1 if nothing selected
+        int selectedIndex = this.jList1.getSelectedIndex();
+        if (selectedIndex > 0) {
+            this.jList1.setSelectedIndex(selectedIndex - 1);
+        } 
+        
+        this.jList1.ensureIndexIsVisible(selectedIndex-1);
+        //this.txtUserInput.setText(String.valueOf(selectedIndex));
     }//GEN-LAST:event_btnUpActionPerformed
 
     private void btnDyn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDyn1ActionPerformed
@@ -764,6 +781,48 @@ public class NCRDynakey extends java.awt.Frame {
         // TODO add your handling code here:
         this.txtUserInput.setText(this.txtUserInput.getText() + "9");
     }//GEN-LAST:event_btnNum9ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        
+        PLUList plu_list = new PLUList();
+        try {
+            plu_list.loadFromCSVResource("plu.csv");
+            
+            
+            for (int k: plu_list.keySet()) {
+                this.transactionListModel.addElement(
+                        String.format("%- 20d %s", k,plu_list.get(k))
+                
+                
+                );
+                
+            }
+            
+            
+            
+        } catch (IOException ex) {
+            Logger.getLogger(NCRDynakey.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void btnDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDownActionPerformed
+        // -1 if nothing selected
+        int selectedIndex = this.jList1.getSelectedIndex();
+        
+        // check if at end of list
+        // setSelectedIndex will not set an index past the end of the list
+        this.jList1.setSelectedIndex(selectedIndex + 1);
+        
+        this.jList1.ensureIndexIsVisible(selectedIndex+1 );
+        
+        //this.txtUserInput.setText(String.valueOf(selectedIndex));
+    }//GEN-LAST:event_btnDownActionPerformed
 
     /**
      * @param args the command line arguments
