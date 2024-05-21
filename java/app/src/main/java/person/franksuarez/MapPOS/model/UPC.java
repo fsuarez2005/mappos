@@ -11,7 +11,7 @@ import person.franksuarez.MapPOS.exception.InvalidFormat;
  *
  * @author franksuarez
  */
-public class UPC {
+public class UPC extends GTIN {
     protected char[] charData; // some UPCs have non-numeral characters
     protected int[] intData; // many UPCs have only numeral characters. could be null.
 
@@ -135,6 +135,7 @@ public class UPC {
         return allValid;
     }
 
+    @Override
     public boolean isValid() {
         
         return isCorrectFormatLength() && areAllCharsValid();

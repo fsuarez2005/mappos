@@ -95,12 +95,8 @@ public class UPCA extends UPC {
         if (this.intData.length < formatLength) {
             throw new InvalidFormat();
         }
-        
-        
-        
+
         return (this.intData[checkDigitIndex] == calculateCheckDigit());
     }
-
-
 
 }

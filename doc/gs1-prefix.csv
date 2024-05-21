@@ -1,0 +1,23 @@
+Minimum	Maximum	Description
+0000000	0000000	Used to issue Restricted Circulation Numbers within a company
+0000001	0000099	Unused to avoid collision with GTIN-8
+00001	00009	Used to issue GS1 Company Prefixes from which U.P.C. Company Prefixes can be derived
+0001	0009	Used to issue GS1 Company Prefixes from which U.P.C. Company Prefixes can be derived
+001	019	Used to issue GS1 Company Prefixes from which U.P.C. Company Prefixes can be derived
+02	02	Used to issue Restricted Circulation Numbers within a geographic region
+03	03	Used to issue GS1 Company Prefixes from which U.P.C. Company Prefixes can be derived
+04	04	Used to issue Restricted Circulation Numbers within a company
+05	05	GS1 US reserved for future use
+06	09	Used to issue GS1 Company Prefixes from which U.P.C. Company Prefixes can be derived
+10	19	Used to issue GS1 Company Prefixes
+20	29	Used to issue Restricted Circulation Numbers within a geographic region
+300	950	Used to issue GS1 Company Prefixes
+951	951	Used to issue General Manager Numbers for the EPC General Identifier (GID) scheme as defined
+952	952	Used for demonstrations and examples of the GS1 system
+953	976	Used to issue GS1 Company Prefixes
+977	977	Allocated to ISSN International Centre for serial publications
+978	979	Allocated to International ISBN Agency for books, a portion of 979 sub-allocated to International
+980	980	Used to issue GS1 identification of refund receipts
+981	983	Used to issue GS1 coupon identification for common currency areas
+984	989	Reserved for future GS1 coupon identification
+99	99	Used to issue GS1 coupon identification

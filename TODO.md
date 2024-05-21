@@ -12,11 +12,11 @@
 - [x] Product
 
 ## Java
-- [] Gradle build script
+- [ ] Gradle build script
+
 ### Features
-- [] Text-Based Point of Sale
-- [] Swing GUI
-- 
+- [ ] Text-Based Point of Sale
+- [ ] Swing GUI
 
 ## Android
 
