@@ -100,6 +100,7 @@ public class NCRDynakey extends java.awt.Frame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        pOS1 = new person.franksuarez.MapPOS.beans.POS();
         pnlLeft = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
         txtUserInput = new javax.swing.JTextField();
@@ -936,6 +937,7 @@ public class NCRDynakey extends java.awt.Frame {
     private javax.swing.JButton modeBtn7;
     private javax.swing.JButton modeBtn8;
     private javax.swing.JButton modeBtn9;
+    private person.franksuarez.MapPOS.beans.POS pOS1;
     private javax.swing.JPanel pnlArrowButtons;
     private javax.swing.JPanel pnlButtons;
     private javax.swing.JPanel pnlLeft;

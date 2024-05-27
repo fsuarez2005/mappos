@@ -1,15 +1,6 @@
-/**
- * Console Point of Sale.
- *
- * DESCRIPTION:
- *
- *
- * TASKS:
- * - [x] Use ConsolePOS as the command processor and not a terminal emulator
- * - [x] Test ConsolePOS with an SQLite3 database
- * TODO: Implement Input/Output properly
- *
- *
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package person.franksuarez.MapPOS.ui;
 
@@ -27,15 +18,14 @@ import person.franksuarez.MapPOS.model.Product;
 import person.franksuarez.MapPOS.model.Transaction;
 import person.franksuarez.MapPOS.model.UPCA;
 
-/** Shell is a command interpreter.
- * TODO: Separate ConsolePOS into terminal control and command interpreter.
+/**
  * 
- * 
+ * TODO: Fix
+ *
  * @author franksuarez
  */
-public class Shell {
-
-
+public class TextPOS {
+    
     private String prompt = "";
 
     private HashMap<String, Command> commands;
@@ -46,7 +36,7 @@ public class Shell {
 
     private BufferedReader reader;
 
-    public Shell() {
+    public TextPOS() {
     }
 
     public String getPrompt() {
@@ -63,8 +53,9 @@ public class Shell {
         this.state = POSState.IDLE;
         //this.commands = new HashMap<>();
         createCommands();
-        
+
         this.reader = new BufferedReader(new InputStreamReader(System.in));
+
     }
 
     /**
@@ -77,7 +68,7 @@ public class Shell {
         try {
             line = this.reader.readLine();
         } catch (IOException ex) {
-            Logger.getLogger(Shell.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TextPOS.class.getName()).log(Level.SEVERE, null, ex);
         }
         return line;
     }
@@ -100,8 +91,11 @@ public class Shell {
         String userInput = this.readLine();
 
         // is userInput a UPC?
-        //UPCA.isFormattedCorrectlyStatic(userInput);
+        UPCA u = new UPCA();
 
+        u.fromString(userInput);
+
+        //UPCA.isFormattedCorrectlyStatic(userInput);
         // * Append product to current transaction (only one transaction active)
         Product p = new Product();
 
@@ -173,7 +167,7 @@ public class Shell {
         if (this.commands.containsKey(token)) {
             this.commands.get(token).accept(token);
         } else {
-            this.printf("Command not found: %s%n",token);
+            this.printf("Command not found: %s%n", token);
         }
     }
 
@@ -193,27 +187,39 @@ public class Shell {
             // evaluate
             //this.evaluate(userInput);
             this.evaluateToken(userInput);
-            
-            
+
             // print
         }
     }
 
     public void createCommands() {
         this.commands = new HashMap<>();
-        this.commands.put("about", new Command("about",(x) -> {
+        this.commands.put("about", new Command("about", (x) -> {
             this.printf("About ConsolePOS%n"
                     + "fsuarez2007@gmail.com%n"
                     + "");
-        }));
-        
-        this.commands.put("quit",new Command("quit", (x) -> {
+        }).setShortDescription("Display about information"));
+
+        this.commands.put("quit", new Command("quit", (x) -> {
             this.run = false;
         }));
-        
+
         this.commands.put("idle", new Command("idle", (x) -> {
             this.state = POSState.IDLE;
         }));
+
+        this.commands.put("transaction", new Command("transaction", (t) -> {
+            this.state = POSState.TRANSACTION;
+
+        }));
+
+        this.commands.put("commands", new Command("commands", (t) -> {
+            this.printf("Commands:%n");
+            for (String name : this.commands.keySet()) {
+                this.printf("%s:\t\t%s%n", name, this.commands.get(name).getShortDescription());
+            }
+        }));
+
     }
 
     public void start() {
@@ -221,10 +227,8 @@ public class Shell {
         this.loop();
     }
 
-    
-    // TODO: stub: Token
     class Token {
-
+        // TODO: stub: Token
     }
 
     private enum POSState {
