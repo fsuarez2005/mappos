@@ -76,8 +76,8 @@ public class AddressTest {
         instance.addValidIdentifier("houseNumber");
         instance.addValidIdentifier("streetName");
         
-        instance.setFormatCodeIdentifier("%h", "houseNumber");
-        instance.setFormatCodeIdentifier("%s", "streetName");
+        instance.setFormatCode("%h", "houseNumber");
+        instance.setFormatCode("%s", "streetName");
         
         
         instance.setContent("houseNumber", "123");
