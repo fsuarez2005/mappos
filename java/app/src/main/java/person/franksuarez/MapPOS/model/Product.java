@@ -1,6 +1,5 @@
 package person.franksuarez.MapPOS.model;
 
-import org.checkerframework.framework.qual.IgnoreInWholeProgramInference;
 import person.franksuarez.MapPOS.exception.InvalidFormat;
 
 /**
@@ -8,16 +7,13 @@ import person.franksuarez.MapPOS.exception.InvalidFormat;
  * @author franksuarez
  */
 public class Product {
-    
     /** Delta used for price and cost so rounding is not used.
      *
      * Rounding may cause problems in the future.
      * 
      * 
      */
-    public final static double delta = 0.005;
-    
-    
+    public final static double DELTA = 0.005;
     
     private String name;
     private String description;
@@ -48,7 +44,6 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
-
     }
 
     public double getCost() {
@@ -57,7 +52,6 @@ public class Product {
 
     public void setCost(double cost) {
         this.cost = cost;
-
     }
 
     public int getVendorId() {
@@ -66,20 +60,17 @@ public class Product {
 
     public void setVendorId(int vendorId) {
         this.vendorId = vendorId;
-
     }
 
     public double getPrice() {
         return price;
     }
-
+    
     public void setPrice(double price) {
         if (price < 0.0) {
             throw new IllegalArgumentException("Price must be non-negative.");
         }
-
         this.price = price;
-
     }
 
     public void setUPC(String upcString) throws InvalidFormat {

@@ -7,6 +7,7 @@
  */
 package person.franksuarez.MapPOS.model;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -14,11 +15,31 @@ import java.util.List;
  * @author franksuarez
  */
 public class Person {
+    public static enum Sex {
+        MALE,
+        FEMALE,
+        INTERSEX
+    };
+    
+    public static enum Gender {
+        MASCULINE,
+        FEMININE,
+        NONBINARY
+    }
+    
+    
+    private String nativeLanguage;
+    
+    
+    private String prefix;
+    private String suffix;
+   
     private String firstName;
+    private String middleName;
     private String lastName;
-    private String dateOfBirth;
-    private String gender;
-    private String sex;
+    private LocalDate dateOfBirth;
+    private Gender gender;
+    private Sex sex;
     private double height;
     private double weight;
     private int photo;

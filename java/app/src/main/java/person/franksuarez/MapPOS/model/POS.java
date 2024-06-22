@@ -12,6 +12,8 @@ import java.util.List;
 public class POS {
     private Journal journal;
     
+    private Employee currentOperator;
+    
     
     
     

@@ -141,7 +141,7 @@ public class TransactionTest {
         System.out.printf("Result = %f%n", result);
         System.out.printf("delta = %f%n", Math.abs(expResult - result));
 
-        assertEquals(expResult, result, Product.delta);
+        assertEquals(expResult, result, Product.DELTA);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
