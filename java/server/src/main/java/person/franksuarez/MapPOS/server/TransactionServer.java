@@ -63,7 +63,7 @@ public class TransactionServer implements Runnable {
         @Override
         public void run() {
             System.out.println("ConnectionHandler: processing new connection...");
-
+            
 
             while (true) {
 

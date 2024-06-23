@@ -4,11 +4,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import person.franksuarez.MapPOS.common.exception.InvalidFormat;
 
+
+// TODO: implement serialization
 /**
  *
  * @author franksuarez
  */
-public class UPCA extends UPC {
+public class UPCA extends UPC implements java.io.Serializable {
 
     private int checkDigitIndex = 11;
 

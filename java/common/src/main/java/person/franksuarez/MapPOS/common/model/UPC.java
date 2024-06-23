@@ -7,18 +7,21 @@ package person.franksuarez.MapPOS.common.model;
 import java.util.function.Predicate;
 import person.franksuarez.MapPOS.common.exception.InvalidFormat;
 
+// TODO: implement serialization
+
 /**
  *
  * @author franksuarez
  */
-public class UPC extends GTIN {
+public class UPC extends GTIN implements java.io.Serializable {
     protected char[] charData; // some UPCs have non-numeral characters
     protected int[] intData; // many UPCs have only numeral characters. could be null.
 
     protected int formatLength = 0;
     protected boolean formatOnlyDigits = false;
 
-    protected Predicate<Character> isCharValid; // returns true if char is valid for this UPC
+    // TODO: causes problems for serialization. 
+    transient protected Predicate<Character> isCharValid; // returns true if char is valid for this UPC
 
     //private boolean isValid = false;
     public UPC() {

@@ -22,9 +22,7 @@ public class Message implements java.io.Serializable {
     public Command messageCommand;
     
     
-    public Message() {
-        
-    }
+    public Message() {}
     
     
 }
