@@ -35,10 +35,19 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'person.franksuarez.MapPOS.client.ui.NCRDynakey'
+    mainClass = 'person.franksuarez.MapPOS.client.ui.TestClient'
 }
 
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+jar {
+    manifest {
+        attributes( "Main-Class": "person.franksuarez.MapPOS.client.ui.TestClient" )
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
 }
