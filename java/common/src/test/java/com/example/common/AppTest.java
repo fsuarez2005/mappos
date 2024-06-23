@@ -3,6 +3,7 @@
  */
 package com.example.common;
 
+import person.franksuarez.MapPOS.common.model.App;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

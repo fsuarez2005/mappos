@@ -27,6 +27,8 @@ dependencies {
     // This dependency is used by the application.
 
     implementation libs.googleGuava
+
+    implementation project(':common')
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
@@ -46,7 +48,6 @@ jar {
         attributes(
             'Main-Class': 'person.franksuarez.MapPOS.server.App'
         )
-
     }
 }
 

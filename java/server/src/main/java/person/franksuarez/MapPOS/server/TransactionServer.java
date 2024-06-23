@@ -4,7 +4,7 @@
  * 
  * 
  */
-package com.example.common;
+package person.franksuarez.MapPOS.server;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
