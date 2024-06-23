@@ -12,3 +12,6 @@ plugins {
 
 rootProject.name = 'MapPOS'
 include('app')
+include('common')
+include('server')
+include('client')
