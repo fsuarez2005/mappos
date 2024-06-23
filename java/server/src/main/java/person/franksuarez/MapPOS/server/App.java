@@ -3,6 +3,9 @@
  */
 package person.franksuarez.MapPOS.server;
 
+import person.franksuarez.MapPOS.common.model.Product;
+import person.franksuarez.MapPOS.common.model.Transaction;
+
 public class App {
     public String getGreeting() {
         return "Hello World!";
@@ -10,5 +13,12 @@ public class App {
 
     public static void main(String[] args) {
         System.out.println(new App().getGreeting());
+        
+        
+        Transaction t = new Transaction();
+        Product p = new Product();
+        
+        t.addEntry(p);
+        
     }
 }

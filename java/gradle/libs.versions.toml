@@ -1,14 +1,14 @@
 [versions]
-junitJupiterVer = "5.10.1"
+junitJupiterVer = "5.10.0"
 googleGuavaVer = "31.1-jre"
 slf4jVer = "2.0.13"
 sqliteJdbcVer = "3.45.3.0"
 
 [libraries]
-junitJupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junitJupiterVer" }
-googleGuava = { module = "com.google.guava:guava", version.ref = "googleGuavaVer" } 
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junitJupiterVer" }
+google-guava = { module = "com.google.guava:guava", version.ref = "googleGuavaVer" } 
 slf4j = { module = "org.slf4j:slf4j-api", version.ref = "slf4jVer" }
-sqliteJdbc = { module = "org.xerial:sqlite-jdbc", version.ref = "sqliteJdbcVer" }
+sqlite-jdbc = { module = "org.xerial:sqlite-jdbc", version.ref = "sqliteJdbcVer" }
 
 
 
