@@ -42,7 +42,7 @@ public class SerialTest {
     
     @Test
     public void test1() {
-        UPCA o = new UPCA();
+        Product o = new Product();
         
         
         boolean o_serializable = isSerializable(o);

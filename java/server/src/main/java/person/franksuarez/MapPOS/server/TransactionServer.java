@@ -6,21 +6,18 @@
  */
 package person.franksuarez.MapPOS.server;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-import java.io.StreamCorruptedException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import person.franksuarez.MapPOS.common.model.Message;
+import person.franksuarez.MapPOS.common.model.Product;
+import person.franksuarez.MapPOS.common.model.Transaction;
 
 /**
  * Server for collecting completed transactions from POS clients.
@@ -39,57 +36,99 @@ public class TransactionServer implements Runnable {
         private Socket request;
         private TransactionServer server;
 
+        private ObjectOutputStream requestOOS;
+        private ObjectInputStream requestOIS;
+
         // model after RequestHandler
         public ConnectionHandler(Socket request, TransactionServer server) {
             this.request = request;
             this.server = server;
         }
 
-        public void processMessage(Message m) {
+        /**
+         * Reads object from socket and deserialize.
+         *
+         * @return
+         */
+        public Object readObject() throws IOException, ClassNotFoundException {
+            Object output = this.requestOIS.readObject();
+
+            return output;
+        }
+
+        public void writeObject(Object o) throws IOException {
+            this.requestOOS.writeObject(o);
+        }
+
+        private void setUpObjectReaderWriter() throws IOException {
+            this.requestOOS = new ObjectOutputStream(this.request.getOutputStream());
+            this.requestOIS = new ObjectInputStream(this.request.getInputStream());
+        }
+
+        public void processMessage(Message m) throws IOException, ClassNotFoundException {
             System.out.println("Processing Message");
-            
+
             switch (m.messageCommand) {
                 case DEBUG -> {
-                    System.out.printf("Client said: %s%n",m.debugString);
+                    System.out.printf("Client said: %s%n", m.debugString);
                 }
-                
-                default -> {
+                case INQUIRY -> {
+                    // send message with response to inquiry
+                    
+                    
                     
                 }
-                
+                case TRANSACTION -> {
+                    // read object from stream
+                    // should be a Transaction
+                    Transaction t = (Transaction) this.readObject();
+                    System.out.println("Received transaction");
+                    
+                    System.out.println("Products:");
+                    for (Product p: t.getEntries()) {
+                        System.out.printf("Item: %s%n",p.getName());
+                    }
+                    
+                    System.out.printf("Subtotal: %f%n",t.getSubTotal());
+
+                    // process transaction
+                }
+
+                default -> {
+
+                }
+
             }
         }
 
         @Override
         public void run() {
-            System.out.println("ConnectionHandler: processing new connection...");
-            
+            try {
+                this.setUpObjectReaderWriter();
 
-            while (true) {
+                System.out.println("ConnectionHandler: processing new connection...");
+                boolean running = true;
 
-                try {
-                    ObjectOutputStream oos = new ObjectOutputStream(this.request.getOutputStream());
+                while (running) {
 
-                    // WARNING: should validate any incoming data
-                    ObjectInputStream ois = new ObjectInputStream(this.request.getInputStream());
-
-                    // will read until EOFException
-                    Message m = (Message) ois.readObject();
+                    // get object from stream
+                    // assume object is message
+                    Message m = (Message) this.readObject();
                     this.processMessage(m);
-                    
 
-                } catch (IOException ex) {
-                    // just close socket
-                    
-                    
-                    Logger.getLogger(TransactionServer.class.getName()).log(Level.SEVERE, null, ex);
-                    return;
-                } catch (ClassNotFoundException ex) {
-                    // just close socket
-                    
-                    Logger.getLogger(TransactionServer.class.getName()).log(Level.SEVERE, null, ex);
-                    return;
                 }
+
+            } catch (IOException ex) {
+                if (ex instanceof java.io.EOFException) {
+                    
+                } else if (ex instanceof java.net.SocketException) {
+                    
+                } else {
+                    Logger.getLogger(TransactionServer.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(TransactionServer.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         }

@@ -21,8 +21,10 @@ public class Message implements java.io.Serializable {
     public String debugString;
     public Command messageCommand;
     
-    
     public Message() {}
+    public Message(Command messageCommand) {
+        this.messageCommand = messageCommand;
+    }
     
     
 }

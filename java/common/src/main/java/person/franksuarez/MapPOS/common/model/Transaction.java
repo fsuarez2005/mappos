@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author franksuarez
  */
-public class Transaction {
+public class Transaction implements java.io.Serializable {
     private double taxPercentage = 6.0;
     private List<Product> entries;
     
@@ -29,6 +29,10 @@ public class Transaction {
     
     public Product getEntry(int index) {
         return this.entries.get(index);
+    }
+    
+    public List<Product> getEntries() {
+        return this.entries;
     }
     
     public double getSubTotal() {

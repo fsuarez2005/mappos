@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package person.franksuarez.MapPOS.client.ui;
 
 import java.io.BufferedReader;
@@ -14,13 +11,19 @@ import java.net.SocketAddress;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import person.franksuarez.MapPOS.common.model.Message;
+import person.franksuarez.MapPOS.common.model.Product;
+import person.franksuarez.MapPOS.common.model.Transaction;
 
 /**
  *
  * @author franksuarez
  */
 public class TestClient {
-
+    private Socket serverConnection;
+    private SocketAddress serverAddress;
+    
+    
+    
     public void shell() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         
@@ -50,6 +53,42 @@ public class TestClient {
     }
     
     
+    public void sendTestTransaction() throws IOException {
+        ObjectOutputStream oos = new ObjectOutputStream(this.serverConnection.getOutputStream());
+        
+        Message transactionMessage = new Message(Message.Command.TRANSACTION);
+        
+        // create test transaction
+        Transaction newTransaction = new Transaction();
+        Product p1 = new Product();
+        p1.setName("Pepsi");
+        p1.setPrice(2.00);
+        newTransaction.addEntry(p1);
+        
+        Product p2 = new Product();
+        p2.setName("Mountain Dew");
+        p2.setPrice(2.00);
+        newTransaction.addEntry(p2);
+        
+        
+        
+        
+        
+        
+        
+        oos.writeObject(transactionMessage);
+        oos.writeObject(newTransaction);
+        oos.flush();
+        oos.close();
+        
+        
+    }
+    
+    public void connect() throws IOException {
+        this.serverAddress = new InetSocketAddress("localhost",8080);
+        this.serverConnection = new Socket();
+        this.serverConnection.connect(this.serverAddress);
+    }
 
     public void sendMessage(Message m) {
         try {
@@ -73,6 +112,10 @@ public class TestClient {
 
     public static void main(String[] args) throws IOException {
         TestClient tc = new TestClient();
-        tc.shell();
+        
+        tc.connect();
+        tc.sendTestTransaction();
+        
+        
     }
 }

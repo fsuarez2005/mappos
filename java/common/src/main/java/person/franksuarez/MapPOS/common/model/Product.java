@@ -6,7 +6,7 @@ import person.franksuarez.MapPOS.common.exception.InvalidFormat;
  *
  * @author franksuarez
  */
-public class Product {
+public class Product implements java.io.Serializable {
     /** Delta used for price and cost so rounding is not used.
      *
      * Rounding may cause problems in the future.
