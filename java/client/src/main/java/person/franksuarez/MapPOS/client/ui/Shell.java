@@ -17,15 +17,22 @@ import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
+/** Subclassable Shell.
  *
  * @author franksuarez
  */
 public class Shell {
     protected String prompt = "> ";
+    
+    // NOTE: Shell should be simple.
     protected Consumer<String> commandProcessor;
     protected HashMap<String, person.franksuarez.MapPOS.common.model.Command> commands;
+    
+    
+    
     protected boolean running = true;
+    
+    
     protected BufferedReader reader;
     protected BufferedWriter writer;
 
