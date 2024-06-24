@@ -35,7 +35,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'person.franksuarez.MapPOS.client.ui.TestClient'
+    mainClass = 'person.franksuarez.MapPOS.client.App'
 }
 
 tasks.named('test') {
@@ -45,7 +45,7 @@ tasks.named('test') {
 
 jar {
     manifest {
-        attributes( "Main-Class": "person.franksuarez.MapPOS.client.ui.TestClient" )
+        attributes( "Main-Class": "person.franksuarez.MapPOS.client.App" )
     }
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
