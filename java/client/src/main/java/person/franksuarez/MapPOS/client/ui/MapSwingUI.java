@@ -4,12 +4,34 @@
  */
 package person.franksuarez.MapPOS.client.ui;
 
+import java.awt.event.KeyEvent;
+import java.util.logging.Logger;
+
 /**
  *
  * @author franksuarez
  */
 public class MapSwingUI extends javax.swing.JFrame {
 
+    private static final Logger LOG = Logger.getLogger(MapSwingUI.class.getName());
+    
+    private void displayMouseEvent(String evtDesc, java.awt.event.MouseEvent evt) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[EVENT]: Mouse: Description: ").append(evtDesc).append(": Location: ").append(evt.getPoint());
+        
+        
+        System.out.println(sb.toString());
+        
+        
+    }
+    
+    
+    
+    
+    MapSwingUIState state;
+    boolean mousePressed;
+    
+    
     /**
      * Creates new form MapSwingUI
      */
@@ -26,21 +48,87 @@ public class MapSwingUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnMove = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
+
+        btnMove.setText("Move Me");
+        btnMove.setFocusable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 773, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(257, 257, 257)
+                .addComponent(btnMove, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(302, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 522, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addComponent(btnMove, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(277, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+
+        int dx = 0;
+        int dy = 0;
+        int multiplier = 5;
+        
+        
+        switch (evt.getKeyCode()) {
+            case KeyEvent.VK_UP -> {
+                // dx = 0;
+                dy = -1;
+            }
+            case KeyEvent.VK_DOWN -> {
+                // dx = 0
+                dy = 1;
+            }
+            case KeyEvent.VK_LEFT -> {
+                dx = -1;
+                // dy = 0
+            }
+            case KeyEvent.VK_RIGHT -> {
+                dx = 1;
+                // dy = 0
+            }
+            default -> {
+                
+                
+            }
+        }
+        
+        btnMove.setLocation(btnMove.getLocation().x + (dx*multiplier),btnMove.getLocation().y + (dy*multiplier));
+        
+        
+        
+        
+    }//GEN-LAST:event_formKeyPressed
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        // TODO add your handling code here:
+        displayMouseEvent("mouseDragged", evt);
+        
+        
+        
+    }//GEN-LAST:event_formMouseDragged
 
     /**
      * @param args the command line arguments
@@ -78,5 +166,6 @@ public class MapSwingUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnMove;
     // End of variables declaration//GEN-END:variables
 }
