@@ -4,6 +4,7 @@
  */
 package person.franksuarez.MapPOS.client.ui;
 
+import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.util.logging.Logger;
 
@@ -14,19 +15,15 @@ import java.util.logging.Logger;
 public class MapSwingUI extends javax.swing.JFrame {
 
     private static final Logger LOG = Logger.getLogger(MapSwingUI.class.getName());
+
+    private Point previousMousePoint;
+
     
     private void displayMouseEvent(String evtDesc, java.awt.event.MouseEvent evt) {
         StringBuilder sb = new StringBuilder();
         sb.append("[EVENT]: Mouse: Description: ").append(evtDesc).append(": Location: ").append(evt.getPoint());
-        
-        
         System.out.println(sb.toString());
-        
-        
     }
-    
-    
-    
     
     MapSwingUIState state;
     boolean mousePressed;
@@ -54,6 +51,9 @@ public class MapSwingUI extends javax.swing.JFrame {
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 formMouseDragged(evt);
+            }
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                formMouseMoved(evt);
             }
         });
         addKeyListener(new java.awt.event.KeyAdapter() {
@@ -109,10 +109,7 @@ public class MapSwingUI extends javax.swing.JFrame {
                 dx = 1;
                 // dy = 0
             }
-            default -> {
-                
-                
-            }
+            default -> {}
         }
         
         btnMove.setLocation(btnMove.getLocation().x + (dx*multiplier),btnMove.getLocation().y + (dy*multiplier));
@@ -126,9 +123,39 @@ public class MapSwingUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         displayMouseEvent("mouseDragged", evt);
         
+        // get last point
+        
+        // get current point
+        
+        // check for change
+        double dx = evt.getX()-previousMousePoint.getX();
+        double dy = evt.getY()-previousMousePoint.getY();
+        
+        
+        // adjust widget by this change
+        Point btnMoveLocation = btnMove.getLocation();
+        btnMoveLocation.translate((int) dx, (int) dy);
+        btnMove.setLocation(btnMoveLocation);
+        
+        
+        // set current point to previous point
+        previousMousePoint = new Point(evt.getX(), evt.getY());
+        
+
         
         
     }//GEN-LAST:event_formMouseDragged
+
+    private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
+        // TODO add your handling code here:
+        displayMouseEvent("mouseMove", evt);
+        
+        
+        previousMousePoint = new Point(evt.getX(), evt.getY());
+        
+        
+        //System.out.printf("x: %d / y: %d%n",xPress,yPress);
+    }//GEN-LAST:event_formMouseMoved
 
     /**
      * @param args the command line arguments
