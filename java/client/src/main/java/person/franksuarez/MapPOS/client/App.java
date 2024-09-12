@@ -12,7 +12,6 @@ import person.franksuarez.MapPOS.client.ui.TextPOS;
 enum SubApp {
     TEXTPOS,
     MAPSWINGUI,
-    
 }
 
 
@@ -31,12 +30,9 @@ public class App {
             }
             case MAPSWINGUI -> {
                 MapSwingUI m = new MapSwingUI();
-                
                 m.setVisible(true);
             }
-            default -> {
-                
-            }
+            default -> {}
         }
         
         

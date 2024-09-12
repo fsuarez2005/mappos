@@ -18,17 +18,15 @@ public class MapSwingUI extends javax.swing.JFrame {
 
     private Point previousMousePoint;
 
-    
     private void displayMouseEvent(String evtDesc, java.awt.event.MouseEvent evt) {
         StringBuilder sb = new StringBuilder();
         sb.append("[EVENT]: Mouse: Description: ").append(evtDesc).append(": Location: ").append(evt.getPoint());
         System.out.println(sb.toString());
     }
-    
+
     MapSwingUIState state;
     boolean mousePressed;
-    
-    
+
     /**
      * Creates new form MapSwingUI
      */
@@ -90,8 +88,7 @@ public class MapSwingUI extends javax.swing.JFrame {
         int dx = 0;
         int dy = 0;
         int multiplier = 5;
-        
-        
+
         switch (evt.getKeyCode()) {
             case KeyEvent.VK_UP -> {
                 // dx = 0;
@@ -109,27 +106,23 @@ public class MapSwingUI extends javax.swing.JFrame {
                 dx = 1;
                 // dy = 0
             }
-            default -> {}
+            default -> {
+            }
         }
-        
-        btnMove.setLocation(btnMove.getLocation().x + (dx*multiplier),btnMove.getLocation().y + (dy*multiplier));
-        
-        
-        
-        
+
+        Point btnMoveLocation = btnMove.getLocation();
+        btnMoveLocation.translate(dx * multiplier, dy * multiplier);
+        btnMove.setLocation(btnMoveLocation);
     }//GEN-LAST:event_formKeyPressed
 
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         // TODO add your handling code here:
-        displayMouseEvent("mouseDragged", evt);
+        //displayMouseEvent("mouseDragged", evt);
+
+        // get last point // get current point // check for change
+        double dx = evt.getX() - previousMousePoint.getX();
+        double dy = evt.getY() - previousMousePoint.getY();
         
-        // get last point
-        
-        // get current point
-        
-        // check for change
-        double dx = evt.getX()-previousMousePoint.getX();
-        double dy = evt.getY()-previousMousePoint.getY();
         
         
         // adjust widget by this change
@@ -138,23 +131,15 @@ public class MapSwingUI extends javax.swing.JFrame {
         btnMove.setLocation(btnMoveLocation);
         
         
+        
         // set current point to previous point
         previousMousePoint = new Point(evt.getX(), evt.getY());
-        
-
-        
-        
     }//GEN-LAST:event_formMouseDragged
 
     private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
         // TODO add your handling code here:
-        displayMouseEvent("mouseMove", evt);
-        
-        
+        //displayMouseEvent("mouseMove", evt);
         previousMousePoint = new Point(evt.getX(), evt.getY());
-        
-        
-        //System.out.printf("x: %d / y: %d%n",xPress,yPress);
     }//GEN-LAST:event_formMouseMoved
 
     /**
