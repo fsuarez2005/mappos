@@ -1,5 +1,6 @@
 # Transaction
 
+## New Transaction
 * Idle
 * Create new Transaction
 * SCANNING: Scan UPC
@@ -12,3 +13,5 @@
 * Calculate total for transaction.
 * Complete Transaction
 * Idle
+
+
