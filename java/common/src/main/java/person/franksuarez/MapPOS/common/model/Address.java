@@ -17,7 +17,7 @@ public class Address {
     //  - Identifying content in an address may be unique to a location.
     //  - Address content and format is often standardized.
     //  - Address content should be extractable and changable without affecting other content.
-    //  - 
+    //  - Data structure should be flexible to allow for future changes.
 
     /**
      *
@@ -66,7 +66,7 @@ public class Address {
 
     /** Returns a String using the format String fmt.
      *
-     * @param fmt Format String
+     * @param fmtString 
      * @return Formatted String
      */
     public String format(String fmtString) {
