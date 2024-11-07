@@ -38,9 +38,10 @@ There are certain features that I would love in a retail system.
   * Customizations transfer to any POS.
 * Predictive text.
   * Reduce typing.
+* Offline-First
+  * Features have at least a minimal backup.
 
 ### Enchancement
-* Product knowledgebase.
 * Product knowledgebase, including employee submitted information.
 * Floormap/Planogram viewer/editor.
 * Unknown UPC handling.
