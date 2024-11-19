@@ -3,12 +3,24 @@
  */
 package person.franksuarez.MapPOS.textclient;
 
-public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+public class App {
+    
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        System.out.println("TextPOS");
+        
+        
+        TextPOS tpos = new TextPOS();
+        
+        try {
+            tpos.start();
+        } catch (IOException ex) {
+            System.out.println("error");
+            
+            //Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
