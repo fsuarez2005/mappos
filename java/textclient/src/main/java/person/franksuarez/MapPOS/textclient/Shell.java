@@ -23,6 +23,9 @@ import java.util.logging.Logger;
  * @author franksuarez
  */
 public class Shell {
+    private static final Logger LOG = Logger.getLogger(Shell.class.getName());
+    
+    
     protected String prompt = "> ";
     
     // NOTE: Shell should be simple.
@@ -88,7 +91,7 @@ public class Shell {
     }
 
     public final String readLine() {
-        System.out.println("Shell.readLine");
+        LOG.entering("Shell", "readLine");
         
         String line = "";
         try {

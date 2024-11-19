@@ -4,15 +4,72 @@
 package person.franksuarez.MapPOS.textclient;
 
 import java.io.IOException;
+import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class App {
+
+    private static final Logger LOG = Logger.getLogger(App.class.getName());
+
+    public App() {
+        
+    }
+    
+    
+    
+    public static void loggerTest() {
+        Logger globalLogger = Logger.getGlobal();
+        Handler[] globalLoggerHandlers = globalLogger.getHandlers();
+        //globalLoggerHandlers[0].setLevel(Level.FINEST);
+        System.out.printf("# Global Logger Handlers: %d%n",globalLoggerHandlers.length);
+        
+        
+        Logger o = Logger.getAnonymousLogger();
+        o = o.getParent();
+        
+        
+        System.out.printf("%s%n", o);
+        
+        
+        
+        System.out.printf("Name: %s%n",o.getName());
+        o.setLevel(Level.FINEST);
+        
+        
+        
+        System.out.printf("Log Level: %s%n",o.getLevel());
+        
+        Handler[] handlers = o.getHandlers();
+        handlers[0].setLevel(Level.FINEST);
+        
+        
+        
+        System.out.printf("# Handlers: %d%n", handlers.length);
+        
+        for (Handler h: o.getHandlers()) {
+            System.out.printf("Handler: %s%n", h.toString());
+        }
+        
+        
+        o.finest("FINEST");
+        o.finer("FINER");
+        o.fine("FINE");
+        o.info("INFO");
+        o.warning("WARNING");
+        o.severe("SEVERE");
+        
+       
+        
+    }
+    
     
     public static void main(String[] args) {
-        System.out.println("TextPOS");
+        Utility.configRootLoggerLevel(Level.FINER);
+        //LOG.setLevel(Level.ALL);
         
-        
+        LOG.entering("App", "main");
+
         TextPOS tpos = new TextPOS();
         
         try {

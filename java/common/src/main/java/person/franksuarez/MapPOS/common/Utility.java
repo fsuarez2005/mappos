@@ -20,7 +20,7 @@ public class Utility {
             new ObjectOutputStream(new ByteArrayOutputStream()).writeObject(o);
         } catch (IOException ex) {
             output = false;
-            //Logger.getLogger(SerialTest.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
         return output;
     }

@@ -36,6 +36,10 @@ public class TextPOS extends Shell {
     private ObjectOutputStream socketOOS;
     private ObjectInputStream socketOIS;
 
+    public TextPOS() {
+        
+    }
+
     
     /** Print status information for debugging reasons.
      * 
