@@ -6,11 +6,10 @@ package person.franksuarez.MapPOS.client;
 
 import java.io.IOException;
 import person.franksuarez.MapPOS.client.ui.MapSwingUI;
-import person.franksuarez.MapPOS.client.ui.TextPOS;
 
 
-enum SubApp {
-    TEXTPOS,
+
+enum SubApp {    
     MAPSWINGUI,
 }
 
@@ -21,13 +20,9 @@ enum SubApp {
  */
 public class App {
     public static void main(String[] args) throws IOException {
-        SubApp n = SubApp.TEXTPOS;
+        SubApp n = SubApp.MAPSWINGUI;
         
         switch (n) {
-            case TEXTPOS -> {
-                TextPOS tpos = new TextPOS();
-                tpos.start();
-            }
             case MAPSWINGUI -> {
                 MapSwingUI m = new MapSwingUI();
                 m.setVisible(true);
