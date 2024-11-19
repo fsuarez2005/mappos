@@ -4,7 +4,6 @@
  */
 package person.franksuarez.MapPOS.client.ui;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.function.Consumer;
@@ -15,7 +14,6 @@ import javax.swing.JFrame;
 import person.franksuarez.MapPOS.common.exception.InvalidFormat;
 import person.franksuarez.MapPOS.common.model.PLUList;
 import person.franksuarez.MapPOS.common.model.POS;
-import person.franksuarez.MapPOS.common.model.UPC;
 import person.franksuarez.MapPOS.common.model.UPCA;
 
 /**

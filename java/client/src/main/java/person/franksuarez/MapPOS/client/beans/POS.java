@@ -1,8 +1,6 @@
 
 package person.franksuarez.MapPOS.client.beans;
 
-import java.beans.*;
-
 
 /**
  *

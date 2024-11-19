@@ -18,12 +18,11 @@ repositories {
 dependencies {
     // Use JUnit Jupiter for testing.
     testImplementation libs.junit.jupiter
+
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
-    
-
-    implementation project(':common')
-
+    // This dependency is used by the application.
+    //implementation libs.guava
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
@@ -35,19 +34,10 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'person.franksuarez.MapPOS.client.ui.NCRDynakey'
+    mainClass = 'person.franksuarez.MapPOS.textclient.App'
 }
 
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
-}
-
-jar {
-    manifest {
-        attributes( "Main-Class": "person.franksuarez.MapPOS.client.App" )
-    }
-    from {
-        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
-    }
 }

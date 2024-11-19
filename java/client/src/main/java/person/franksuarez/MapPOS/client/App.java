@@ -21,7 +21,7 @@ enum SubApp {
  */
 public class App {
     public static void main(String[] args) throws IOException {
-        SubApp n = SubApp.MAPSWINGUI;
+        SubApp n = SubApp.TEXTPOS;
         
         switch (n) {
             case TEXTPOS -> {

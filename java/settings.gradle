@@ -14,3 +14,4 @@ rootProject.name = 'MapPOS'
 include('common')
 include('server')
 include('client')
+include('textclient')
