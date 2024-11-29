@@ -12,9 +12,6 @@ public class App {
 
     private static final Logger LOG = Logger.getLogger(App.class.getName());
 
-    public App() {
-        
-    }
     
     
     

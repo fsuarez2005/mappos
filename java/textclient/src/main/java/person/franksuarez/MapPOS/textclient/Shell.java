@@ -85,7 +85,7 @@ public class Shell {
     }
 
     public final void initialize() {
-        System.out.println("Shell.initialize");
+        LOG.entering("Shell", "initialize");
         this.setReader(new BufferedReader(new InputStreamReader(System.in)));
         this.setWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
     }
@@ -115,18 +115,20 @@ public class Shell {
     }
     
     protected List<String> tokenize(String line) {
+        LOG.entering("Shell", "tokenize");
         var output = new ArrayList<String>();
         var scanner = new Scanner(line);
         while (scanner.hasNext()) {
             output.add(scanner.next());
         }
+        LOG.exiting("Shell", "tokenize");
         return output;
     }
     
     
     
     protected void loop() throws IOException {
-        System.out.println("Shell.loop");
+        LOG.entering("Shell", "loop");
         while (this.running) {
             this.printf("%s", this.getPrompt());
             
@@ -138,12 +140,15 @@ public class Shell {
             }
             this.parseLine(userInput);
         }
+        LOG.exiting("Shell", "loop");
         
     }
 
     public void start() throws IOException {
+        LOG.entering("Shell", "start");
         this.initialize();
         this.loop();
+        LOG.exiting("Shell", "start");
     }
     
     
