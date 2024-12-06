@@ -62,7 +62,7 @@ public class App {
     
     
     public static void main(String[] args) {
-        Utility.configRootLoggerLevel(Level.FINER);
+        person.franksuarez.MapPOS.common.Utility.configRootLoggerLevel(Level.FINER);
         //LOG.setLevel(Level.ALL);
         
         LOG.entering("App", "main");

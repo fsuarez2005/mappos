@@ -13,17 +13,4 @@ import java.util.logging.Logger;
  * @author franksuarez
  */
 public class Utility {
-    /** Configure root Logger.
-     * 
-     */
-    public static void configRootLoggerLevel(Level desiredLevel) {
-        
-        Logger rootLogger = Logger.getLogger("");
-        rootLogger.setLevel(desiredLevel);
-        // set all handlers to desired level
-        for (Handler h: rootLogger.getHandlers()) {
-            h.setLevel(desiredLevel);
-        }
-        
-    }
 }
