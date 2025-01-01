@@ -18,6 +18,7 @@ public class Message implements java.io.Serializable {
         
     }
     
+    public String description;
     public String debugString;
     public Command messageCommand;
     
