@@ -16,6 +16,9 @@ repositories {
 }
 
 dependencies {
+    // https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc
+    implementation 'org.xerial:sqlite-jdbc:3.47.1.0'
+
     // Use JUnit Jupiter for testing.
     testImplementation libs.junit.jupiter
 

@@ -19,8 +19,7 @@ import person.franksuarez.MapPOS.common.model.Message;
 import person.franksuarez.MapPOS.common.model.Product;
 import person.franksuarez.MapPOS.common.model.Transaction;
 
-/**
- * Server for collecting completed transactions from POS clients.
+/** Server for collecting completed transactions from POS clients.
  *
  * @author franksuarez
  */
@@ -31,10 +30,13 @@ public class TransactionServer implements Runnable {
     InetAddress localAddress;
     int backLog = 10;
 
+    /**
+     * 
+     * 
+     */
     public static class ConnectionHandler implements Runnable {
-
-        private Socket request;
-        private TransactionServer server;
+        private final Socket request;
+        private final TransactionServer server;
 
         private ObjectOutputStream requestOOS;
         private ObjectInputStream requestOIS;
@@ -45,10 +47,11 @@ public class TransactionServer implements Runnable {
             this.server = server;
         }
 
-        /**
-         * Reads object from socket and deserialize.
+        /** Reads object from socket and deserialize.
          *
          * @return
+         * @throws java.io.IOException
+         * @throws java.lang.ClassNotFoundException
          */
         public Object readObject() throws IOException, ClassNotFoundException {
             Object output = this.requestOIS.readObject();
