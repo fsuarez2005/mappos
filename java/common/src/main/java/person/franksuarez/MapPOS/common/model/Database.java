@@ -15,9 +15,9 @@ import java.sql.SQLException;
  * @author franksuarez
  */
 public class Database {
-    private Path path;
-    private String driver = "sqlite";
-    private Connection databaseConnection;
+    protected Path path;
+    protected String driver = "sqlite";
+    protected Connection databaseConnection;
     
     public Database() {}
     
@@ -27,23 +27,36 @@ public class Database {
     
     }
     
-    public void open() {
-        // connection string
-        StringBuilder sb = new StringBuilder();
-        sb.append("jdbc:");
-        sb.append(driver);
-        sb.append(":");
-        sb.append(this.path.toString());
-        System.out.printf("%s%n",sb.toString());
+    public void setPath(Path path) {
+        this.path = path;
+    }
+    
+    public Path getPath() {
+        return this.path;
+    }
+    
+    public String getConnectionString() {
+        return "jdbc:"+this.driver+":"+this.path.toAbsolutePath().toString();
+        
+        
+    }
+    
+    
+    public void open() throws Exception {
+        if (this.path == null) {
+            throw new Exception("Database path not set.");
+        }
+        String connectionString = this.getConnectionString();
+        
         
         try {
-            databaseConnection = DriverManager.getConnection(sb.toString());
+            databaseConnection = DriverManager.getConnection(connectionString);
             if (databaseConnection != null) {
                 var meta = databaseConnection.getMetaData();
                 
                 System.out.printf("Driver name: %s%n",meta.getDriverName());
                 
-                
+                System.out.printf("%s%n",this.databaseConnection.toString());
                 
             }
         } catch (SQLException e) {
@@ -52,16 +65,14 @@ public class Database {
         }
         
         
-        System.out.printf("%s%n",this.databaseConnection.toString());
+        
         
     }
     
     
     // CRUD
     // CREATE
-    public void insert() {
-        
-    }
+    
     
     
     // READ

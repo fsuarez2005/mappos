@@ -86,20 +86,20 @@ public class TransactionServer implements Runnable {
                 case TRANSACTION -> {
                     // read object from stream
                     // should be a Transaction
-                    //Transaction t = (Transaction) this.readObject();
                     System.out.println("Received transaction");
                     TransactionMessage transm = (TransactionMessage) m;
                     
                     
                     
-                    //System.out.println("Products:");
+                    System.out.println("Products:");
                     for (Product p: transm.content.getEntries()) {
                         System.out.printf("Item: %s%n",p.getName());
                     }
                     
-                    //System.out.printf("Subtotal: %f%n",t.getSubTotal());
-
                     // process transaction
+                    
+                    // record transaction in database
+                    
                 }
 
                 default -> {
