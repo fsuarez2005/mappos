@@ -35,7 +35,8 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'person.franksuarez.MapPOS.client.ui.NCRDynakey'
+    mainClass = 'person.franksuarez.MapPOS.client.App'
+    
 }
 
 tasks.named('test') {

@@ -6,11 +6,13 @@ package person.franksuarez.MapPOS.client;
 
 import java.io.IOException;
 import person.franksuarez.MapPOS.client.ui.MapSwingUI;
+import person.franksuarez.MapPOS.client.ui.NCRDynakey;
 
 
 
 enum SubApp {    
     MAPSWINGUI,
+    NCRDYNAKEY,
 }
 
 
@@ -20,12 +22,14 @@ enum SubApp {
  */
 public class App {
     public static void main(String[] args) throws IOException {
-        SubApp n = SubApp.MAPSWINGUI;
+        SubApp n = SubApp.NCRDYNAKEY;
         
         switch (n) {
             case MAPSWINGUI -> {
-                MapSwingUI m = new MapSwingUI();
-                m.setVisible(true);
+                MapSwingUI.main(args);
+            }
+            case NCRDYNAKEY -> {
+                NCRDynakey.main(args);
             }
             default -> {}
         }

@@ -17,7 +17,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import person.franksuarez.MapPOS.common.model.Message;
 import person.franksuarez.MapPOS.common.model.Product;
-import person.franksuarez.MapPOS.common.model.Transaction;
 import person.franksuarez.MapPOS.common.model.TransactionMessage;
 
 /** Server for collecting completed transactions from POS clients.
