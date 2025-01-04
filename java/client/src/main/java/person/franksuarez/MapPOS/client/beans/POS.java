@@ -1,3 +1,5 @@
+// TODO: header
+// TODO: necessary?
 
 package person.franksuarez.MapPOS.client.beans;
 

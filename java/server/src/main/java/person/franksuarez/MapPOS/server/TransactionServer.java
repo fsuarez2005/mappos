@@ -1,9 +1,5 @@
-/**
- *
- *
- *
- *
- */
+// TODO: header
+
 package person.franksuarez.MapPOS.server;
 
 import java.io.IOException;

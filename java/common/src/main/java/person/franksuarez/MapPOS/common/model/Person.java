@@ -1,10 +1,5 @@
-/**
- * 
- * 
- * 
- * 
- * 
- */
+// TODO: header
+
 package person.franksuarez.MapPOS.common.model;
 
 import java.time.LocalDate;

@@ -1,3 +1,7 @@
+// TODO: header
+
+// TODO: cleanup
+
 package person.franksuarez.MapPOS.client.beans;
 
 import java.awt.Graphics;

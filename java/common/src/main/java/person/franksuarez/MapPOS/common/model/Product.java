@@ -1,3 +1,5 @@
+// TODO: header
+
 package person.franksuarez.MapPOS.common.model;
 
 import person.franksuarez.MapPOS.common.exception.InvalidFormat;

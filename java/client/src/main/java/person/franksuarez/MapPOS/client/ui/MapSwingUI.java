@@ -24,7 +24,7 @@ public class MapSwingUI extends javax.swing.JFrame {
         System.out.println(sb.toString());
     }
 
-    MapSwingUIState state;
+    
     boolean mousePressed;
 
     /**
@@ -116,7 +116,7 @@ public class MapSwingUI extends javax.swing.JFrame {
     }//GEN-LAST:event_formKeyPressed
 
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
-        // TODO add your handling code here:
+        
         //displayMouseEvent("mouseDragged", evt);
 
         // get last point // get current point // check for change
@@ -137,7 +137,7 @@ public class MapSwingUI extends javax.swing.JFrame {
     }//GEN-LAST:event_formMouseDragged
 
     private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
-        // TODO add your handling code here:
+        
         //displayMouseEvent("mouseMove", evt);
         previousMousePoint = new Point(evt.getX(), evt.getY());
     }//GEN-LAST:event_formMouseMoved

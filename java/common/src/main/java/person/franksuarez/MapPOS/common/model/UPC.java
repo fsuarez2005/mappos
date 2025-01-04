@@ -1,7 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+// TODO: header
+
 package person.franksuarez.MapPOS.common.model;
 
 import java.util.function.Predicate;

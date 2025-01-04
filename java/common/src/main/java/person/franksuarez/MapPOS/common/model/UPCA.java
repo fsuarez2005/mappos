@@ -1,3 +1,5 @@
+// TODO: header
+
 package person.franksuarez.MapPOS.common.model;
 
 import java.util.logging.Level;
