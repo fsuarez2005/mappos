@@ -6,7 +6,7 @@ package person.franksuarez.MapPOS.common.model;
  *
  * @author franksuarez
  */
-public class JournalDatabase extends Database {
+public abstract class JournalDatabase extends Database {
     
     
     /** Inserts Transaction into database.
