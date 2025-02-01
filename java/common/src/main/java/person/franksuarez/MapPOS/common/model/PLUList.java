@@ -71,9 +71,6 @@ public class PLUList {
             sb.append(String.format("(%d,%s),",n,this.plu_s.get(n) ));
         }
         
-        
-        
-        
         return sb.toString();
     }
     

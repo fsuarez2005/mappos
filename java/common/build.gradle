@@ -41,7 +41,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'com.example.common.App'
+    mainClass = 'person.franksuarez.MapPOS.common.App'
 }
 
 tasks.named('test') {

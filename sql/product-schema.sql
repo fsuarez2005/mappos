@@ -6,5 +6,4 @@ CREATE TABLE Products (
     name TEXT,
     price REAL CHECK ( price >= 0 ),
     upc TEXT
-    
 );
