@@ -38,7 +38,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'person.franksuarez.MapPOS.server.ServerConsole'
+    mainClass = 'person.franksuarez.MapPOS.server.SimplePOS'
 }
 
 
@@ -50,9 +50,15 @@ tasks.named('test') {
 
 jar {
     manifest {
-        attributes( "Main-Class": "person.franksuarez.MapPOS.server.ServerConsole" )
+        attributes( "Main-Class": "person.franksuarez.MapPOS.server.SimplePOS" )
     }
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
+}
+
+
+// gradle doesn't like stdin
+run {
+    standardInput = System.in
 }

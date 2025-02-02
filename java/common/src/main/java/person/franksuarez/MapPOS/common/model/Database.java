@@ -16,6 +16,9 @@ public abstract class Database {
     protected String driver;
     
     protected Connection databaseConnection;
+    
+    protected boolean initialized = false;
+    
 
     public Database() {}
 
@@ -34,6 +37,10 @@ public abstract class Database {
         return this.path;
     }
     
+    public void setConnection(Connection databaseConnection) {
+        this.databaseConnection = databaseConnection;
+    }
+    
     public Connection getConnection() {
         return this.databaseConnection;
     }
@@ -44,6 +51,11 @@ public abstract class Database {
     
     public abstract void initialize();
 
+    public abstract void open();
+    public abstract void close();
+    
+    
+    
     // CRUD
     
     

@@ -50,9 +50,15 @@ public class SQLiteDatabase extends Database {
     }
     
 
-    public void open() throws Exception {
+    @Override
+    public void open() {
         if (this.path == null) {
-            throw new Exception("Database path not set.");
+            // should throw exception
+            //throw new Exception("Database path not set.");
+            
+            
+            return;
+            
         }
         
         String connectionString = this.buildConnectionString();
@@ -80,6 +86,11 @@ public class SQLiteDatabase extends Database {
      */
     @Override
     public void initialize() {
+        if (this.initialized) {
+            return;
+        }
+        
+        
         File dbFile = this.path.toFile();
         System.out.printf("File: %s%n",dbFile.getAbsolutePath());
         
@@ -96,10 +107,13 @@ public class SQLiteDatabase extends Database {
             }
         }
         
+        this.initialized = true;
         
     }
-    
-    
-    
+
+    @Override
+    public void close() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }

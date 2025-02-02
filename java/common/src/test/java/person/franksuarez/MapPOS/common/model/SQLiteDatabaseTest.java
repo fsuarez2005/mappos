@@ -4,19 +4,22 @@
  */
 package person.franksuarez.MapPOS.common.model;
 
+import java.sql.Statement;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -46,12 +49,16 @@ public class SQLiteDatabaseTest {
     @BeforeEach
     public void setUp() {
         this.db = new SQLiteDatabase(Paths.get(this.tempDb));
-        
+        this.db.initialize();
         
     }
     
     @AfterEach
-    public void tearDown() {
+    public void tearDown() throws Exception {
+        this.db.deleteDBFile();
+        
+        
+        
     }
 
 
@@ -124,5 +131,21 @@ public class SQLiteDatabaseTest {
         //fail("The test case is a prototype.");
     }
     
+    @Test
+    public void testCreateTable() {
+        try {
+            String sqlTableStatement = "CREATE TABLE IF NOT EXISTS TestTable ( id INTEGER ) ";
+            
+            this.db.initialize();
+            this.db.open();
+            Statement c = this.db.getConnection().createStatement();
+            
+            c.execute(sqlTableStatement);
+        } catch (SQLException ex) {
+            Logger.getLogger(SQLiteDatabaseTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }
     
 }
