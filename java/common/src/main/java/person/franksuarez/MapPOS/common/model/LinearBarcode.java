@@ -14,12 +14,40 @@ public class LinearBarcode {
     protected boolean hasCheckDigit;
     protected char[] data;
 
-    
     protected int formatLength = 0;
-    
+
     transient protected Predicate<Character> isCharValid;
 
+    /**
+     * Checks each Char of charData to see if it passes isCharValid(char).
+     *
+     *
+     * @return
+     */
+    public boolean areAllCharsValid() {
+        boolean allValid = true;
 
+        for (char c : this.data) {
+            if (!isCharValid.test(c)) {
+                return false;
+            }
+        }
+
+        return allValid;
+    }
+
+    public boolean isValid() {
+        System.out.printf("Calling class: %s%n", this.getClass().getName());
+
+        return isCorrectFormatLength() && areAllCharsValid();
+    }
+
+    public boolean isCorrectFormatLength() {
+        return (this.data.length == this.formatLength);
+    }
+
+    
+    // TODO: replace with isCharValid Predicate
     public boolean hasOnlyDigits() {
         boolean output = true;
         for (int n = 0; n < this.data.length; n++) {
@@ -39,8 +67,6 @@ public class LinearBarcode {
         if (this.data == null) {
             throw new NullPointerException();
         }
-
-        
         
         int[] intData = new int[this.data.length];
 
@@ -49,7 +75,6 @@ public class LinearBarcode {
 
             if (intDigit == -1) {
                 // Character.getNumericValue returns -1 on unaccepted char
-
                 throw new InvalidFormat();
             }
 
@@ -59,7 +84,7 @@ public class LinearBarcode {
         return intData;
 
     }
-    
+
     /**
      *
      * @return The UPC as a list of the digits.

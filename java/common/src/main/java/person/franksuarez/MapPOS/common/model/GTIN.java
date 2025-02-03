@@ -12,25 +12,7 @@ package person.franksuarez.MapPOS.common.model;
  *
  * @author franksuarez
  */
-public abstract class GTIN extends LinearBarcode implements java.io.Serializable {
-    
-    /** GTIN.data should be able to hold any kind of data.
-     * 
-     */
-    //public byte[] data;
-    
-    public class Prefix {
-        private int width;
-        private char[] minimum;
-        private char[] maximum;
-        private String description;
-    }
-    
-    public abstract boolean isValid();
-
-    
-    
-    
-    
+public class GTIN extends LinearBarcode implements java.io.Serializable {
+    // TODO: generic Check Digit method
     
 }

@@ -5,45 +5,42 @@
 
 package person.franksuarez.MapPOS.common.model;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import person.franksuarez.MapPOS.common.exception.InvalidFormat;
 
-
-// TODO: implement serialization
 /**
  *
  * @author franksuarez
  */
-public class UPCA extends UPC implements java.io.Serializable {
+public class UPCA extends GTIN implements java.io.Serializable {
 
-    private int checkDigitIndex = 11;
+    private int checkDigitIndex;
 
     public UPCA() {
-        formatLength = 12;
+        this.formatLength = 12;
+        this.checkDigitIndex = 11;
+        
+        // only digits are valid
+        this.isCharValid = (Character c) -> {
+            return (Character.isDigit(c));
+        };
     }
 
     /**
      * TODO: move to GTIN and generalize
      * 
      * @return Check digit for the UPC.
-     * @throws person.franksuarez.MapPOS.exception.InvalidFormat
+     * @throws person.franksuarez.MapPOS.common.exception.InvalidFormat
      */
     public int calculateCheckDigit() throws InvalidFormat {
         
-        
-        
-        
-        // validate format of charData
-        if (!hasOnlyDigits()) {
+        if (! this.isValid()) {
             throw new InvalidFormat();
         }
-        if (!isCorrectFormatLength()) {
-            throw new InvalidFormat();
-        }
+        
+        
+
 
         int[] intData = this.toIntArray();
-        
         int checksum = 0;
 
         checksum
@@ -72,23 +69,7 @@ public class UPCA extends UPC implements java.io.Serializable {
         return checksum;
     }
 
-    @Override
-    public boolean isValid() {
-        boolean valid = super.isValid();
-        boolean hasOnlyDigits = super.hasOnlyDigits();
-        boolean hasValidCheckDigit;
-        try {
-            hasValidCheckDigit = this.hasValidCheckDigit();
-        } catch (InvalidFormat ex) {
-            Logger.getLogger(UPCA.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
-        return hasOnlyDigits && valid && hasValidCheckDigit;
-    }
-
-    /**
-     *
-     *
+    /** Returns true if the check digit is correct.
      *
      * @return True if UPC has a good check digit.
      * @throws person.franksuarez.MapPOS.common.exception.InvalidFormat
@@ -106,5 +87,7 @@ public class UPCA extends UPC implements java.io.Serializable {
 
         return (intData[checkDigitIndex] == calculateCheckDigit());
     }
+
+
 
 }
