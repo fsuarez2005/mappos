@@ -12,7 +12,7 @@ package person.franksuarez.MapPOS.common.model;
  *
  * @author franksuarez
  */
-public class GTIN implements java.io.Serializable {
+public abstract class GTIN implements java.io.Serializable {
     
     /** GTIN.data should be able to hold any kind of data.
      * 
@@ -30,15 +30,9 @@ public class GTIN implements java.io.Serializable {
         
     }
     
-    public void fromString() {
-        // TODO: STUB: GTIN.fromString
-        throw new UnsupportedOperationException();
-    }
+    public abstract boolean isValid();
+
     
-    
-    public boolean isValid() {
-        return true;
-    }
     
     
     

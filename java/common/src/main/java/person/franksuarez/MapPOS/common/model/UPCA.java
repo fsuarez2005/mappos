@@ -1,5 +1,8 @@
 // TODO: header
 
+// TODO: Need to test and check for bugs.
+
+
 package person.franksuarez.MapPOS.common.model;
 
 import java.util.logging.Level;
@@ -21,7 +24,8 @@ public class UPCA extends UPC implements java.io.Serializable {
     }
 
     /**
-     *
+     * TODO
+     * 
      * @return Check digit for the UPC.
      * @throws person.franksuarez.MapPOS.exception.InvalidFormat
      */

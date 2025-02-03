@@ -1,5 +1,7 @@
 // TODO: header
 
+// TODO: Need to test and check for bugs.
+
 package person.franksuarez.MapPOS.common.model;
 
 import java.util.function.Predicate;
@@ -80,10 +82,12 @@ public class UPC extends GTIN implements java.io.Serializable {
         return this.formatLength;
     }
 
+    // TODO: fromString: convert to static function
     public void fromString(String dataString) {
         this.setCharData(dataString.toCharArray());
     }
 
+    // TODO: generateDigitOnlyData: convert to utility function
     public int[] generateDigitOnlyData() throws InvalidFormat {
         if (this.charData == null) {
             throw new NullPointerException();
@@ -106,6 +110,7 @@ public class UPC extends GTIN implements java.io.Serializable {
         return this.intData;        
     }
 
+    // TODO: hasOnlyDigits: convert to utility function
     public boolean hasOnlyDigits() {
         boolean output = true;
         for (int n = 0; n < this.charData.length; n++) {
@@ -138,7 +143,6 @@ public class UPC extends GTIN implements java.io.Serializable {
 
     @Override
     public boolean isValid() {
-        
         return isCorrectFormatLength() && areAllCharsValid();
     }
     
