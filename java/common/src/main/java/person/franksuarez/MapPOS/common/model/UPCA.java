@@ -24,13 +24,16 @@ public class UPCA extends UPC implements java.io.Serializable {
     }
 
     /**
-     * TODO
+     * TODO: move to GTIN and generalize
      * 
      * @return Check digit for the UPC.
      * @throws person.franksuarez.MapPOS.exception.InvalidFormat
      */
     public int calculateCheckDigit() throws InvalidFormat {
-
+        
+        
+        
+        
         // validate format of charData
         if (!hasOnlyDigits()) {
             throw new InvalidFormat();
@@ -39,33 +42,26 @@ public class UPCA extends UPC implements java.io.Serializable {
             throw new InvalidFormat();
         }
 
-        if (this.intData == null) {
-            // try to generate intData
-            // throws InvalidFormat if a problem
-            generateDigitOnlyData();
-
-            // if all fails, throw nullpointer
-            throw new NullPointerException("Need to call generateDigitOnlyData()");
-        }
-
+        int[] intData = this.toIntArray();
+        
         int checksum = 0;
 
         checksum
-                = this.intData[0]
-                + this.intData[2]
-                + this.intData[4]
-                + this.intData[6]
-                + this.intData[8]
-                + this.intData[10];
+                = intData[0]
+                + intData[2]
+                + intData[4]
+                + intData[6]
+                + intData[8]
+                + intData[10];
 
         checksum *= 3;
         checksum
                 = checksum
-                + this.intData[1]
-                + this.intData[3]
-                + this.intData[5]
-                + this.intData[7]
-                + this.intData[9];
+                + intData[1]
+                + intData[3]
+                + intData[5]
+                + intData[7]
+                + intData[9];
 
         checksum %= 10;
 
@@ -95,16 +91,20 @@ public class UPCA extends UPC implements java.io.Serializable {
      *
      *
      * @return True if UPC has a good check digit.
+     * @throws person.franksuarez.MapPOS.common.exception.InvalidFormat
      */
     public boolean hasValidCheckDigit() throws InvalidFormat {
-        if (this.intData == null) {
+        int[] intData = this.toIntArray();
+        
+        
+        if (intData == null) {
             throw new NullPointerException();
         }
-        if (this.intData.length < formatLength) {
+        if (intData.length < formatLength) {
             throw new InvalidFormat();
         }
 
-        return (this.intData[checkDigitIndex] == calculateCheckDigit());
+        return (intData[checkDigitIndex] == calculateCheckDigit());
     }
 
 }
