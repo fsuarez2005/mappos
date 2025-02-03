@@ -43,12 +43,7 @@ public class NCRDynakey extends java.awt.Frame {
         UPCA u = new UPCA();
 
         u.fromString(userInput);
-        try {
-            u.generateDigitOnlyData();
-        } catch (InvalidFormat ex) {
-            Logger.getLogger(NCRDynakey.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+        
         if (u.isValid()) {
             entry += "Valid";
         } else {
