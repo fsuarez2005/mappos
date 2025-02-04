@@ -33,8 +33,6 @@ public class GTIN extends LinearBarcode implements java.io.Serializable {
 
         // Process digits from right to left
         for (int i = this.data.length - 2; i >= 0; i--) {
-            System.out.printf("i: %d value: %c multiplyByThree: %b%n",i,this.data[i],multiplyByThree);
-            
             int digit = Character.getNumericValue(this.data[i]);
             sum += multiplyByThree ? digit * 3 : digit;
             multiplyByThree = !multiplyByThree;

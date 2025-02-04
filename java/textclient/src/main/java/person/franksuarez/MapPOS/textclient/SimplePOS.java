@@ -9,7 +9,7 @@
  * 
  * 
  */
-package person.franksuarez.MapPOS.server;
+package person.franksuarez.MapPOS.textclient;
 
 import java.util.ArrayList;
 import java.util.List;
