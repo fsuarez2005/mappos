@@ -51,6 +51,7 @@ There are certain features that I would love in a retail system.
 * Weight/price based UPC creator.
   * Creates UPC from base and weight.
   * 0-12345-00000 and 1.00 lb -> 0-12345-01000-5
+ * Key Dump feature
 
 ### Project Management
 * DevOps development.

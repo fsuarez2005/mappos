@@ -36,7 +36,7 @@ public class SimplePOS {
         String userInput;
         
         
-        List<List<String>> transactions = new ArrayList<>();
+        List<List<String>> journal = new ArrayList<>();
         
         List<String> currentTransaction = new ArrayList<>();
         //transactions.add(new ArrayList<>());
@@ -76,10 +76,10 @@ public class SimplePOS {
             Pattern upcPattern = Pattern.compile("\\d{12}");
             
             if (userInput.equals("total")) {
-                System.out.println("TOTAL");
+                System.out.println("=== TOTAL ===");
                 
                 for (String s: currentTransaction) {
-                    System.out.printf("item: %s%n",s);
+                    System.out.printf(" * Item: %s%n",s);
                 }
                 
                 // finish processing transaction
@@ -87,8 +87,11 @@ public class SimplePOS {
                 
                 
                 // append transaction to journal
+                journal.add(currentTransaction);
                 
                 // start new transaction
+                currentTransaction = new ArrayList<>();
+                
                 
             } else if (userInput.equals("quit")) {
                 break;
@@ -98,7 +101,7 @@ public class SimplePOS {
                 // validate UPC
                 UPCA upcaString = new UPCA();
                 upcaString.fromString(userInput);
-                upcaString.calculateCheckDigit();
+                //upcaString.calculateCheckDigit();
                 if (upcaString.isValid()) {
                     System.out.println("UPC is valid.");
                 }
