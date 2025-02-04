@@ -31,43 +31,40 @@ public class UPCA extends GTIN implements java.io.Serializable {
      * @return Check digit for the UPC.
      * @throws person.franksuarez.MapPOS.common.exception.InvalidFormat
      */
-    public int calculateCheckDigit() throws InvalidFormat {
-        
-        if (! this.isValid()) {
-            throw new InvalidFormat();
-        }
-        
-        
-
-
-        int[] intData = this.toIntArray();
-        int checksum = 0;
-
-        checksum
-                = intData[0]
-                + intData[2]
-                + intData[4]
-                + intData[6]
-                + intData[8]
-                + intData[10];
-
-        checksum *= 3;
-        checksum
-                = checksum
-                + intData[1]
-                + intData[3]
-                + intData[5]
-                + intData[7]
-                + intData[9];
-
-        checksum %= 10;
-
-        if (checksum != 0) {
-            checksum = 10 - checksum;
-        }
-
-        return checksum;
-    }
+//    public int calculateCheckDigit() throws InvalidFormat {
+//        
+//        if (! this.isValid()) {
+//            throw new InvalidFormat();
+//        }
+//        
+//        int[] intData = this.toIntArray();
+//        int checksum = 0;
+//
+//        checksum
+//                = intData[0]
+//                + intData[2]
+//                + intData[4]
+//                + intData[6]
+//                + intData[8]
+//                + intData[10];
+//
+//        checksum *= 3;
+//        checksum
+//                = checksum
+//                + intData[1]
+//                + intData[3]
+//                + intData[5]
+//                + intData[7]
+//                + intData[9];
+//
+//        checksum %= 10;
+//
+//        if (checksum != 0) {
+//            checksum = 10 - checksum;
+//        }
+//
+//        return checksum;
+//    }
 
     /** Returns true if the check digit is correct.
      *

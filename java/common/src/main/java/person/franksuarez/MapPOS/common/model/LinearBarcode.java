@@ -1,6 +1,7 @@
 // TODO: header
 package person.franksuarez.MapPOS.common.model;
 
+import java.util.Optional;
 import java.util.function.Predicate;
 import person.franksuarez.MapPOS.common.exception.InvalidFormat;
 
@@ -25,6 +26,11 @@ public class LinearBarcode {
      * @return
      */
     public boolean areAllCharsValid() {
+        
+        
+       
+        
+        
         boolean allValid = true;
 
         for (char c : this.data) {
@@ -37,8 +43,6 @@ public class LinearBarcode {
     }
 
     public boolean isValid() {
-        System.out.printf("Calling class: %s%n", this.getClass().getName());
-
         return isCorrectFormatLength() && areAllCharsValid();
     }
 
