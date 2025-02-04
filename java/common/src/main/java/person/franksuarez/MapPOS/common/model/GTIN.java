@@ -21,7 +21,7 @@ public class GTIN extends LinearBarcode implements java.io.Serializable {
     
     /** Calculates the check digit for a GTIN, regardless of length.
      * 
-     * @return
+     * @return Check digit of GTIN
      * @throws InvalidFormat 
      */
     public int calculateCheckDigit() throws InvalidFormat {
