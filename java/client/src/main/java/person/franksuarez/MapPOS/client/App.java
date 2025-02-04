@@ -3,16 +3,13 @@
 package person.franksuarez.MapPOS.client;
 
 import java.io.IOException;
-import person.franksuarez.MapPOS.client.ui.MapSwingUI;
+import person.franksuarez.MapPOS.client.ui.MapSwingUITest;
 import person.franksuarez.MapPOS.client.ui.NCRDynakey;
-
-
 
 enum SubApp {    
     MAPSWINGUI,
     NCRDYNAKEY,
 }
-
 
 /**
  *
@@ -25,7 +22,7 @@ public class App {
         
         switch (n) {
             case MAPSWINGUI -> {
-                MapSwingUI.main(args);
+                MapSwingUITest.main(args);
             }
             case NCRDYNAKEY -> {
                 NCRDynakey.main(args);

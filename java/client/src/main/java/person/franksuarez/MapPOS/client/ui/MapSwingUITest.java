@@ -12,9 +12,9 @@ import java.util.logging.Logger;
  *
  * @author franksuarez
  */
-public class MapSwingUI extends javax.swing.JFrame {
+public class MapSwingUITest extends javax.swing.JFrame {
 
-    private static final Logger LOG = Logger.getLogger(MapSwingUI.class.getName());
+    private static final Logger LOG = Logger.getLogger(MapSwingUITest.class.getName());
 
     private Point previousMousePoint;
 
@@ -30,7 +30,7 @@ public class MapSwingUI extends javax.swing.JFrame {
     /**
      * Creates new form MapSwingUI
      */
-    public MapSwingUI() {
+    public MapSwingUITest() {
         initComponents();
     }
 
@@ -159,20 +159,21 @@ public class MapSwingUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MapSwingUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MapSwingUITest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MapSwingUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MapSwingUITest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MapSwingUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MapSwingUITest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MapSwingUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MapSwingUITest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MapSwingUI().setVisible(true);
+                new MapSwingUITest().setVisible(true);
             }
         });
     }
