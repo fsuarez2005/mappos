@@ -4,6 +4,8 @@ package person.franksuarez.MapPOS.common.model;
 
 // TODO: implement serialization
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import person.franksuarez.MapPOS.common.exception.InvalidFormat;
 
 
@@ -43,6 +45,12 @@ public class GTIN extends LinearBarcode implements java.io.Serializable {
         return checkDigit;
     }
     
+    
+    public static boolean isValid(String s) {
+        Pattern gtinPattern = Pattern.compile("^\\d{12}$");
+        Matcher gtinMatcher = gtinPattern.matcher(s);
+        return gtinMatcher.find();
+    }
     
     
 }
