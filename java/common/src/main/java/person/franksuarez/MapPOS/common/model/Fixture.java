@@ -13,10 +13,4 @@ public class Fixture extends Equipment {
     
     private List<Planogram> planograms;
     
-    
-    
-    
-    
-    
-    
 }
