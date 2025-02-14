@@ -1,4 +1,11 @@
-// TODO: header
+/**
+ * 
+ * Notes:
+ * https://en.wikipedia.org/wiki/ACID
+ * https://en.wikipedia.org/wiki/Create,_read,_update_and_delete
+ * 
+ * 
+ */
 package person.franksuarez.MapPOS.common.model;
 
 import java.nio.file.Path;
@@ -27,30 +34,8 @@ public abstract class Database {
         this.path = path;
     }
 
-    
-    
-    public void setPath(Path path) {
-        this.path = path;
-    }
-
-    public Path getPath() {
-        return this.path;
-    }
-    
-    public void setConnection(Connection databaseConnection) {
-        this.databaseConnection = databaseConnection;
-    }
-    
-    public Connection getConnection() {
-        return this.databaseConnection;
-    }
-
     public abstract String buildConnectionString();
-
-
-    
     public abstract void initialize();
-
     public abstract void open();
     public abstract void close();
     

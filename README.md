@@ -18,6 +18,8 @@ The following are problems that cashiers and customers would like addressed:
 * Lack of customization
 
 ## Concepts
+* Standardization
+ * Make use of OMG ARTS Retail Modeling http://www.omg.org/retail/operational-data-model.htm
 * Map-oriented. Reflect a stores floorplan without having to create a full 3D environment.
 * Stable. POS systems should work like calculators with added rules. Crashing should be impossible.
 * Helpful. Let employees do what they do best.

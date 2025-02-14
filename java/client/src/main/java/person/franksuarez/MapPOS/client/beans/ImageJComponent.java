@@ -1,6 +1,7 @@
 // TODO: header
 
 // TODO: cleanup
+// TODO: Rename to something similar to other Swing components.
 
 package person.franksuarez.MapPOS.client.beans;
 

@@ -7,3 +7,10 @@ CREATE TABLE Products (
     price REAL CHECK ( price >= 0 ),
     upc TEXT
 );
+
+
+DROP TABLE IF EXISTS Sku;
+CREATE TABLE Sku (
+    sku TEXT,
+    upc TEXT
+);

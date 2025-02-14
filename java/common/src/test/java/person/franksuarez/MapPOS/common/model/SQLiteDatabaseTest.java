@@ -138,8 +138,7 @@ public class SQLiteDatabaseTest {
             
             this.db.initialize();
             this.db.open();
-            Statement c = this.db.getConnection().createStatement();
-            
+            Statement c = this.db.databaseConnection.createStatement();
             c.execute(sqlTableStatement);
         } catch (SQLException ex) {
             Logger.getLogger(SQLiteDatabaseTest.class.getName()).log(Level.SEVERE, null, ex);
