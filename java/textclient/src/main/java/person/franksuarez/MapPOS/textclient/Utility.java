@@ -4,10 +4,6 @@
  */
 package person.franksuarez.MapPOS.textclient;
 
-import java.util.logging.Handler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  *
  * @author franksuarez

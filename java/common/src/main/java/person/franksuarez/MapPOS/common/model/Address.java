@@ -1,7 +1,3 @@
-// TODO: header
-
-// TODO: check for solutions for storing postal addresses
-
 package person.franksuarez.MapPOS.common.model;
 
 import java.util.ArrayList;
