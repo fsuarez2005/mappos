@@ -36,7 +36,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'person.franksuarez.MapPOS.textclient.SimplePOS'
+    mainClass = 'person.franksuarez.MapPOS.textclient.App'
 }
 
 tasks.named('test') {

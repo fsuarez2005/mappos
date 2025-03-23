@@ -1,156 +1,106 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+// Purpose: interpret text commands
 package person.franksuarez.MapPOS.textclient;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
-import java.util.function.Consumer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import person.franksuarez.MapPOS.common.model.POS;
 
-
-/** Subclassable Shell.
+/**
  *
  * @author franksuarez
  */
 public class Shell {
-    private static final Logger LOG = Logger.getLogger(Shell.class.getName());
-    
-    
+
     protected String prompt = "> ";
-    
-    // NOTE: Shell should be simple.
-    protected Consumer<String> commandProcessor;
-    protected HashMap<String, person.franksuarez.MapPOS.common.model.Command> commands;
-    
-    
-    
-    protected boolean running = true;
-    
-    
-    protected BufferedReader reader;
-    protected BufferedWriter writer;
+    private POS pos;
 
-    public final boolean isRunning() {
-        return running;
+    private boolean running = true;
+
+    private InputStream in;
+    private OutputStream out;
+
+    private BufferedReader reader;
+    private BufferedWriter writer;
+    
+
+    public Shell() {
+        this.in = System.in;
+        this.out = System.out;
+        
+        this.reader = new BufferedReader(new InputStreamReader(this.in));
+        this.writer = new BufferedWriter(new OutputStreamWriter(this.out));
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    public void initialize() {
+        
+        
     }
 
-    public final void setRunning(boolean running) {
-        this.running = running;
-    }
-
-    public final BufferedReader getReader() {
-        return reader;
-    }
-
-    public final void setReader(BufferedReader reader) {
-        this.reader = reader;
-    }
-
-    public final BufferedWriter getWriter() {
-        return writer;
-    }
-
-    public final void setWriter(BufferedWriter writer) {
-        this.writer = writer;
-    }
-
-
-    /** Preprocess the prompt.
-     * 
-     * Could be used to substitute arguments.
-     * @param prompt
-     * @return 
-     */
-    protected String promptPreprocess(String prompt) {
+    public String getPrompt() {
         return prompt;
     }
     
-    public final String getPrompt() {
-        String output = this.promptPreprocess(this.prompt);
-        return output;
-    }
-
-    public final void setPrompt(String prompt) {
-        this.prompt = prompt;
-    }
-
-    public final void initialize() {
-        LOG.entering("Shell", "initialize");
-        this.setReader(new BufferedReader(new InputStreamReader(System.in)));
-        this.setWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
-    }
-
-    public final String readLine() {
-        LOG.entering("Shell", "readLine");
-        
-        String line = "";
-        try {
-            line = this.reader.readLine();
-        } catch (IOException ex) {
-            System.out.printf("%s%n", ex.toString());
-            Logger.getLogger(TextPOS.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return line;
-    }
-
-    public final void printf(String fmt, Object... args) throws IOException {
-        
-        String output = String.format(fmt, args);
-        this.writer.write(output);
+    public void printPrompt() throws IOException {
+        this.writer.write(this.getPrompt());
         this.writer.flush();
-    }
-
-    protected void parseLine(String line) throws IOException {
-        this.printf("User Input: %s%n",line);
     }
     
     protected List<String> tokenize(String line) {
-        LOG.entering("Shell", "tokenize");
         var output = new ArrayList<String>();
         var scanner = new Scanner(line);
         while (scanner.hasNext()) {
             output.add(scanner.next());
         }
-        LOG.exiting("Shell", "tokenize");
         return output;
     }
-    
-    
-    
-    protected void loop() throws IOException {
-        LOG.entering("Shell", "loop");
-        while (this.running) {
-            this.printf("%s", this.getPrompt());
-            
-            String userInput = this.readLine();
-            
-            if (userInput == null) {
-                System.out.println("user input was null");
-                break;
-            }
-            this.parseLine(userInput);
-        }
-        LOG.exiting("Shell", "loop");
+
+    protected void evaluate(String userInput) throws IOException {
+        // tokenize
         
+        List<String> tokenList = this.tokenize(userInput);
+        this.writer.write(String.format("User Input: %s%n", tokenList.toString()));
+        this.writer.flush();
     }
 
     public void start() throws IOException {
-        LOG.entering("Shell", "start");
+        // initialize
         this.initialize();
+        // loop
         this.loop();
-        LOG.exiting("Shell", "start");
+
     }
-    
-    
+
+    protected void loop() throws IOException {
+        while (running) {
+            // print prompt
+            this.printPrompt();
+            
+            // get input 
+            String userInput = this.reader.readLine();
+            
+            
+            
+            // evaluate input
+            this.evaluate(userInput);
+            
+            // print output
+        }
+
+    }
 
 }

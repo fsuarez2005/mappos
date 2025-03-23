@@ -8,7 +8,7 @@ import java.util.List;
  *
  * @author franksuarez
  */
-public class Fixture extends Equipment {
+public class Fixture {
     private List<Integer> locations;
     
     private List<Planogram> planograms;

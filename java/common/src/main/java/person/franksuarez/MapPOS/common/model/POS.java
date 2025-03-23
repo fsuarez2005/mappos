@@ -66,11 +66,7 @@ public class POS {
         this.currentTransaction = currentTransaction;
     }
     
-//    public Transaction getTransaction(int index) {
-//        return this.journal.get(index);
-//    }
-    
-    
+
     
     
     
