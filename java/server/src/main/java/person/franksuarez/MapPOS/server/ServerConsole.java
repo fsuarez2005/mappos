@@ -1,10 +1,9 @@
-/**
- * 
- * 
- */
+// TODO: header
+
 package person.franksuarez.MapPOS.server;
 
 import java.io.Console;
+
 
 /**
  * 
@@ -32,6 +31,7 @@ public class ServerConsole {
     }
     
     public static void startTransactionServer() throws InterruptedException {
+        System.out.println("startTransactionServer()");
         TransactionServer ts = new TransactionServer();
         
         Thread tsThread = new Thread(ts);
@@ -41,12 +41,13 @@ public class ServerConsole {
         tsThread.join();
     }
     
+    
+    
     public static void main(String[] args) throws InterruptedException {
-        //startTransactionServer();
+        startTransactionServer();
         
-        
-        startConsole();
-        
+        //startConsole();
+
         
     }
 }

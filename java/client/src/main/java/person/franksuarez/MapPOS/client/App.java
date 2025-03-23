@@ -1,19 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+// TODO: header
+
 package person.franksuarez.MapPOS.client;
 
 import java.io.IOException;
-import person.franksuarez.MapPOS.client.ui.MapSwingUI;
-import person.franksuarez.MapPOS.client.ui.TextPOS;
+import person.franksuarez.MapPOS.client.ui.MapSwingUITest;
+import person.franksuarez.MapPOS.client.ui.NCRDynakey;
+import person.franksuarez.MapPOS.client.ui.SimplePOSGUI;
 
-
-enum SubApp {
-    TEXTPOS,
+enum SubApp {    
     MAPSWINGUI,
+    NCRDYNAKEY,
+    SIMPLEPOSGUI
 }
-
 
 /**
  *
@@ -21,16 +19,18 @@ enum SubApp {
  */
 public class App {
     public static void main(String[] args) throws IOException {
-        SubApp n = SubApp.MAPSWINGUI;
+        // TODO: make subapp user selectable
+        SubApp n = SubApp.SIMPLEPOSGUI;
         
         switch (n) {
-            case TEXTPOS -> {
-                TextPOS tpos = new TextPOS();
-                tpos.start();
-            }
             case MAPSWINGUI -> {
-                MapSwingUI m = new MapSwingUI();
-                m.setVisible(true);
+                MapSwingUITest.main(args);
+            }
+            case NCRDYNAKEY -> {
+                NCRDynakey.main(args);
+            }
+            case SIMPLEPOSGUI -> {
+                SimplePOSGUI.main(args);
             }
             default -> {}
         }

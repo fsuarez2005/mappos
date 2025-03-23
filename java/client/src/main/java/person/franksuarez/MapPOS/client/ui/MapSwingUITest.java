@@ -12,9 +12,9 @@ import java.util.logging.Logger;
  *
  * @author franksuarez
  */
-public class MapSwingUI extends javax.swing.JFrame {
+public class MapSwingUITest extends javax.swing.JFrame {
 
-    private static final Logger LOG = Logger.getLogger(MapSwingUI.class.getName());
+    private static final Logger LOG = Logger.getLogger(MapSwingUITest.class.getName());
 
     private Point previousMousePoint;
 
@@ -24,13 +24,13 @@ public class MapSwingUI extends javax.swing.JFrame {
         System.out.println(sb.toString());
     }
 
-    MapSwingUIState state;
+    
     boolean mousePressed;
 
     /**
      * Creates new form MapSwingUI
      */
-    public MapSwingUI() {
+    public MapSwingUITest() {
         initComponents();
     }
 
@@ -116,7 +116,7 @@ public class MapSwingUI extends javax.swing.JFrame {
     }//GEN-LAST:event_formKeyPressed
 
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
-        // TODO add your handling code here:
+        
         //displayMouseEvent("mouseDragged", evt);
 
         // get last point // get current point // check for change
@@ -137,7 +137,7 @@ public class MapSwingUI extends javax.swing.JFrame {
     }//GEN-LAST:event_formMouseDragged
 
     private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
-        // TODO add your handling code here:
+        
         //displayMouseEvent("mouseMove", evt);
         previousMousePoint = new Point(evt.getX(), evt.getY());
     }//GEN-LAST:event_formMouseMoved
@@ -159,20 +159,21 @@ public class MapSwingUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MapSwingUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MapSwingUITest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MapSwingUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MapSwingUITest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MapSwingUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MapSwingUITest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MapSwingUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MapSwingUITest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MapSwingUI().setVisible(true);
+                new MapSwingUITest().setVisible(true);
             }
         });
     }

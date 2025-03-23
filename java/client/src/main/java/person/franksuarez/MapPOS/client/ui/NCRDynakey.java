@@ -4,7 +4,6 @@
  */
 package person.franksuarez.MapPOS.client.ui;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.function.Consumer;
@@ -15,7 +14,6 @@ import javax.swing.JFrame;
 import person.franksuarez.MapPOS.common.exception.InvalidFormat;
 import person.franksuarez.MapPOS.common.model.PLUList;
 import person.franksuarez.MapPOS.common.model.POS;
-import person.franksuarez.MapPOS.common.model.UPC;
 import person.franksuarez.MapPOS.common.model.UPCA;
 
 /**
@@ -45,12 +43,7 @@ public class NCRDynakey extends java.awt.Frame {
         UPCA u = new UPCA();
 
         u.fromString(userInput);
-        try {
-            u.generateDigitOnlyData();
-        } catch (InvalidFormat ex) {
-            Logger.getLogger(NCRDynakey.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+        
         if (u.isValid()) {
             entry += "Valid";
         } else {
@@ -747,12 +740,12 @@ public class NCRDynakey extends java.awt.Frame {
     }//GEN-LAST:event_btnDyn1ActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        // TODO add your handling code here:
+        
         this.pack();
     }//GEN-LAST:event_formComponentShown
 
     private void modeBtn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modeBtn7ActionPerformed
-        // TODO add your handling code here:
+        
 
         this.modeButtonMap.get("modeBtn7").accept(evt);
         
@@ -761,30 +754,30 @@ public class NCRDynakey extends java.awt.Frame {
     }//GEN-LAST:event_modeBtn7ActionPerformed
 
     private void btnNum0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNum0ActionPerformed
-        // TODO add your handling code here:
+        
 
         this.txtUserInput.setText(this.txtUserInput.getText() + "0");
 
     }//GEN-LAST:event_btnNum0ActionPerformed
 
     private void btnNum1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNum1ActionPerformed
-        // TODO add your handling code here:
+        
 
         this.txtUserInput.setText(this.txtUserInput.getText() + "1");
     }//GEN-LAST:event_btnNum1ActionPerformed
 
     private void btnNum2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNum2ActionPerformed
-        // TODO add your handling code here:
+        
         this.txtUserInput.setText(this.txtUserInput.getText() + "2");
     }//GEN-LAST:event_btnNum2ActionPerformed
 
     private void btnNum3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNum3ActionPerformed
-        // TODO add your handling code here:
+        
         this.txtUserInput.setText(this.txtUserInput.getText() + "3");
     }//GEN-LAST:event_btnNum3ActionPerformed
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
-        // TODO add your handling code here:
+        
         this.transactionListModel.addElement(this.txtUserInput.getText());
         this.txtUserInput.setText("");
 
@@ -795,39 +788,39 @@ public class NCRDynakey extends java.awt.Frame {
     }//GEN-LAST:event_txtUserInputActionPerformed
 
     private void btnNum4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNum4ActionPerformed
-        // TODO add your handling code here:
+        
         this.txtUserInput.setText(this.txtUserInput.getText() + "4");
 
 
     }//GEN-LAST:event_btnNum4ActionPerformed
 
     private void btnNum5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNum5ActionPerformed
-        // TODO add your handling code here:
+        
         this.txtUserInput.setText(this.txtUserInput.getText() + "5");
     }//GEN-LAST:event_btnNum5ActionPerformed
 
     private void btnNum6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNum6ActionPerformed
-        // TODO add your handling code here:
+        
         this.txtUserInput.setText(this.txtUserInput.getText() + "6");
     }//GEN-LAST:event_btnNum6ActionPerformed
 
     private void btnNum7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNum7ActionPerformed
-        // TODO add your handling code here:
+        
         this.txtUserInput.setText(this.txtUserInput.getText() + "7");
     }//GEN-LAST:event_btnNum7ActionPerformed
 
     private void btnNum8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNum8ActionPerformed
-        // TODO add your handling code here:
+        
         this.txtUserInput.setText(this.txtUserInput.getText() + "8");
     }//GEN-LAST:event_btnNum8ActionPerformed
 
     private void btnNum9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNum9ActionPerformed
-        // TODO add your handling code here:
+        
         this.txtUserInput.setText(this.txtUserInput.getText() + "9");
     }//GEN-LAST:event_btnNum9ActionPerformed
 
     private void modeBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modeBtn4ActionPerformed
-        // TODO add your handling code here:
+        
         
         PLUList plu_list = new PLUList();
         try {

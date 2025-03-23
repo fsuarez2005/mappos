@@ -1,9 +1,5 @@
-/**
- *
- *
- *
- *
- */
+// TODO: header
+
 package person.franksuarez.MapPOS.server;
 
 import java.io.IOException;
@@ -17,10 +13,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import person.franksuarez.MapPOS.common.model.Message;
 import person.franksuarez.MapPOS.common.model.Product;
-import person.franksuarez.MapPOS.common.model.Transaction;
+import person.franksuarez.MapPOS.common.model.TransactionMessage;
 
-/**
- * Server for collecting completed transactions from POS clients.
+/** Server for collecting completed transactions from POS clients.
  *
  * @author franksuarez
  */
@@ -31,10 +26,13 @@ public class TransactionServer implements Runnable {
     InetAddress localAddress;
     int backLog = 10;
 
+    /**
+     * 
+     * 
+     */
     public static class ConnectionHandler implements Runnable {
-
-        private Socket request;
-        private TransactionServer server;
+        private final Socket request;
+        private final TransactionServer server;
 
         private ObjectOutputStream requestOOS;
         private ObjectInputStream requestOIS;
@@ -45,10 +43,11 @@ public class TransactionServer implements Runnable {
             this.server = server;
         }
 
-        /**
-         * Reads object from socket and deserialize.
+        /** Reads object from socket and deserialize.
          *
          * @return
+         * @throws java.io.IOException
+         * @throws java.lang.ClassNotFoundException
          */
         public Object readObject() throws IOException, ClassNotFoundException {
             Object output = this.requestOIS.readObject();
@@ -74,24 +73,28 @@ public class TransactionServer implements Runnable {
                 }
                 case INQUIRY -> {
                     // send message with response to inquiry
-                    
-                    
+                    System.out.println("STATUS");
+                    Message outm = new Message(Message.Command.INQUIRY);
+                    this.requestOOS.writeObject(outm);
                     
                 }
                 case TRANSACTION -> {
                     // read object from stream
                     // should be a Transaction
-                    Transaction t = (Transaction) this.readObject();
                     System.out.println("Received transaction");
+                    TransactionMessage transm = (TransactionMessage) m;
+                    
+                    
                     
                     System.out.println("Products:");
-                    for (Product p: t.getEntries()) {
+                    for (Product p: transm.content.getEntries()) {
                         System.out.printf("Item: %s%n",p.getName());
                     }
                     
-                    System.out.printf("Subtotal: %f%n",t.getSubTotal());
-
                     // process transaction
+                    
+                    // record transaction in database
+                    
                 }
 
                 default -> {

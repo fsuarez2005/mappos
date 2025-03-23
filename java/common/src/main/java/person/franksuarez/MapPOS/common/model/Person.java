@@ -1,10 +1,5 @@
-/**
- * 
- * 
- * 
- * 
- * 
- */
+// TODO: header
+
 package person.franksuarez.MapPOS.common.model;
 
 import java.time.LocalDate;
@@ -27,26 +22,34 @@ public class Person {
         NONBINARY
     }
     
+    public static enum LengthUnit {
+        INCH,
+        CENTIMETER
+       
+    }
     
-    private String nativeLanguage;
+    public static enum WeightUnit {
+        POUND,
+        KILOGRAM
+    }
     
     
-    private String prefix;
-    private String suffix;
+    protected String nativeLanguage;
+    
+    
+    protected String prefix;
+    protected String suffix;
    
-    private String firstName;
-    private String middleName;
-    private String lastName;
-    private LocalDate dateOfBirth;
-    private Gender gender;
-    private Sex sex;
-    private double height;
-    private double weight;
-    private int photo;
+    protected String firstName;
+    protected String middleName;
+    protected String lastName;
+    protected LocalDate dateOfBirth;
+    protected Gender gender;
+    protected Sex sex;
+    protected double height;
+    protected double weight;
+    protected int photo;
     
     
-    private List<Address> addresses;
-    
-
-
+    protected List<Address> addresses;
 }

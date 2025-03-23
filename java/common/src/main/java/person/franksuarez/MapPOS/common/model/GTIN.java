@@ -1,10 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+// TODO: header
+
 package person.franksuarez.MapPOS.common.model;
 
 // TODO: implement serialization
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import person.franksuarez.MapPOS.common.exception.InvalidFormat;
+
 
 /** Global Trade Identification Number.
  * 
@@ -14,34 +17,40 @@ package person.franksuarez.MapPOS.common.model;
  *
  * @author franksuarez
  */
-public class GTIN implements java.io.Serializable {
+public class GTIN extends LinearBarcode implements java.io.Serializable {
+    // TODO: generic Check Digit method
     
-    /** GTIN.data should be able to hold any kind of data.
+    
+    /** Calculates the check digit for a GTIN, regardless of length.
      * 
+     * @return Check digit of GTIN
+     * @throws InvalidFormat 
      */
-    //public byte[] data;
-    
-    public class Prefix {
-        private int width;
-        private char[] minimum;
-        private char[] maximum;
-        private String description;
+    public int calculateCheckDigit() throws InvalidFormat {
+        // char[] this.data
         
-        
-        
-        
+        // Source: ChatGPT 
+        int sum = 0;
+        boolean multiplyByThree = true;
+
+        // Process digits from right to left
+        for (int i = this.data.length - 2; i >= 0; i--) {
+            int digit = Character.getNumericValue(this.data[i]);
+            sum += multiplyByThree ? digit * 3 : digit;
+            multiplyByThree = !multiplyByThree;
+        }
+
+        // Calculate the check digit
+        int checkDigit = (10 - (sum % 10)) % 10;
+        return checkDigit;
     }
     
-    public void fromString() {
-        // TODO: STUB: GTIN.fromString
-        throw new UnsupportedOperationException();
+    
+    public static boolean isValid(String s) {
+        Pattern gtinPattern = Pattern.compile("^\\d{12}$");
+        Matcher gtinMatcher = gtinPattern.matcher(s);
+        return gtinMatcher.find();
     }
-    
-    
-    public boolean isValid() {
-        return true;
-    }
-    
     
     
 }
