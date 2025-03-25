@@ -5,6 +5,8 @@
 
 package person.franksuarez.MapPOS.common.model;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import person.franksuarez.MapPOS.common.exception.InvalidFormat;
 
 /**
@@ -43,4 +45,14 @@ public class UPCA extends GTIN implements java.io.Serializable {
 
         return (intData[checkDigitIndex] == calculateCheckDigit());
     }
+    
+       
+    public static boolean isValid(String s) {
+        Pattern upcaPattern = Pattern.compile("^\\d{12}$");
+        Matcher upcaMatcher = upcaPattern.matcher(s);
+        return upcaMatcher.find();
+    }
+
+
+
 }

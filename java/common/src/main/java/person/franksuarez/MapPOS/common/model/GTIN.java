@@ -46,11 +46,11 @@ public class GTIN extends LinearBarcode implements java.io.Serializable {
     }
     
     
-    public static boolean isValid(String s) {
-        Pattern gtinPattern = Pattern.compile("^\\d{12}$");
-        Matcher gtinMatcher = gtinPattern.matcher(s);
-        return gtinMatcher.find();
-    }
+//    public static boolean isValid(String s) {
+//        Pattern gtinPattern = Pattern.compile("^\\d{12}$");
+//        Matcher gtinMatcher = gtinPattern.matcher(s);
+//        return gtinMatcher.find();
+//    }
     
     
 }
