@@ -59,34 +59,31 @@ public class Shell {
     public Shell() {
         this.in = System.in;
         this.out = System.out;
-
+        
         this.reader = new BufferedReader(new InputStreamReader(this.in));
         this.writer = new BufferedWriter(new OutputStreamWriter(this.out));
-
+        
         this.stack = new ArrayList<>();
-
+        
     }
 
     public void initialize() {
+        // You can load configuration or connect to services here
     }
 
     public String getPrompt() {
-        String output = String.format("%s %s",this.mode.toString(),this.prompt);
+        String output = String.format("%s %s", this.mode.toString(), this.prompt);
         return output;
     }
 
     public void printPrompt() throws IOException {
-        this.writer.write(this.getPrompt());
-        this.writer.flush();
+        writer.write(getPrompt());
+        writer.flush();
+
     }
 
-    protected List<String> tokenize(String line) {
-        var output = new ArrayList<String>();
-        var scanner = new Scanner(line);
-        while (scanner.hasNext()) {
-            output.add(scanner.next());
-        }
-        return output;
+    private List<String> tokenize(String line) {
+        return List.of(line.trim().split("\\s+"));
     }
 
     protected void evaluate(String token) throws IOException {
@@ -110,12 +107,9 @@ public class Shell {
     }
 
     protected void processTransaction() {
-        
-        
-        
+
     }
-    
-    
+
     protected void parseLine(String userInput) throws EOFException, IOException {
         if (userInput == null) {
             throw new EOFException();
@@ -136,33 +130,28 @@ public class Shell {
     }
 
     public void start() throws IOException {
-        // initialize
-        this.initialize();
-        // loop
-        this.loop();
-
+        initialize();
+        loop();
     }
 
     protected void loop() throws IOException {
         while (running) {
-            // print prompt
-            this.printPrompt();
+            printPrompt();
+            String userInput = reader.readLine();
 
-            // get input
-            String userInput = this.reader.readLine();
-
-            if (this.mode == Mode.COMMAND) {
-                // evaluate input
-                try {
-                    this.parseLine(userInput);
-                } catch (EOFException ex) {
-                    this.writer.write("EOF");
-                    this.writer.flush();
-                    break;
-                }
+            if (userInput == null) {
+                writer.write("EOF\n");
+                writer.flush();
+                break;
             }
 
-            // print output
+            try {
+                parseLine(userInput);
+            } catch (IOException e) {
+                writer.write("Error: " + e.getMessage() + "\n");
+                writer.flush();
+            }
+
         }
 
     }

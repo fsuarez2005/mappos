@@ -76,7 +76,9 @@ public class Address {
             String identifier = this.identifierFormatCodes.get(fmtCode);
             String value = this.content.get(identifier);
 
-            output = output.replaceAll(fmtCode, value);
+            //output = output.replaceAll(fmtCode, value);
+            output = output.replace(fmtCode, value != null ? value : "");
+            
         }
 
         return output;
