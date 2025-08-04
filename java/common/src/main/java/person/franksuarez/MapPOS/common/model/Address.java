@@ -1,8 +1,8 @@
 package person.franksuarez.MapPOS.common.model;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import person.franksuarez.MapPOS.common.exception.InvalidIdentifier;
 
 /**
@@ -22,13 +22,13 @@ public class Address {
     /**
      *
      */
-    String defaultValue;
+    private String defaultValue;
 
     /**
      * String of the country name.
      *
      */
-    String country;
+    private String country;
 
     /**
      * List of available identifiers.
@@ -37,8 +37,8 @@ public class Address {
      *
      * NOTE: Could use reflection to get class properties.
      */
-    List<String> validIdentifiers;
-
+    //List<String> validIdentifiers;
+    private Set<String> validIdentifiers;
     /**
      * Address data.
      *
@@ -46,7 +46,7 @@ public class Address {
      *
      *
      */
-    HashMap<String, String> content;
+    private HashMap<String, String> content;
 
     /**
      * Map of format code to identifier.
@@ -54,19 +54,20 @@ public class Address {
      * Used with format method to create an address String.
      *
      */
-    HashMap<String, String> identifierFormatCodes;
+    private HashMap<String, String> identifierFormatCodes;
 
     public Address() {
         this.content = new HashMap<>();
         this.country = "";
         this.defaultValue = "";
         this.identifierFormatCodes = new HashMap<>();
-        this.validIdentifiers = new ArrayList<>();
+        this.validIdentifiers = new HashSet<>();
     }
 
-    /** Returns a String using the format String fmt.
+    /**
+     * Returns a String using the format String fmt.
      *
-     * @param fmtString 
+     * @param fmtString
      * @return Formatted String
      */
     public String format(String fmtString) {
@@ -78,13 +79,14 @@ public class Address {
 
             //output = output.replaceAll(fmtCode, value);
             output = output.replace(fmtCode, value != null ? value : "");
-            
+
         }
 
         return output;
     }
 
-    /** Returns address content.
+    /**
+     * Returns address content.
      *
      * @param identifier
      * @return
@@ -108,7 +110,8 @@ public class Address {
         return output;
     }
 
-    /** Sets address content.
+    /**
+     * Sets address content.
      *
      * @param identifier
      * @param value
@@ -122,18 +125,28 @@ public class Address {
         this.content.put(identifier, value);
     }
 
-    /** Adds an identifier to the valid identifier list.
-     * 
-     * @param identifier 
+    /**
+     * Adds an identifier to the valid identifier list.
+     *
+     * @param identifier
      */
-    public void addValidIdentifier(String identifier) {
+    public void addValidIdentifier(String identifier) throws InvalidIdentifier {
+        if (identifier.isEmpty()) {
+            throw new InvalidIdentifier("Identifier cannot be empty string.");
+        }
+        if (validIdentifiers.contains(identifier)) {
+            throw new InvalidIdentifier("Identifier already exists.");
+        }
+        
         this.validIdentifiers.add(identifier);
+        
+        
     }
-    
-    
-    /** Removes an identifier from the valid identifier list.
-     * 
-     * @param identifier 
+
+    /**
+     * Removes an identifier from the valid identifier list.
+     *
+     * @param identifier
      */
     public void removeValidIdentifier(String identifier) {
         // validate identifier
@@ -141,37 +154,39 @@ public class Address {
         this.validIdentifiers.remove(identifier);
 
     }
-    
-    /** Returns true if identifier is valid for this address.
-     * 
+
+    /**
+     * Returns true if identifier is valid for this address.
+     *
      * @param identifier
-     * @return 
+     * @return
      */
     public boolean isValidIdentifier(String identifier) {
         return this.validIdentifiers.contains(identifier);
     }
 
-    /** Set the identifier String for the format code.
-     * 
+    /**
+     * Set the identifier String for the format code.
+     *
      * @param fmtCode
-     * @param identifier 
-     * @throws person.franksuarez.MapPOS.common.exception.InvalidIdentifier 
+     * @param identifier
+     * @throws person.franksuarez.MapPOS.common.exception.InvalidIdentifier
      */
     public void setFormatCode(String fmtCode, String identifier) throws InvalidIdentifier {
         // validate identifier
         if (!isValidIdentifier(identifier)) {
             throw new InvalidIdentifier();
         }
-        
-        
+
         this.identifierFormatCodes.put(fmtCode, identifier);
     }
 
-    /** Returns the identifier String for the format code.
-     * 
+    /**
+     * Returns the identifier String for the format code.
+     *
      * @param fmtCode
-     * @return 
-     * @throws person.franksuarez.MapPOS.exception.InvalidIdentifier 
+     * @return
+     * @throws person.franksuarez.MapPOS.exception.InvalidIdentifier
      */
     public String getFormatCode(String fmtCode) throws InvalidIdentifier {
         // Validate identifier
@@ -181,10 +196,11 @@ public class Address {
         }
         return this.identifierFormatCodes.get(fmtCode);
     }
-    
-    /** Removes the format code.
-     * 
-     * @param fmtCode 
+
+    /**
+     * Removes the format code.
+     *
+     * @param fmtCode
      */
     public void removeFormatCode(String fmtCode) {
         this.identifierFormatCodes.remove(fmtCode);
