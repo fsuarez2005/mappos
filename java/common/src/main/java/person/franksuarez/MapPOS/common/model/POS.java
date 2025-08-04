@@ -65,9 +65,7 @@ public class POS {
     public void setCurrentTransaction(Transaction currentTransaction) {
         this.currentTransaction = currentTransaction;
     }
-    
 
-    
     
     
     

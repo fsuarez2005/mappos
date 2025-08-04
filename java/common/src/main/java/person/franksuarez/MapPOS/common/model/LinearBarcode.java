@@ -42,6 +42,16 @@ public class LinearBarcode {
         return allValid;
     }
 
+    /**
+     * TODO: cannot have abstract static method, so this is just a placeholder
+     * @param s
+     * @return
+     */
+    public static boolean isValid(String s) {
+        throw new UnsupportedOperationException("Unimplemented");
+    }
+    
+    
     public boolean isValid() {
         return isCorrectFormatLength() && areAllCharsValid();
     }

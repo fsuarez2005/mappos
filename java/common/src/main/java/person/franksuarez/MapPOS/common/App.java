@@ -4,14 +4,12 @@
  */
 package person.franksuarez.MapPOS.common;
 
-import java.sql.SQLException;
-
 /**
  *
  * @author franksuarez
  */
-public class App {
-
-    public static void main(String[] args) throws SQLException, Exception {
-    }
+public abstract class App {
+    public abstract void start();
+    
+    
 }
