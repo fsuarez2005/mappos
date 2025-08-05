@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import person.franksuarez.MapPOS.common.exception.InvalidFormatCode;
 import person.franksuarez.MapPOS.common.exception.InvalidIdentifier;
 
 /**
@@ -17,13 +18,41 @@ import person.franksuarez.MapPOS.common.exception.InvalidIdentifier;
  * @author franksuarez
  */
 public class AddressTest {
-    private Address goodAddress1;
-    private Address goodAddress2;
-    
-    
-    
-    
-    
+
+    public static Address createGoodAddress1() {
+        Address goodAddress1 = new Address();
+
+        try {
+
+            // create identifiers
+            goodAddress1 = new Address();
+            goodAddress1.addValidIdentifier("name");
+            goodAddress1.addValidIdentifier("street");
+            goodAddress1.addValidIdentifier("city");
+            goodAddress1.addValidIdentifier("state");
+            goodAddress1.addValidIdentifier("zipcode");
+
+            // create format codes
+            goodAddress1.setFormatCode("n", "name");
+            goodAddress1.setFormatCode("s", "street");
+            goodAddress1.setFormatCode("c", "city");
+            goodAddress1.setFormatCode("t", "state");
+            goodAddress1.setFormatCode("z", "zipcode");
+
+            // add data
+            goodAddress1.setContent("name", "John Doe");
+            goodAddress1.setContent("street", "123 Fake St.");
+            goodAddress1.setContent("city", "Port Huron");
+            goodAddress1.setContent("state", "MI");
+            goodAddress1.setContent("zipcode", "48060");
+
+        } catch (InvalidIdentifier ex) {
+            System.getLogger(AddressTest.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+
+        return goodAddress1;
+    }
+
     public AddressTest() {
     }
 
@@ -37,82 +66,56 @@ public class AddressTest {
 
     @BeforeEach
     public void setUp() {
-        System.out.println("setUp");
-        try {
-            goodAddress1 = new Address();
-            goodAddress1.addValidIdentifier("name");
-            goodAddress1.addValidIdentifier("street");
-            goodAddress1.addValidIdentifier("city");
-            goodAddress1.addValidIdentifier("state");
-            goodAddress1.addValidIdentifier("zipcode");
-        } catch (InvalidIdentifier ex) {
-            System.getLogger(AddressTest.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
-        }
-        
-        try {
-            goodAddress1.setFormatCode("n", "name");
-            goodAddress1.setFormatCode("s", "street");
-            goodAddress1.setFormatCode("c", "city");
-            goodAddress1.setFormatCode("t", "state");
-            goodAddress1.setFormatCode("z", "zipcode");
-        } catch (InvalidIdentifier invalidIdentifier) {
-            
-            
-        }
-
-        
-        
-        
-        
     }
 
     @AfterEach
     public void tearDown() {
     }
 
-
-    /** TODO: testFormat
-     * Test of format method, of class Address.
+    /**
+     * COMPLETE
      */
     @Test
     public void testFormat() {
         System.out.println("format");
-        String fmtString = "";
-        Address instance = new Address();
-        String expResult = "";
-        String result = instance.format(fmtString);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        String fmtString = "%n %s";
+        String expected = "John Doe 123 Fake St.";
+
+        Address a = AddressTest.createGoodAddress1();
+
+        assertEquals(expected, a.format(fmtString));
     }
 
-    /** TODO: testGetContent
-     * Test of getContent method, of class Address.
+    /**
+     * COMPLETE
      */
     @Test
     public void testGetContent() throws Exception {
         System.out.println("getContent");
-        String identifier = "";
-        Address instance = new Address();
-        String expResult = "";
-        String result = instance.getContent(identifier);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String expected = "John Doe";
+        
+        Address a = AddressTest.createGoodAddress1();
+
+        assertEquals(expected, a.getContent("name"));
     }
 
-    /** TODO: testSetContent
-     * Test of setContent method, of class Address.
+    /**
+     * COMPLETE
+     *
      */
     @Test
-    public void testSetContent() throws Exception {
+    public void testSetContent() throws InvalidIdentifier {
         System.out.println("setContent");
-        String identifier = "";
-        String value = "";
-        Address instance = new Address();
-        instance.setContent(identifier, value);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String identifier = "name";
+        String value = "Frank Suarez";
+        //Address instance = new Address();
+        Address instance = AddressTest.createGoodAddress1();
+
+        assertDoesNotThrow(() -> {
+            instance.setContent(identifier, value);
+        });
+
     }
 
     /**
@@ -123,14 +126,19 @@ public class AddressTest {
         System.out.println("addValidIdentifier");
         String identifier = "id";
         Address instance = new Address();
-        
-        
+
         assertDoesNotThrow(() -> {
             instance.addValidIdentifier(identifier);
         });
 
     }
 
+    /**
+     *
+     *
+     *
+     * COMPLETE
+     */
     @Test
     public void fail_testAddValidIdentifier_blank() {
         System.out.println("addValidIdentifier");
@@ -146,6 +154,13 @@ public class AddressTest {
 
     }
 
+    /**
+     *
+     *
+     * COMPLETE
+     *
+     * @throws InvalidIdentifier
+     */
     @Test
     public void fail_testAddValidIdentifier_duplicate() throws InvalidIdentifier {
         System.out.println("addValidIdentifier");
@@ -153,7 +168,7 @@ public class AddressTest {
         Address instance = new Address();
 
         instance.addValidIdentifier(identifier);
-        
+
         // should fail because duplicate identifier
         InvalidIdentifier ex = assertThrows(
                 InvalidIdentifier.class,
@@ -166,72 +181,116 @@ public class AddressTest {
 
     /**
      * Test of removeValidIdentifier method, of class Address.
+     *
+     *
+     *
+     * COMPLETE
+     *
+     * @throws person.franksuarez.MapPOS.common.exception.InvalidIdentifier
      */
     @Test
     public void testRemoveValidIdentifier() {
         System.out.println("removeValidIdentifier");
-        String identifier = "";
-        Address instance = new Address();
-        instance.removeValidIdentifier(identifier);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Address a = AddressTest.createGoodAddress1();
+
+        assertDoesNotThrow(() -> {
+            a.removeValidIdentifier("name");
+        });
     }
 
     /**
-     * Test of isValidIdentifier method, of class Address.
+     * COMPLETE
+     */
+    @Test
+    public void fail_testRemoveValidIdentifier() {
+        System.out.println("removeValidIdentifier");
+        Address a = AddressTest.createGoodAddress1();
+
+        InvalidIdentifier ex = assertThrows(InvalidIdentifier.class, () -> {
+            a.removeValidIdentifier("invalid");
+        });
+    }
+
+    /**
+     * TODO Test of isValidIdentifier method, of class Address.
+     *
+     *
+     *
      */
     @Test
     public void testIsValidIdentifier() {
-        System.out.println("isValidIdentifier");
-        String identifier = "";
-        Address instance = new Address();
-        boolean expResult = false;
-        boolean result = instance.isValidIdentifier(identifier);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        System.out.println("testIsValidIdentifier");
+        Address a = AddressTest.createGoodAddress1();
+
+        assertTrue(a.isValidIdentifier("name"));
+
     }
 
     /**
-     * Test of setFormatCode method, of class Address.
+     * TODO Test of setFormatCode method, of class Address.
      */
     @Test
     public void testSetFormatCode() throws Exception {
         System.out.println("setFormatCode");
-        String fmtCode = "";
-        String identifier = "";
-        Address instance = new Address();
-        instance.setFormatCode(fmtCode, identifier);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Address a = AddressTest.createGoodAddress1();
+
+        assertDoesNotThrow(() -> {
+            a.setFormatCode("n", "name");
+        });
+
     }
 
     /**
-     * Test of getFormatCode method, of class Address.
+     * TODO Test of getFormatCode method, of class Address.
      */
     @Test
-    public void testGetFormatCode() throws Exception {
+    public void testGetFormatCode() {
         System.out.println("getFormatCode");
-        String fmtCode = "";
-        Address instance = new Address();
-        String expResult = "";
-        String result = instance.getFormatCode(fmtCode);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String fmtCode = "n";
+        Address instance = AddressTest.createGoodAddress1();
+        
+        assertDoesNotThrow(() -> {
+            instance.removeFormatCode(fmtCode);
+        });
     }
 
     /**
-     * Test of removeFormatCode method, of class Address.
+     * TODO Test of removeFormatCode method, of class Address.
      */
     @Test
-    public void testRemoveFormatCode() {
+    public void testRemoveFormatCode() throws InvalidFormatCode {
+        System.out.println("removeFormatCode");
+        String fmtCode = "n";
+        Address instance = AddressTest.createGoodAddress1();
+        
+        assertDoesNotThrow(() -> {
+            instance.removeFormatCode(fmtCode);
+        });
+    }
+
+    @Test
+    public void fail_testRemoveFormatCode_empty() {
         System.out.println("removeFormatCode");
         String fmtCode = "";
-        Address instance = new Address();
-        instance.removeFormatCode(fmtCode);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Address instance = AddressTest.createGoodAddress1();
+
+        InvalidFormatCode ex = assertThrows(InvalidFormatCode.class, () -> {
+            instance.removeFormatCode(fmtCode);
+        });
+        System.out.println(ex.getMessage());
+    }
+
+    @Test
+    public void fail_testRemoveFormatCode_notfound() {
+        System.out.println("removeFormatCode");
+        String fmtCode = "notfound";
+        Address instance = AddressTest.createGoodAddress1();
+
+        InvalidFormatCode ex = assertThrows(InvalidFormatCode.class, () -> {
+            instance.removeFormatCode(fmtCode);
+        });
+
+        System.out.println(ex.getMessage());
     }
 
 }

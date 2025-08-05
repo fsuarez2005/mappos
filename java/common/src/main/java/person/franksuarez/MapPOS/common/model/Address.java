@@ -3,6 +3,7 @@ package person.franksuarez.MapPOS.common.model;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
+import person.franksuarez.MapPOS.common.exception.InvalidFormatCode;
 import person.franksuarez.MapPOS.common.exception.InvalidIdentifier;
 
 /**
@@ -19,6 +20,10 @@ public class Address {
     //  - Address content should be extractable and changable without affecting other content.
     //  - Data structure should be flexible to allow for future changes.
 
+    
+    private String fmtCodePrefix = "%";
+    
+    
     /**
      *
      */
@@ -77,8 +82,8 @@ public class Address {
             String identifier = this.identifierFormatCodes.get(fmtCode);
             String value = this.content.get(identifier);
 
-            //output = output.replaceAll(fmtCode, value);
-            output = output.replace(fmtCode, value != null ? value : "");
+            
+            output = output.replace(fmtCodePrefix+fmtCode, value != null ? value : "");
 
         }
 
@@ -118,10 +123,10 @@ public class Address {
      * @throws InvalidIdentifier
      */
     public void setContent(String identifier, String value) throws InvalidIdentifier {
-        if (!this.validIdentifiers.contains(identifier)) {
+        if (! this.validIdentifiers.contains(identifier)) {
             throw new InvalidIdentifier();
         }
-
+        
         this.content.put(identifier, value);
     }
 
@@ -137,10 +142,9 @@ public class Address {
         if (validIdentifiers.contains(identifier)) {
             throw new InvalidIdentifier("Identifier already exists.");
         }
-        
+
         this.validIdentifiers.add(identifier);
-        
-        
+
     }
 
     /**
@@ -148,11 +152,12 @@ public class Address {
      *
      * @param identifier
      */
-    public void removeValidIdentifier(String identifier) {
-        // validate identifier
+    public void removeValidIdentifier(String identifier) throws InvalidIdentifier {
+        if (!validIdentifiers.contains(identifier)) {
+            throw new InvalidIdentifier(String.format("Identifier %s not found.", identifier));
+        }
 
-        this.validIdentifiers.remove(identifier);
-
+        validIdentifiers.remove(identifier);
     }
 
     /**
@@ -202,7 +207,15 @@ public class Address {
      *
      * @param fmtCode
      */
-    public void removeFormatCode(String fmtCode) {
+    public void removeFormatCode(String fmtCode) throws InvalidFormatCode {
+        if (fmtCode.isEmpty()) {
+            throw new InvalidFormatCode("Format code cannot be empty.");
+        }
+        if (! identifierFormatCodes.containsKey(fmtCode)) {
+            throw new InvalidFormatCode(String.format("Format code %s not found.",fmtCode));
+        }
+        
+        
         this.identifierFormatCodes.remove(fmtCode);
     }
 
