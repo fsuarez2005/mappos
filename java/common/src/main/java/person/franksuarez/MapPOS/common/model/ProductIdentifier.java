@@ -1,60 +1,80 @@
-// TODO: header
+/** ProductIdentifier.
+ *
+ *
+ *
+ *
+ */
 package person.franksuarez.MapPOS.common.model;
 
-import java.util.function.Predicate;
 import person.franksuarez.MapPOS.common.exception.InvalidFormat;
 
-/**
- * ProductIdentifier contains useful utility functions.
+/** ProductIdentifier contains useful utility functions.
  *
  * @author franksuarez
  */
 public abstract class ProductIdentifier {
-    protected boolean hasCheckDigit;
-    
-    // should be a very generic type
-    protected char[] data;
-    protected int formatLength = 0;
-    protected int checkDigitIndex;
-    
-    public abstract boolean isCharValid(char c);
-    
-    
 
-    public boolean getHasCheckDigit() {
+    // cache the validation test
+    private boolean validated;
+
+    private boolean hasCheckDigit;
+
+    // should be a very generic type
+    private char[] data;
+
+    private int formatLength;
+
+    private int checkDigitIndex;
+
+    public ProductIdentifier() {
+    }
+
+    public ProductIdentifier(char[] data, int formatLength, boolean hasCheckDigit, boolean validated, int checkDigitIndex) {
+        this.validated = validated;
+        this.hasCheckDigit = hasCheckDigit;
+        this.data = data;
+        this.formatLength = formatLength;
+        this.checkDigitIndex = checkDigitIndex;
+    }
+
+    protected abstract boolean isCharValid(char c);
+
+    public final boolean getHasCheckDigit() {
         return hasCheckDigit;
     }
 
-    public void setHasCheckDigit(boolean hasCheckDigit) {
+    public final void setHasCheckDigit(boolean hasCheckDigit) {
         this.hasCheckDigit = hasCheckDigit;
     }
 
-    public char[] getData() {
+    public final char[] getData() {
         return data;
     }
 
-    public void setData(char[] data) {
+    public final void setData(char[] data) {
         this.data = data;
     }
 
-    public int getFormatLength() {
+    public final int getFormatLength() {
         return formatLength;
     }
 
-    public void setFormatLength(int formatLength) {
+    public final void setFormatLength(int formatLength) throws IllegalArgumentException {
         if (formatLength < 0) {
             throw new IllegalArgumentException("Format Length cannot be negative.");
         }
-        
-        
         this.formatLength = formatLength;
     }
-
-    public int getCheckDigitIndex() {
+    
+    public final int getCheckDigitIndex() {
         return checkDigitIndex;
     }
 
-    public void setCheckDigitIndex(int checkDigitIndex) {
+    public final void setCheckDigitIndex(int checkDigitIndex) {
+        if (checkDigitIndex < 0) {
+            throw new IndexOutOfBoundsException(checkDigitIndex);
+        }
+
         this.checkDigitIndex = checkDigitIndex;
     }
 
@@ -65,44 +85,50 @@ public abstract class ProductIdentifier {
      * @return
      */
     public boolean areAllCharsValid() {
+        if (this.validated) {
+            return true;
+            
+        }
+
         boolean allValid = true;
 
         for (char c : this.data) {
-            
-            /*
-            if (!isCharValidOld.test(c)) {
-                return false;
-            }*/
-            
-            if (! isCharValid(c)) {
+
+            if (!isCharValid(c)) {
                 return false;
             }
         }
 
+        this.validated = true;
+
         return allValid;
     }
-    
+
+    public void invalidate() {
+        this.validated = false;
+    }
+
     public boolean isValid() {
         return isCorrectFormatLength() && areAllCharsValid();
     }
-    
+
     public boolean isCorrectFormatLength() {
-        return (this.data.length == this.formatLength);
+        return (getData().length == getFormatLength());
     }
 
     public void fromString(String dataStr) {
-        this.data = dataStr.toCharArray();
+        setData(dataStr.toCharArray());
     }
 
     public int[] toIntArray() throws InvalidFormat, NullPointerException {
-        if (this.data == null) {
+        if (getData() == null) {
             throw new NullPointerException();
         }
 
         int[] intData = new int[this.data.length];
 
-        for (int n = 0; n < this.data.length; n++) {
-            int intDigit = Character.getNumericValue(this.data[n]);
+        for (int n = 0; n < getData().length; n++) {
+            int intDigit = Character.getNumericValue(getData()[n]);
 
             if (intDigit == -1) {
                 // Character.getNumericValue returns -1 on unaccepted char
@@ -111,9 +137,7 @@ public abstract class ProductIdentifier {
 
             intData[n] = intDigit;
         }
-
         return intData;
-
     }
 
     /**
@@ -122,7 +146,7 @@ public abstract class ProductIdentifier {
      */
     @Override
     public String toString() {
-        return String.valueOf(this.data);
+        return String.valueOf(getData());
     }
 
 }

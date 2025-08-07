@@ -1,9 +1,11 @@
-// TODO: header
-
+/** GTIN.
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
 package person.franksuarez.MapPOS.common.model;
-
-// TODO: implement serialization
-
 import person.franksuarez.MapPOS.common.exception.InvalidFormat;
 
 
@@ -16,28 +18,13 @@ import person.franksuarez.MapPOS.common.exception.InvalidFormat;
  * @author franksuarez
  */
 public class GTIN extends ProductIdentifier implements java.io.Serializable {
-
-    
-    // TODO: generic Check Digit method
-    
-    public GTIN() {
-        
-        /*
-        this.isCharValidOld = (t) -> {
-            return Character.isDigit(t);
-        };
-        */
-    }
+    public GTIN() {}
 
     @Override
     public boolean isCharValid(char c) {
         return Character.isDigit(c);
     }
     
-    
-    
-    
-
     /** Calculates the check digit for a GTIN, regardless of length.
      * 
      * @return Check digit of GTIN
@@ -51,10 +38,10 @@ public class GTIN extends ProductIdentifier implements java.io.Serializable {
         boolean multiplyByThree = true;
 
         // Process digits from right to left
-        for (int i = this.data.length - 2; i >= 0; i--) {
+        for (int i = this.getData().length - 2; i >= 0; i--) {
             
             // assumes the data are digits
-            int digit = Character.getNumericValue(this.data[i]);
+            int digit = Character.getNumericValue(this.getData()[i]);
             
             sum += multiplyByThree ? digit * 3 : digit;
             multiplyByThree = !multiplyByThree;

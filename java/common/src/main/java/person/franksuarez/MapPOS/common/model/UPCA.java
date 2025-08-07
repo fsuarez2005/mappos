@@ -1,15 +1,17 @@
-// TODO: header
+/** UPCA.
+ * 
+ * 
+ * 
+ * 
+ */
 
 // TODO: Need to test and check for bugs.
 
 
 package person.franksuarez.MapPOS.common.model;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import person.franksuarez.MapPOS.common.exception.InvalidFormat;
 
-/**
+/** UPCA.
  *
  * @author franksuarez
  */
@@ -17,15 +19,8 @@ public class UPCA extends GTIN implements java.io.Serializable {
 
 
     public UPCA() {
-        this.formatLength = 12;
-        this.checkDigitIndex = 11;
-        
-        // only digits are valid
-        /*
-        this.isCharValidOld = (Character c) -> {
-            return (Character.isDigit(c));
-        };
-        */
+        this.setFormatLength( 12 );
+        this.setCheckDigitIndex( 11 );
     }
     
     /** Returns true if the check digit is correct.
@@ -40,21 +35,10 @@ public class UPCA extends GTIN implements java.io.Serializable {
         if (intData == null) {
             throw new NullPointerException();
         }
-        if (intData.length < formatLength) {
+        if (intData.length < getFormatLength()) {
             throw new InvalidFormat();
         }
 
-        return (intData[checkDigitIndex] == calculateCheckDigit());
+        return (intData[getCheckDigitIndex()] == calculateCheckDigit());
     }
-    
-    /*   
-    public static boolean isValid(String s) {
-        Pattern upcaPattern = Pattern.compile("^\\d{12}$");
-        Matcher upcaMatcher = upcaPattern.matcher(s);
-        return upcaMatcher.find();
-    }
-    */
-
-
-
 }

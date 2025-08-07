@@ -49,7 +49,7 @@ public class GTINTest {
 
         GTIN instance = new GTIN();
 
-        instance.data = upcCharArray;
+        instance.setData( upcCharArray );
 
         int expResult = 1;
         int result = instance.calculateCheckDigit();
