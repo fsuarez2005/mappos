@@ -54,6 +54,10 @@ public class ProductIdentifierTest {
     public void tearDown() {
     }
 
+
+    
+    
+    
     /**
      * Test of isCharValid method, of class ProductIdentifier.
      */

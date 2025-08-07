@@ -2,6 +2,9 @@
 
 package person.franksuarez.MapPOS.common.model;
 
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,27 +13,36 @@ import java.util.List;
  * @author franksuarez
  */
 public class Transaction implements java.io.Serializable {
+    // date
+    
+    // time
+    ZonedDateTime datetime;
+    
     private double taxPercentage = 6.0;
     private List<Product> entries;
     
     public Transaction() {
         this.entries = new ArrayList<>();
+        
+        
+        // TODO: make timezone configurable
+        this.datetime = ZonedDateTime.now(ZoneId.of("America/Detroit"));
     }
     
     // TODO: switch parameter to (Transaction.Entry x)
-    public void addEntry(Product p) {
+    public void add(Product p) {
         this.entries.add(p);
     }
     
-    public void removeEntry(int index) {
+    public void remove(int index) {
         this.entries.remove(index);
     }
     
-    public Product getEntry(int index) {
+    public Product get(int index) {
         return this.entries.get(index);
     }
     
-    public List<Product> getEntries() {
+    public List<Product> getAll() {
         return this.entries;
     }
     
@@ -38,12 +50,18 @@ public class Transaction implements java.io.Serializable {
         double total = 0.0;
         
         for (Product p: entries) {
-            total += p.getPrice();
+            //total += p.getPrice();
         }
         
         return total;
     }
 
+    public void setTaxPercentage(double taxPercentage) {
+        // TODO: guard
+        
+        this.taxPercentage = taxPercentage;
+    }
+    
     public double getTaxPercentage() {
         return taxPercentage;
     }
@@ -55,36 +73,5 @@ public class Transaction implements java.io.Serializable {
         total *= taxAdjuster;
         
         return total;
-    }
-    
-    public void printEntryList() {
-        /*
-        
-        Coke                    0-12345-67890-1    2.99
-        Coke                    0-12345-67890-1    2.99
-        Coke                    0-12345-67890-1    2.99
-        Coke                    0-12345-67890-1    2.99
-        Subtotal  =  00.00
-        Tax       =  00.00
-        Total     =  00.00
-        
-        
-        
-        
-        */
-        
-        
-        
-        
-        
-        System.out.println("Transaction:");
-        for (Product p: this.entries) {
-            System.out.printf("%s%n",p.toString());
-        }
-        
-        double total = getTotal();
-        System.out.printf("Subtotal  =  %.2f%n",total);
-        System.out.printf("Tax       =  %.2f%n", total*0.06);
-        System.out.printf("Total     =  %.2f%n", total*1.06);
     }
 }
