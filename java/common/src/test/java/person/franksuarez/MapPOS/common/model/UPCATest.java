@@ -49,6 +49,15 @@ public class UPCATest {
     }
 
     
+    @Test
+    public void testConstructor() {
+        UPCA a = new UPCA();
+        System.out.printf("%s%n%b%n",a.isCharValid.toString(),a.isCharValid.test('a'));
+        
+        
+    }
+    
+    
     /**
      * Test of calculateCheckDigit method, of class UPCA.
      */
@@ -76,6 +85,20 @@ public class UPCATest {
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
+    }
+    
+    @Test
+    public void fail_testIsValid() {
+        System.out.println("fail_isValid");
+        UPCA instance = new UPCA();
+        
+        
+        boolean expResult = true;
+        boolean result = this.data.isValid();
+        assertEquals(expResult, result);
+        
+        
+        
     }
 
     /**

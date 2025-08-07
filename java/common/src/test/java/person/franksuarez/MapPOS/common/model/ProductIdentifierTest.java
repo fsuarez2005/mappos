@@ -16,15 +16,15 @@ import org.junit.jupiter.api.Test;
  *
  * @author franksuarez
  */
-public class LinearBarcodeTest {
-    private LinearBarcode data;
+public class ProductIdentifierTest {
+    private ProductIdentifier data;
     
     
     private String testUPC1Str = "611269001303";
     
     
     
-    public LinearBarcodeTest() {
+    public ProductIdentifierTest() {
     }
     
     @BeforeAll
@@ -37,7 +37,7 @@ public class LinearBarcodeTest {
     
     @BeforeEach
     public void setUp() {
-        this.data = new LinearBarcode();
+        this.data = new ProductIdentifier();
         this.data.fromString(testUPC1Str);
         
         this.data.formatLength = 12;
@@ -53,12 +53,12 @@ public class LinearBarcodeTest {
     }
 
     /**
-     * Test of areAllCharsValid method, of class LinearBarcode.
+     * Test of areAllCharsValid method, of class ProductIdentifier.
      */
     @Test
     public void testAreAllCharsValid() {
         System.out.println("areAllCharsValid");
-        //LinearBarcode instance = new LinearBarcode();
+        //LinearBarcode instance = new ProductIdentifier();
         
         
         
@@ -69,7 +69,7 @@ public class LinearBarcodeTest {
     }
 
     /**
-     * Test of isValid method, of class LinearBarcode.
+     * Test of isValid method, of class ProductIdentifier.
      */
     @Test
     public void testIsValid() {
@@ -83,7 +83,7 @@ public class LinearBarcodeTest {
     }
 
     /**
-     * Test of isCorrectFormatLength method, of class LinearBarcode.
+     * Test of isCorrectFormatLength method, of class ProductIdentifier.
      */
     @Test
     public void testIsCorrectFormatLength() {
@@ -96,21 +96,7 @@ public class LinearBarcodeTest {
     }
 
     /**
-     * Test of hasOnlyDigits method, of class LinearBarcode.
-     */
-    @Test
-    public void testHasOnlyDigits() {
-        System.out.println("hasOnlyDigits");
-        
-        boolean expResult = true;
-        boolean result = this.data.hasOnlyDigits();
-        assertEquals(expResult, result);
-    }
-
-    
-
-    /**
-     * Test of toIntArray method, of class LinearBarcode.
+     * Test of toIntArray method, of class ProductIdentifier.
      */
     @Test
     public void testToIntArray() throws Exception {
@@ -124,13 +110,13 @@ public class LinearBarcodeTest {
     }
 
     /**
-     * Test of toString method, of class LinearBarcode.
+     * Test of toString method, of class ProductIdentifier.
      */
     @Disabled
     @Test
     public void testToString() {
         System.out.println("toString");
-        LinearBarcode instance = new LinearBarcode();
+        ProductIdentifier instance = new ProductIdentifier();
         String expResult = "";
         String result = instance.toString();
         assertEquals(expResult, result);

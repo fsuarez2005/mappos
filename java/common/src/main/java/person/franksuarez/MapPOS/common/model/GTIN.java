@@ -4,8 +4,6 @@ package person.franksuarez.MapPOS.common.model;
 
 // TODO: implement serialization
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import person.franksuarez.MapPOS.common.exception.InvalidFormat;
 
 
@@ -17,10 +15,17 @@ import person.franksuarez.MapPOS.common.exception.InvalidFormat;
  *
  * @author franksuarez
  */
-public class GTIN extends LinearBarcode implements java.io.Serializable {
+public class GTIN extends ProductIdentifier implements java.io.Serializable {
+
+    
     // TODO: generic Check Digit method
     
-    
+    public GTIN() {
+        this.isCharValid = (t) -> {
+            return Character.isDigit(t);
+        };
+    }
+
     /** Calculates the check digit for a GTIN, regardless of length.
      * 
      * @return Check digit of GTIN
@@ -35,7 +40,10 @@ public class GTIN extends LinearBarcode implements java.io.Serializable {
 
         // Process digits from right to left
         for (int i = this.data.length - 2; i >= 0; i--) {
+            
+            // assumes the data are digits
             int digit = Character.getNumericValue(this.data[i]);
+            
             sum += multiplyByThree ? digit * 3 : digit;
             multiplyByThree = !multiplyByThree;
         }
@@ -45,12 +53,7 @@ public class GTIN extends LinearBarcode implements java.io.Serializable {
         return checkDigit;
     }
     
-    
-//    public static boolean isValid(String s) {
-//        Pattern gtinPattern = Pattern.compile("^\\d{12}$");
-//        Matcher gtinMatcher = gtinPattern.matcher(s);
-//        return gtinMatcher.find();
-//    }
+
     
     
 }

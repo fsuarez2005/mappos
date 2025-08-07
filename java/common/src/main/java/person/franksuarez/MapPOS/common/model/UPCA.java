@@ -15,16 +15,17 @@ import person.franksuarez.MapPOS.common.exception.InvalidFormat;
  */
 public class UPCA extends GTIN implements java.io.Serializable {
 
-    private int checkDigitIndex;
 
     public UPCA() {
         this.formatLength = 12;
         this.checkDigitIndex = 11;
         
         // only digits are valid
+        /*
         this.isCharValid = (Character c) -> {
             return (Character.isDigit(c));
         };
+        */
     }
     
     /** Returns true if the check digit is correct.
@@ -46,12 +47,13 @@ public class UPCA extends GTIN implements java.io.Serializable {
         return (intData[checkDigitIndex] == calculateCheckDigit());
     }
     
-       
+    /*   
     public static boolean isValid(String s) {
         Pattern upcaPattern = Pattern.compile("^\\d{12}$");
         Matcher upcaMatcher = upcaPattern.matcher(s);
         return upcaMatcher.find();
     }
+    */
 
 
 

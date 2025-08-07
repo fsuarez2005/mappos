@@ -1,19 +1,134 @@
 // TODO: header
-
 package person.franksuarez.MapPOS.common.model;
 
 import java.util.function.Predicate;
+import person.franksuarez.MapPOS.common.exception.InvalidFormat;
 
-/** Interface for identifiers like UPC.
+/**
+ * ProductIdentifier contains useful utility functions.
  *
  * @author franksuarez
  */
-public interface ProductIdentifier<T> {
-    public boolean isValid();
-
-    public void set(T value);
-    public T get();
+public class ProductIdentifier {
+    protected boolean hasCheckDigit;
     
-    public void setValidationPredicate(Predicate<T> validator);
-    public Predicate<T> getValidationPredicate();
+    // should be a very generic type
+    protected char[] data;
+
+    public boolean isHasCheckDigit() {
+        return hasCheckDigit;
+    }
+
+    public void setHasCheckDigit(boolean hasCheckDigit) {
+        this.hasCheckDigit = hasCheckDigit;
+    }
+
+    public char[] getData() {
+        return data;
+    }
+
+    public void setData(char[] data) {
+        this.data = data;
+    }
+
+    public int getFormatLength() {
+        return formatLength;
+    }
+
+    public void setFormatLength(int formatLength) {
+        if (formatLength < 0) {
+            throw new IllegalArgumentException("Format Length cannot be negative.");
+        }
+        
+        
+        this.formatLength = formatLength;
+    }
+
+    public int getCheckDigitIndex() {
+        return checkDigitIndex;
+    }
+
+    public void setCheckDigitIndex(int checkDigitIndex) {
+        this.checkDigitIndex = checkDigitIndex;
+    }
+
+    protected int formatLength = 0;
+
+    
+    transient protected Predicate<Character> isCharValid;
+    protected int checkDigitIndex;
+
+    /**
+     *
+     * @return
+     */
+    public Predicate<Character> getIsCharValid() {
+        return isCharValid;
+    }
+
+    public void setIsCharValid(Predicate<Character> isCharValid) {
+        this.isCharValid = isCharValid;
+    }
+
+    /**
+     * Checks each Char of charData to see if it passes isCharValid(char).
+     *
+     *
+     * @return
+     */
+    public boolean areAllCharsValid() {
+        boolean allValid = true;
+
+        for (char c : this.data) {
+            if (!isCharValid.test(c)) {
+                return false;
+            }
+        }
+
+        return allValid;
+    }
+
+    public boolean isValid() {
+        return isCorrectFormatLength() && areAllCharsValid();
+    }
+
+    public boolean isCorrectFormatLength() {
+        return (this.data.length == this.formatLength);
+    }
+
+    public void fromString(String dataStr) {
+        this.data = dataStr.toCharArray();
+    }
+
+    public int[] toIntArray() throws InvalidFormat, NullPointerException {
+        if (this.data == null) {
+            throw new NullPointerException();
+        }
+
+        int[] intData = new int[this.data.length];
+
+        for (int n = 0; n < this.data.length; n++) {
+            int intDigit = Character.getNumericValue(this.data[n]);
+
+            if (intDigit == -1) {
+                // Character.getNumericValue returns -1 on unaccepted char
+                throw new InvalidFormat();
+            }
+
+            intData[n] = intDigit;
+        }
+
+        return intData;
+
+    }
+
+    /**
+     *
+     * @return The UPC as a list of the digits.
+     */
+    @Override
+    public String toString() {
+        return String.valueOf(this.data);
+    }
+
 }

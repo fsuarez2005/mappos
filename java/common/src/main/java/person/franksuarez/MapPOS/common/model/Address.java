@@ -215,7 +215,6 @@ public class Address {
             throw new InvalidFormatCode(String.format("Format code %s not found.",fmtCode));
         }
         
-        
         this.identifierFormatCodes.remove(fmtCode);
     }
 
