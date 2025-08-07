@@ -22,7 +22,7 @@ public class UPCA extends GTIN implements java.io.Serializable {
         
         // only digits are valid
         /*
-        this.isCharValid = (Character c) -> {
+        this.isCharValidOld = (Character c) -> {
             return (Character.isDigit(c));
         };
         */

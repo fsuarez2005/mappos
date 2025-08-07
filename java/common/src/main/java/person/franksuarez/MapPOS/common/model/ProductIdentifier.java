@@ -9,13 +9,19 @@ import person.franksuarez.MapPOS.common.exception.InvalidFormat;
  *
  * @author franksuarez
  */
-public class ProductIdentifier {
+public abstract class ProductIdentifier {
     protected boolean hasCheckDigit;
     
     // should be a very generic type
     protected char[] data;
+    protected int formatLength = 0;
+    protected int checkDigitIndex;
+    
+    public abstract boolean isCharValid(char c);
+    
+    
 
-    public boolean isHasCheckDigit() {
+    public boolean getHasCheckDigit() {
         return hasCheckDigit;
     }
 
@@ -52,26 +58,8 @@ public class ProductIdentifier {
         this.checkDigitIndex = checkDigitIndex;
     }
 
-    protected int formatLength = 0;
-
-    
-    transient protected Predicate<Character> isCharValid;
-    protected int checkDigitIndex;
-
     /**
-     *
-     * @return
-     */
-    public Predicate<Character> getIsCharValid() {
-        return isCharValid;
-    }
-
-    public void setIsCharValid(Predicate<Character> isCharValid) {
-        this.isCharValid = isCharValid;
-    }
-
-    /**
-     * Checks each Char of charData to see if it passes isCharValid(char).
+     * Checks each Char of charData to see if it passes isCharValidOld(char).
      *
      *
      * @return
@@ -80,18 +68,24 @@ public class ProductIdentifier {
         boolean allValid = true;
 
         for (char c : this.data) {
-            if (!isCharValid.test(c)) {
+            
+            /*
+            if (!isCharValidOld.test(c)) {
+                return false;
+            }*/
+            
+            if (! isCharValid(c)) {
                 return false;
             }
         }
 
         return allValid;
     }
-
+    
     public boolean isValid() {
         return isCorrectFormatLength() && areAllCharsValid();
     }
-
+    
     public boolean isCorrectFormatLength() {
         return (this.data.length == this.formatLength);
     }

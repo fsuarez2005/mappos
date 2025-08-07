@@ -21,10 +21,22 @@ public class GTIN extends ProductIdentifier implements java.io.Serializable {
     // TODO: generic Check Digit method
     
     public GTIN() {
-        this.isCharValid = (t) -> {
+        
+        /*
+        this.isCharValidOld = (t) -> {
             return Character.isDigit(t);
         };
+        */
     }
+
+    @Override
+    public boolean isCharValid(char c) {
+        return Character.isDigit(c);
+    }
+    
+    
+    
+    
 
     /** Calculates the check digit for a GTIN, regardless of length.
      * 

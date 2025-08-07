@@ -37,15 +37,22 @@ public class ProductIdentifierTest {
     
     @BeforeEach
     public void setUp() {
-        this.data = new ProductIdentifier();
+        this.data = new ProductIdentifier() {
+            @Override
+            public boolean isCharValid(char c) {
+                return Character.isDigit(c);
+            }
+        };
         this.data.fromString(testUPC1Str);
         
         this.data.formatLength = 12;
         this.data.hasCheckDigit = true;
         
-        this.data.isCharValid = (Character c) -> {
+        /*
+        this.data.isCharValidOld = (Character c) -> {
             return (Character.isDigit(c));
         };
+        */
     }
     
     @AfterEach
