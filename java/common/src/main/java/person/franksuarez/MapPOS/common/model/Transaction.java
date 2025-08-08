@@ -50,7 +50,7 @@ public class Transaction implements java.io.Serializable {
         double total = 0.0;
         
         for (Product p: entries) {
-            //total += p.getPrice();
+            total += p.getPrice();
         }
         
         return total;
