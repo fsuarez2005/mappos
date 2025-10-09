@@ -29,7 +29,6 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import person.franksuarez.MapPOS.common.model.POS;
 
 /**

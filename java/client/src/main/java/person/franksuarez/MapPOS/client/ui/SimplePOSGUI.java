@@ -104,7 +104,9 @@ public class SimplePOSGUI extends javax.swing.JFrame implements WindowListener{
         
         boolean validateInput = false;
         
-        boolean isValid = GTIN.isValid(text);
+        //TODO: boolean isValid = GTIN.isValid(text);
+        boolean isValid = false;
+        
         
         boolean postText = (!validateInput) || (isValid);
         
