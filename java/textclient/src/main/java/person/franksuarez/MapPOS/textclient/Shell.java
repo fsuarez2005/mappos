@@ -58,12 +58,12 @@ public class Shell {
     public Shell() {
         this.in = System.in;
         this.out = System.out;
-        
+
         this.reader = new BufferedReader(new InputStreamReader(this.in));
         this.writer = new BufferedWriter(new OutputStreamWriter(this.out));
-        
+
         this.stack = new ArrayList<>();
-        
+
     }
 
     public void initialize() {
@@ -87,22 +87,49 @@ public class Shell {
 
     protected void evaluate(String token) throws IOException {
 
-        if (token.equalsIgnoreCase("quit")) {
-            System.exit(0);
+        String tokenLC = token.toLowerCase();
 
-        } else if (token.equalsIgnoreCase("pos")) {
+        switch (tokenLC) {
+            case "quit":
 
-        } else if (token.equalsIgnoreCase(".s")) {
-            this.writer.write("Stack:\n");
-            this.writer.flush();
-            for (String n : this.stack) {
-                this.writer.write(n);
-                this.writer.write("\n");
+                System.exit(0);
+                break;
+            case "help":
+                break;
+            case "status":
+                break;
+            case "connect":
+                break;
+            case "settings":
+                break;
+            case "mode":
+                writer.write(String.format("Mode: %s%n", this.mode.name()));
+                break;
+            case "pos":
+                this.mode = Mode.POS;
+                break;
+            case "idle":
+                this.mode = Mode.COMMAND;
+                break;
+
+            case "stack":
+                this.writer.write("Stack:\n");
                 this.writer.flush();
-            }
-        } else { // append string to this.stack
-            this.stack.add(token);
+                for (String n : this.stack) {
+                    this.writer.write(n);
+                    this.writer.write("\n");
+                    this.writer.flush();
+                }
+
+                break;
+
+            default:
+                writer.write(String.format("Adding token to stack."));
+                this.stack.add(token);
+                break;
+
         }
+
     }
 
     protected void processTransaction() {

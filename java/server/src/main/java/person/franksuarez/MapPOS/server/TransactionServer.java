@@ -87,7 +87,10 @@ public class TransactionServer implements Runnable {
                     
                     
                     System.out.println("Products:");
-                    for (Product p: transm.content.getEntries()) {
+                    
+
+                    
+                    for (Product p: transm.content.getAll()) {
                         System.out.printf("Item: %s%n",p.getName());
                     }
                     
