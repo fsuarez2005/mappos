@@ -46,48 +46,7 @@ public abstract class ProductIdentifier {
     
     
 
-    public static abstract class Builder<T extends ProductIdentifier, B extends Builder<T,B>>{
-        // cache the validation test
-
-        private boolean validated = false;
-
-        private boolean hasCheckDigit;
-
-        // should be a very generic type
-        private char[] data;
-
-        private int formatLength;
-
-        private int checkDigitIndex;
-        
-        protected abstract B self();
-        public abstract T build();
-        
-        
-        public B hasCheckDigit(boolean hasCheckDigit) {
-            this.hasCheckDigit = hasCheckDigit;
-            return self();
-        }
-        
-        public B data(char[] data) {
-            this.data = data;
-            return self();
-        }
-        
-        public B formatLength(int formatLength) {
-            this.formatLength = formatLength;
-            return self();
-        }
-        
-        public B checkDigitIndex(int checkDigitIndex) {
-            this.checkDigitIndex = checkDigitIndex;
-            return self();
-        }
-        
-        
-        
-
-    }
+   
 
     protected abstract boolean isCharValid(char c);
 

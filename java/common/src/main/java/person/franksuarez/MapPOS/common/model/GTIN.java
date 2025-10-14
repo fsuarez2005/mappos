@@ -52,27 +52,6 @@ public class GTIN extends ProductIdentifier implements java.io.Serializable {
         return checkDigit;
     }
 
-    public static class Builder extends ProductIdentifier.Builder<GTIN,Builder> {
-
-        @Override
-        protected Builder self() {
-            return this;
-        }
-
-        @Override
-        public GTIN build() {
-            
-            
-            
-            
-            return null;
-        }
-
-        
-        
-        
-        
-    }
-    
+  
     
 }
