@@ -35,7 +35,11 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.EOFException;
 import java.io.IOException;
+import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import person.franksuarez.MapPOS.common.model.Command;
 import person.franksuarez.MapPOS.common.model.POS;
 
 /**
@@ -43,8 +47,14 @@ import person.franksuarez.MapPOS.common.model.POS;
  * @author franksuarez
  */
 public class Shell {
+
+    private Lexer lexer;
+
     private boolean doPrintPrompt = true;
     protected String prompt = "> ";
+
+    private Map<String, Command> commands;
+
     private POS pos;
     private ShellMode mode = ShellMode.COMMAND;
 
@@ -54,61 +64,134 @@ public class Shell {
     private BufferedWriter writer;
 
     // =======================================================
+    private void setupCommands() {
+        Command quitCmd = new Command("quit", (t) -> {
+            this.running = false;
+        });
+        commands.put("quit", quitCmd);
+
+        Command helpCmd = new Command("help", (t) -> {
+            
+            try {
+                writeln("HELP: Commands:");
+                writeln("");
+                
+                commands.forEach((name, cmd) -> {
+                    try {
+                        writeln(String.format("\t%s\t%s",name,cmd.getUsage()));
+                        
+                    } catch (IOException ex) {
+                        System.getLogger(Shell.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+                    }
+                });
+            } catch (IOException ex) {
+                System.getLogger(Shell.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            }
+            
+        
+        
+        
+        });
+        commands.put("help", helpCmd);
+        
+    }
+
     public static enum ShellMode {
         COMMAND, POS, DEBUG
     }
 
-    public static class Token {
+    /**
+     * Creates Tokens from string tokens.
+     *
+     */
+    public class Lexer {
 
-        public static enum TokenType {
-            UPC,
-            COMMAND,
-            UNKNOWN
+        public static class Token {
 
-        }
-        public final TokenType type;
-        public final String lexeme;
+            public static enum TokenType {
+                UPC,
+                COMMAND,
+                UNKNOWN
 
-        public Token(TokenType type, String lexeme) {
-            this.type = type;
-            this.lexeme = lexeme;
-        }
+            }
+            public final TokenType type;
+            public final String lexeme;
 
-        public static Token lex(String input) {
-            Token output = null;
+            public Token(TokenType type, String lexeme) {
+                this.type = type;
+                this.lexeme = lexeme;
+            }
 
-            if (input == null) {
-                output = new Token(TokenType.UNKNOWN, "");
+            /*
+            public static Token lex(String input) {
+                Token output = null;
+
+                if (input == null) {
+                    output = new Token(TokenType.UNKNOWN, "");
+                    return output;
+                }
+
+                switch (input.trim()) {
+                    case "help", "exit", "pos", "command", "status" -> {
+                        output = new Token(TokenType.COMMAND, input.trim());
+                    }
+
+                    default -> {
+                        UPCA upc = new UPCA();
+                        upc.fromString(input.trim());
+                        if (upc.isValid()) {
+                            output = new Shell.Token(TokenType.UPC, input.trim());
+                            break;
+                        }
+
+                        output = new Shell.Token(TokenType.UNKNOWN, input.trim());
+
+                    }
+
+                }
+
+                return output;
+            }
+             */
+            @Override
+            public String toString() {
+                String output = String.format("<%s / %s / %s>", super.toString(), lexeme, type.name());
                 return output;
             }
 
-            switch (input.trim()) {
-                case "help" -> {
-                    output = new Token(TokenType.COMMAND, input.trim());
-                }
+        }
 
-                default -> {
-                    output = new Token(TokenType.UNKNOWN, input.trim());
+        public Token lex(String token) {
+            String trimmedToken = token.trim();
+            Set<String> commandStringList = commands.keySet();
 
-                }
-
+            if (commandStringList.contains(trimmedToken)) {
+                return new Token(Token.TokenType.COMMAND,trimmedToken);
             }
 
-            return output;
-        }
-        
-        
-        @Override
-        public String toString() {
-            String output = String.format("<%s / %s / %s>",super.toString(),lexeme,type.name());
-            return output;
+            return new Token(Token.TokenType.UNKNOWN, trimmedToken);
+
         }
 
     }
 
     // =======================================================
     public Shell() {
-        //this.stack = new ArrayList<>();
+        this.commands = new Hashtable<>();
+
+        this.setupCommands();
+        this.lexer = new Lexer();
+
+    }
+
+    public void write(String s) throws IOException {
+        this.writer.write(s);
+    }
+
+    public void writeln(String s) throws IOException {
+        this.writer.write(
+                String.format("%s%n", s)
+        );
     }
 
     public void setWriter(BufferedWriter writer) {
@@ -143,73 +226,89 @@ public class Shell {
             }
             String userInput = reader.readLine();
 
-            
-            
             if (userInput == null) {
                 writer.write("EOF\n");
                 writer.flush();
                 break;
             }
-            
+
             try {
                 parseLine(userInput);
             } catch (IOException e) {
                 writer.write("Error: " + e.getMessage() + "\n");
                 writer.flush();
             }
-            
+
         }
 
     }
-    
-    
-    
-        /**
-     * 
-     * 
-     * 
-     * 
+
+    /**
+     *
+     *
+     *
+     *
      * @param line
-     * @return 
+     * @return
      */
-    private List<Token> tokenizeInputLine(String line) {
+    private List<Shell.Lexer.Token> tokenizeInputLine(String line) {
+        // tokens are separated by white space
         List<String> tokenStringList = List.of(line.trim().split("\\s+"));
-        
-        List<Token> tokenList = tokenStringList.stream().map((t) -> {
-            return Token.lex(t);
+
+        // convert token Strings into token Tokens
+        List<Shell.Lexer.Token> tokenList = tokenStringList.stream().map((t) -> {
+            return lexer.lex(t);
         }).collect(java.util.stream.Collectors.toList());
-        //return List.of(line.trim().split("\\s+"));
-        
+
         return tokenList;
     }
-    
+
     protected void parseLine(String userInput) throws EOFException, IOException {
         if (userInput == null) {
             throw new EOFException();
         }
 
-        List<Token> tokenList = this.tokenizeInputLine(userInput);
+        List<Lexer.Token> tokenList = this.tokenizeInputLine(userInput);
 
-        if (tokenList.isEmpty()) {
-            return;
-        }
+        for (Lexer.Token s : tokenList) {
 
-        // if anything is not a known word, place on stack
-        for (Token s : tokenList) {
-            System.out.printf("Token: %s%n",s.toString());
+            evaluate(s);
             
+            // command may have altered environment
+            if (this.running == false) {
+                break;
+            }
             
-            //this.evaluate(s);
         }
-    }
-    
-
-
-    protected void evaluate(String token) throws IOException {
 
     }
 
+    protected void evaluate(Lexer.Token token) throws IOException {
+        switch (token.type) {
+            case COMMAND -> {
+                writeln("Command");
+                Command cmd = commands.get(token.lexeme);
+                cmd.accept("");
+                
+            }
 
+            case UPC -> {
+                writeln("UPC");
+            }
+
+            case UNKNOWN -> {
+
+            }
+
+            default -> {
+
+            }
+
+        }
+        
+        
+
+    }
 
     // =======================================================
     protected void processTransaction() {
