@@ -18,7 +18,7 @@ import person.franksuarez.MapPOS.common.exception.InvalidFormat;
  * @author franksuarez
  */
 public class GTIN extends ProductIdentifier implements java.io.Serializable {
-    public GTIN() {}
+    //public GTIN() {}
 
     @Override
     public boolean isCharValid(char c) {
@@ -51,8 +51,28 @@ public class GTIN extends ProductIdentifier implements java.io.Serializable {
         int checkDigit = (10 - (sum % 10)) % 10;
         return checkDigit;
     }
-    
 
+    public static class Builder extends ProductIdentifier.Builder<GTIN,Builder> {
+
+        @Override
+        protected Builder self() {
+            return this;
+        }
+
+        @Override
+        public GTIN build() {
+            
+            
+            
+            
+            return null;
+        }
+
+        
+        
+        
+        
+    }
     
     
 }

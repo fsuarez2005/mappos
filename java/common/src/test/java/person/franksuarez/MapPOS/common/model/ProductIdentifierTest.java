@@ -4,71 +4,74 @@
  */
 package person.franksuarez.MapPOS.common.model;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
  * @author franksuarez
  */
 public class ProductIdentifierTest {
-    private String testUPC1Str = "751746033615";
     
-    public ProductIdentifier createTestObject() {
-        ProductIdentifier data = new ProductIdentifier(testUPC1Str.toCharArray(), 12, true, false, 11){
-            @Override
-            public boolean isCharValid(char c) {
-                return Character.isDigit(c);
-            }
-        };
-
-        
-        return data;
-    }
-
-
-
     public ProductIdentifierTest() {
     }
-
+    
     @BeforeAll
     public static void setUpClass() {
     }
-
+    
     @AfterAll
     public static void tearDownClass() {
     }
-
+    
     @BeforeEach
     public void setUp() {
-
     }
-
-
+    
     @AfterEach
     public void tearDown() {
     }
+    
+    @Test
+    public void testBuilder() {
+        ProductIdentifier.Builder b = new ProductIdentifier.Builder() {
+            @Override
+            protected ProductIdentifier.Builder self() {
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                return this;
+            }
 
+            @Override
+            public ProductIdentifier build() {
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                return new ProductIdentifier(data, formatLength, true, true, 0)
+            }
+        };
+        
+        System.out.printf("Class: %b%n",b instanceof ProductIdentifier.Builder);
+        b.data("1234".toCharArray()).formatLength(10).build();
+        
+        
+    }
+    
 
-    
-    
-    
     /**
      * Test of isCharValid method, of class ProductIdentifier.
      */
     @Test
     public void testIsCharValid() {
         System.out.println("isCharValid");
-        char c = '1';
-        ProductIdentifier instance = createTestObject();
-        boolean expResult = true;
+        char c = ' ';
+        ProductIdentifier instance = new ProductIdentifierImpl();
+        boolean expResult = false;
         boolean result = instance.isCharValid(c);
         assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
 
     /**
@@ -145,20 +148,11 @@ public class ProductIdentifierTest {
     @Test
     public void testSetFormatLength() {
         System.out.println("setFormatLength");
-        
-        ProductIdentifier instance = createTestObject();
         int formatLength = 0;
-        assertDoesNotThrow(() -> {
-            instance.setFormatLength(formatLength);
-        });
-        
-        ProductIdentifier instance2 = createTestObject();
-        
-        int formatLength2 = -1;
-        
-        IllegalArgumentException assertThrows = assertThrows(IllegalArgumentException.class, () -> {
-            instance2.setFormatLength(formatLength2);
-        });
+        ProductIdentifier instance = new ProductIdentifierImpl();
+        instance.setFormatLength(formatLength);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
 
     /**
@@ -182,22 +176,11 @@ public class ProductIdentifierTest {
     public void testSetCheckDigitIndex() {
         System.out.println("setCheckDigitIndex");
         int checkDigitIndex = 0;
-        //ProductIdentifier instance = new ProductIdentifierImpl();
-        ProductIdentifier instance = createTestObject();
-        
-        assertDoesNotThrow(() -> {
-            instance.setCheckDigitIndex(checkDigitIndex);
-        });
+        ProductIdentifier instance = new ProductIdentifierImpl();
+        instance.setCheckDigitIndex(checkDigitIndex);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
-    
-    @Test
-    public void fail_testSetCheckDigitIndex() {
-        
-        
-    
-    }
-    
-    
 
     /**
      * Test of areAllCharsValid method, of class ProductIdentifier.
@@ -300,5 +283,5 @@ public class ProductIdentifierTest {
             return false;
         }
     }
-
+    
 }

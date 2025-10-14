@@ -50,6 +50,15 @@ public class UPCATest {
 
     
     @Test
+    public void testSubclasses() {
+        UPCA t = new UPCA();
+        
+        
+        
+    }
+    
+    
+    @Test
     public void testConstructor() {
         UPCA a = new UPCA();
         //System.out.printf("%s%n%b%n",a.isCharValidOld.toString(),a.isCharValidOld.test('a'));

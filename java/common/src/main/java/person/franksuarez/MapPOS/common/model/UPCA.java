@@ -41,4 +41,14 @@ public class UPCA extends GTIN implements java.io.Serializable {
 
         return (intData[getCheckDigitIndex()] == calculateCheckDigit());
     }
+    
+    public static class Builder extends GTIN.Builder {
+        
+        public UPCA build() {
+            return null;
+        }
+        
+        
+    }
+    
 }

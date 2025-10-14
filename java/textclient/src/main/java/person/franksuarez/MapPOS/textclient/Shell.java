@@ -39,8 +39,11 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Consumer;
 import person.franksuarez.MapPOS.common.model.Command;
 import person.franksuarez.MapPOS.common.model.POS;
+import person.franksuarez.MapPOS.common.model.ProductIdentifier;
+import person.franksuarez.MapPOS.common.model.UPCA;
 
 /**
  *
@@ -62,24 +65,28 @@ public class Shell {
 
     private BufferedReader reader;
     private BufferedWriter writer;
+    
+    // tells tokenizer to discard rest of line
+    private boolean skipRestOfLine = false;
 
     // =======================================================
     private void setupCommands() {
         Command quitCmd = new Command("quit", (t) -> {
             this.running = false;
         });
+        quitCmd.setShortDescription("Quits the POS.");
         commands.put("quit", quitCmd);
 
         Command helpCmd = new Command("help", (t) -> {
             
             try {
                 writeln("HELP: Commands:");
-                writeln("");
+                writeln("---------------");
                 
                 commands.forEach((name, cmd) -> {
                     try {
-                        writeln(String.format("\t%s\t%s",name,cmd.getUsage()));
-                        
+                        writeln(String.format("\t%s\t%s",name,cmd.getShortDescription()));
+                        writeln("---------------");
                     } catch (IOException ex) {
                         System.getLogger(Shell.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
                     }
@@ -92,8 +99,15 @@ public class Shell {
         
         
         });
+        helpCmd.setShortDescription("Shows help.");
         commands.put("help", helpCmd);
         
+        
+        Command posCmd = new Command("pos", (t) -> {
+            this.mode = ShellMode.POS;
+        });
+        posCmd.setShortDescription("Switch to POS Mode.");
+        commands.put("pos",posCmd);
     }
 
     public static enum ShellMode {
@@ -122,37 +136,6 @@ public class Shell {
                 this.lexeme = lexeme;
             }
 
-            /*
-            public static Token lex(String input) {
-                Token output = null;
-
-                if (input == null) {
-                    output = new Token(TokenType.UNKNOWN, "");
-                    return output;
-                }
-
-                switch (input.trim()) {
-                    case "help", "exit", "pos", "command", "status" -> {
-                        output = new Token(TokenType.COMMAND, input.trim());
-                    }
-
-                    default -> {
-                        UPCA upc = new UPCA();
-                        upc.fromString(input.trim());
-                        if (upc.isValid()) {
-                            output = new Shell.Token(TokenType.UPC, input.trim());
-                            break;
-                        }
-
-                        output = new Shell.Token(TokenType.UNKNOWN, input.trim());
-
-                    }
-
-                }
-
-                return output;
-            }
-             */
             @Override
             public String toString() {
                 String output = String.format("<%s / %s / %s>", super.toString(), lexeme, type.name());
@@ -164,10 +147,16 @@ public class Shell {
         public Token lex(String token) {
             String trimmedToken = token.trim();
             Set<String> commandStringList = commands.keySet();
-
+            
+            
+            
+            
+            
+            
+            
             if (commandStringList.contains(trimmedToken)) {
                 return new Token(Token.TokenType.COMMAND,trimmedToken);
-            }
+            } 
 
             return new Token(Token.TokenType.UNKNOWN, trimmedToken);
 
@@ -274,8 +263,11 @@ public class Shell {
 
             evaluate(s);
             
+            if (this.skipRestOfLine) {
+                break;
+            }
             // command may have altered environment
-            if (this.running == false) {
+            if (! this.running) {
                 break;
             }
             

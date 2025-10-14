@@ -8,7 +8,8 @@ package person.franksuarez.MapPOS.common.model;
 
 import person.franksuarez.MapPOS.common.exception.InvalidFormat;
 
-/** ProductIdentifier contains useful utility functions.
+/**
+ * ProductIdentifier contains useful utility functions.
  *
  * @author franksuarez
  */
@@ -26,15 +27,66 @@ public abstract class ProductIdentifier {
 
     private int checkDigitIndex;
 
-    public ProductIdentifier() {
-    }
 
+    
+    public ProductIdentifier() {}
+
+    public ProductIdentifier(String x) {}
+    
     public ProductIdentifier(char[] data, int formatLength, boolean hasCheckDigit, boolean validated, int checkDigitIndex) {
+        
+        
         this.validated = validated;
         this.hasCheckDigit = hasCheckDigit;
         this.data = data;
         this.formatLength = formatLength;
         this.checkDigitIndex = checkDigitIndex;
+    }
+    
+    
+    
+
+    public static abstract class Builder<T extends ProductIdentifier, B extends Builder<T,B>>{
+        // cache the validation test
+
+        private boolean validated = false;
+
+        private boolean hasCheckDigit;
+
+        // should be a very generic type
+        private char[] data;
+
+        private int formatLength;
+
+        private int checkDigitIndex;
+        
+        protected abstract B self();
+        public abstract T build();
+        
+        
+        public B hasCheckDigit(boolean hasCheckDigit) {
+            this.hasCheckDigit = hasCheckDigit;
+            return self();
+        }
+        
+        public B data(char[] data) {
+            this.data = data;
+            return self();
+        }
+        
+        public B formatLength(int formatLength) {
+            this.formatLength = formatLength;
+            return self();
+        }
+        
+        public B checkDigitIndex(int checkDigitIndex) {
+            this.checkDigitIndex = checkDigitIndex;
+            return self();
+        }
+        
+        
+        
+
     }
 
     protected abstract boolean isCharValid(char c);
@@ -65,7 +117,7 @@ public abstract class ProductIdentifier {
         }
         this.formatLength = formatLength;
     }
-    
+
     public final int getCheckDigitIndex() {
         return checkDigitIndex;
     }
@@ -87,7 +139,7 @@ public abstract class ProductIdentifier {
     public boolean areAllCharsValid() {
         if (this.validated) {
             return true;
-            
+
         }
 
         boolean allValid = true;
