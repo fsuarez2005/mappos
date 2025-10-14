@@ -18,7 +18,7 @@ import person.franksuarez.MapPOS.common.exception.InvalidFormat;
  * @author franksuarez
  */
 public class GTIN extends ProductIdentifier implements java.io.Serializable {
-    //public GTIN() {}
+
 
     @Override
     public boolean isCharValid(char c) {
@@ -52,6 +52,43 @@ public class GTIN extends ProductIdentifier implements java.io.Serializable {
         return checkDigit;
     }
 
+
+
+    /** Returns true if the check digit is correct.
+     *
+     * @return True if UPC has a good check digit.
+     * @throws person.franksuarez.MapPOS.common.exception.InvalidFormat
+     */
+    public boolean hasValidCheckDigit() throws InvalidFormat {
+        int[] intData = this.toIntArray();
+        if (intData == null) {
+            throw new NullPointerException();
+        }
+        if (intData.length < getFormatLength()) {
+            throw new InvalidFormat();
+        }
+        return intData[getCheckDigitIndex()] == calculateCheckDigit();
+    }
+
+        @Override
+    public boolean isValid() {
+        // super.isValid validates length and char type
+        
+        boolean validCheckDigit = false;
+        try {
+            validCheckDigit = hasValidCheckDigit();
+        } catch (InvalidFormat ex) {
+            System.getLogger(GTIN.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+        
+        
+        
+        
+        return (super.isValid() && validCheckDigit); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    }
+    
+    
+    
   
     
 }

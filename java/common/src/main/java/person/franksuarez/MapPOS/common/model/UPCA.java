@@ -23,24 +23,6 @@ public class UPCA extends GTIN implements java.io.Serializable {
         this.setCheckDigitIndex( 11 );
     }
     
-    /** Returns true if the check digit is correct.
-     *
-     * @return True if UPC has a good check digit.
-     * @throws person.franksuarez.MapPOS.common.exception.InvalidFormat
-     */
-    public boolean hasValidCheckDigit() throws InvalidFormat {
-        int[] intData = this.toIntArray();
-        
-        
-        if (intData == null) {
-            throw new NullPointerException();
-        }
-        if (intData.length < getFormatLength()) {
-            throw new InvalidFormat();
-        }
-
-        return (intData[getCheckDigitIndex()] == calculateCheckDigit());
-    }
     
 
     

@@ -144,21 +144,20 @@ public class Shell {
 
         }
 
-        public Token lex(String token) {
+        public Token lex(String token) throws IOException {
             String trimmedToken = token.trim();
             Set<String> commandStringList = commands.keySet();
             
             
-            
-            
-            
-            
-            
-            if (commandStringList.contains(trimmedToken)) {
+            UPCA upc = new UPCA();
+            upc.fromString(trimmedToken);
+            if (upc.isValid()) {
+                return new Token(Token.TokenType.UPC, trimmedToken);
+            } else if (commandStringList.contains(trimmedToken)) {
                 return new Token(Token.TokenType.COMMAND,trimmedToken);
-            } 
-
-            return new Token(Token.TokenType.UNKNOWN, trimmedToken);
+            } else {
+                return new Token(Token.TokenType.UNKNOWN, trimmedToken);
+            }
 
         }
 
@@ -246,7 +245,16 @@ public class Shell {
 
         // convert token Strings into token Tokens
         List<Shell.Lexer.Token> tokenList = tokenStringList.stream().map((t) -> {
-            return lexer.lex(t);
+            
+            Lexer.Token token = null;
+            try {
+                token = lexer.lex(t);
+            } catch (IOException ex) {
+                System.getLogger(Shell.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+                
+            }
+            
+            return token;
         }).collect(java.util.stream.Collectors.toList());
 
         return tokenList;
@@ -285,15 +293,15 @@ public class Shell {
             }
 
             case UPC -> {
-                writeln("UPC");
+                writeln("Valid UPC");
             }
 
             case UNKNOWN -> {
-
+                writeln("Unknown input.");
             }
 
             default -> {
-
+                writeln("Something went wrong.");
             }
 
         }
