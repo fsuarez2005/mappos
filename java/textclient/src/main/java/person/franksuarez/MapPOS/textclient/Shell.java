@@ -1,7 +1,7 @@
 // Purpose: interpret text commands
 // stack based language
-/**
- * Commands:
+/** Commands.
+ * 
  * QUIT - quit program
  * HELP -  show help information
  * STATUS -  shows status information
@@ -9,26 +9,20 @@
  * SETTINGS - show settings
  * MODE - show mode
  * POS - enter POS mode
- * IDLE - enter idle mode
+ * COMMAND - enter command mode
+ * 
+ * TRANSVOID - Voids entire transaction
+ * ITEMVOID - Voids an item
+ * TENDERVOID - 
+ * SUSPEND - 
+ * RESUME - 
+ * PLU - Look up PLU by description
+ * TOTAL - Finalize transaction
+ * CASH - Enter cash amount to tender
+ * CREDIT - Enter credit amount
  *
- *
- *
- * Stack operations:
- * SHOWSTACK
- * CLEARSTACK
  */
-/*
-   <line-input> ::= 
 
-
-
-    <command> ::= "help" | "exit"
-
-
-
-
-
- */
 package person.franksuarez.MapPOS.textclient;
 
 import java.io.BufferedReader;
@@ -39,10 +33,8 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.Consumer;
 import person.franksuarez.MapPOS.common.model.Command;
 import person.franksuarez.MapPOS.common.model.POS;
-import person.franksuarez.MapPOS.common.model.ProductIdentifier;
 import person.franksuarez.MapPOS.common.model.UPCA;
 
 /**
