@@ -276,16 +276,20 @@ public class Shell {
     }
 
     protected void evaluate(Lexer.Token token) throws IOException {
+        if (this.mode == ShellMode.COMMAND) {
+        
+        
+        
+        
         switch (token.type) {
             case COMMAND -> {
+                // process command
+                
+                
                 writeln("Command");
                 Command cmd = commands.get(token.lexeme);
                 cmd.accept("");
                 
-            }
-
-            case UPC -> {
-                writeln("Valid UPC");
             }
 
             case UNKNOWN -> {
@@ -293,9 +297,51 @@ public class Shell {
             }
 
             default -> {
-                writeln("Something went wrong.");
+                writeln("Invalid input");
             }
 
+        }
+        
+        } else if (this.mode == ShellMode.POS) {
+            switch (token.type) {
+                case COMMAND -> {
+                    // process commands in POS mode
+                    switch (token.lexeme) {
+                        case "command" -> {
+                            this.mode = ShellMode.COMMAND;
+                        }
+                        case "quit" -> {
+                            this.running = false;
+                            
+                        }
+                        
+                    }
+                    
+                }
+                case UPC -> {
+                    // append UPC to current transaction
+                    
+                    write(String.format("You entered UPC: %s%n", token.lexeme));
+                    
+                    
+                }
+                
+                case UNKNOWN -> {
+                    
+                    
+                    
+                }
+                
+                default -> {
+                    
+                    
+                }
+                
+            }
+            
+            
+            
+            
         }
         
         

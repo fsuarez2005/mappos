@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package person.franksuarez.MapPOS.client.ui;
+package person.franksuarez.MapPOS.client.experiments;
 
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/AWTForms/Frame.java to edit this template
  */
-package person.franksuarez.MapPOS.client.ui;
+package person.franksuarez.MapPOS.client.experiments;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -148,7 +148,6 @@ public class NCRDynakey extends java.awt.Frame {
         jButton22 = new javax.swing.JButton();
         btnNum0 = new javax.swing.JButton();
 
-        setPreferredSize(new java.awt.Dimension(1024, 768));
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
