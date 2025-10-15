@@ -302,22 +302,5 @@ public class Shell {
 
     }
 
-    // =======================================================
-    protected void processTransaction() {
 
-    }
-
-    protected void printHelp() {
-        String helpString = "MAPPos\n"
-                + "version: 0.0\n"
-                + "\n"
-                + "Commands:\n"
-                + "help\tPrints this.\n\n";
-
-        try {
-            writer.write(helpString);
-        } catch (IOException ex) {
-            System.getLogger(Shell.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
-        }
-    }
 }
