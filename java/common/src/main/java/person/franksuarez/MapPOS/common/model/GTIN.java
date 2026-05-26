@@ -30,6 +30,7 @@ public class GTIN extends ProductIdentifier implements java.io.Serializable {
      * @return Check digit of GTIN
      * @throws InvalidFormat 
      */
+    @Override
     public int calculateCheckDigit() throws InvalidFormat {
         // char[] this.data
         
@@ -59,6 +60,7 @@ public class GTIN extends ProductIdentifier implements java.io.Serializable {
      * @return True if UPC has a good check digit.
      * @throws person.franksuarez.MapPOS.common.exception.InvalidFormat
      */
+    @Override
     public boolean hasValidCheckDigit() throws InvalidFormat {
         int[] intData = this.toIntArray();
         if (intData == null) {
@@ -70,7 +72,7 @@ public class GTIN extends ProductIdentifier implements java.io.Serializable {
         return intData[getCheckDigitIndex()] == calculateCheckDigit();
     }
 
-        @Override
+    @Override
     public boolean isValid() {
         // super.isValid validates length and char type
         

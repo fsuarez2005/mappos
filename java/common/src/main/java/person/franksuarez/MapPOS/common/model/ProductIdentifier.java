@@ -4,6 +4,11 @@
  *
  *
  */
+
+// TODO: Rethink this class to make it more generic.
+
+
+
 package person.franksuarez.MapPOS.common.model;
 
 import person.franksuarez.MapPOS.common.exception.InvalidFormat;
@@ -43,11 +48,6 @@ public abstract class ProductIdentifier {
         this.checkDigitIndex = checkDigitIndex;
     }
     
-    
-    
-
-   
-
     protected abstract boolean isCharValid(char c);
 
     public final boolean getHasCheckDigit() {
@@ -89,6 +89,10 @@ public abstract class ProductIdentifier {
         this.checkDigitIndex = checkDigitIndex;
     }
 
+    public abstract int calculateCheckDigit() throws InvalidFormat;
+    
+    public abstract boolean hasValidCheckDigit() throws InvalidFormat;
+    
     /**
      * Checks each Char of charData to see if it passes isCharValidOld(char).
      *
@@ -120,6 +124,10 @@ public abstract class ProductIdentifier {
     }
 
     public boolean isValid() {
+        
+        
+        
+        
         return isCorrectFormatLength() && areAllCharsValid();
     }
 
